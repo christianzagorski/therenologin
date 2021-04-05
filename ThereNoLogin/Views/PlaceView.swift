@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PlaceView: View {
+    
+    @EnvironmentObject var allPlaces: TherePlaceViewModel
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
@@ -16,5 +19,6 @@ struct PlaceView: View {
 struct PlaceView_Previews: PreviewProvider {
     static var previews: some View {
         PlaceView()
+            .environmentObject(TherePlaceViewModel())
     }
 }

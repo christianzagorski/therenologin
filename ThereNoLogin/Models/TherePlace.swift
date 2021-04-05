@@ -29,5 +29,6 @@ struct TherePlace: Identifiable, Decodable  {
     var wantToGo: Bool
     var beenTo: Bool
     var privateSpot: Bool?
+
 }
 

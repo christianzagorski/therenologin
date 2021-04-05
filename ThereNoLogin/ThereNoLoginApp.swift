@@ -11,7 +11,8 @@ import SwiftUI
 struct ThereNoLoginApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BeenWantView()
+                .environmentObject(TherePlaceViewModel())
         }
     }
 }

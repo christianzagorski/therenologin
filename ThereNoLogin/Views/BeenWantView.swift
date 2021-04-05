@@ -8,37 +8,24 @@
 import SwiftUI
 
 struct BeenWantView: View {
+    
+    @EnvironmentObject var allPlaces: TherePlaceViewModel
+    
     var body: some View {
         
         TabView {
             
-            GeometryReader { geo in
-                
-                NavigationView {
+            WantCardView()
+                .tabItem {
                     
-                    ScrollView {
-                        
-                        LazyVStack {
-                            
-                            LazyHStack {
-                                
-                                if geo.size.width < 400 {
-                                    // If screen width is small make two tiles horizontally
-                                }
-                                
-                                else {
-                                    // If screen width is large make four tiles horizontally
-                                }
-                                
-                            } // End LazyHStack
-                            
-                        } // End LazyVStack
-                        
-                    } // End ScrollView
                     
-                } // End Navigation View
-                
-            } // End GeometryReader
+                }
+            
+            BeenCardView()
+                .tabItem {
+                    
+                    
+                }
    
         } // End TabView
         
@@ -52,5 +39,6 @@ struct BeenWantView: View {
 struct BeenWantView_Previews: PreviewProvider {
     static var previews: some View {
         BeenWantView()
+            .environmentObject(TherePlaceViewModel())
     }
 }
