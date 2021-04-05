@@ -13,6 +13,7 @@
 		948DE6A5261AB8AB00219982 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 948DE6A4261AB8AB00219982 /* Preview Assets.xcassets */; };
 		948DE6B0261AB8AC00219982 /* ThereNoLoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6AF261AB8AC00219982 /* ThereNoLoginTests.swift */; };
 		948DE6BB261AB8AC00219982 /* ThereNoLoginUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6BA261AB8AC00219982 /* ThereNoLoginUITests.swift */; };
+		948DE6CD261AB90300219982 /* BeenWantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6CC261AB90300219982 /* BeenWantView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		948DE6B6261AB8AC00219982 /* ThereNoLoginUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThereNoLoginUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		948DE6BA261AB8AC00219982 /* ThereNoLoginUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThereNoLoginUITests.swift; sourceTree = "<group>"; };
 		948DE6BC261AB8AC00219982 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		948DE6CC261AB90300219982 /* BeenWantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeenWantView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				948DE69D261AB8A300219982 /* ThereNoLoginApp.swift */,
-				948DE69F261AB8A300219982 /* ContentView.swift */,
+				948DE6CB261AB8DC00219982 /* Views */,
 				948DE6A1261AB8AB00219982 /* Assets.xcassets */,
 				948DE6A6261AB8AB00219982 /* Info.plist */,
 				948DE6A3261AB8AB00219982 /* Preview Content */,
@@ -128,6 +130,15 @@
 				948DE6BC261AB8AC00219982 /* Info.plist */,
 			);
 			path = ThereNoLoginUITests;
+			sourceTree = "<group>";
+		};
+		948DE6CB261AB8DC00219982 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				948DE69F261AB8A300219982 /* ContentView.swift */,
+				948DE6CC261AB90300219982 /* BeenWantView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				948DE6A0261AB8A300219982 /* ContentView.swift in Sources */,
+				948DE6CD261AB90300219982 /* BeenWantView.swift in Sources */,
 				948DE69E261AB8A300219982 /* ThereNoLoginApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
