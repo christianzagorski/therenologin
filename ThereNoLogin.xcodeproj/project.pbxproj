@@ -18,6 +18,7 @@
 		948DE6E0261AC03B00219982 /* BeenWantData2.json in Resources */ = {isa = PBXBuildFile; fileRef = 948DE6DF261AC03B00219982 /* BeenWantData2.json */; };
 		948DE6E8261AC1B000219982 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6E7261AC1B000219982 /* User.swift */; };
 		948DE6ED261AC57F00219982 /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6EC261AC57F00219982 /* PlaceViewModel.swift */; };
+		948DE6F2261ACAAE00219982 /* PlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6F1261ACAAE00219982 /* PlaceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		948DE6DF261AC03B00219982 /* BeenWantData2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BeenWantData2.json; sourceTree = "<group>"; };
 		948DE6E7261AC1B000219982 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		948DE6EC261AC57F00219982 /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
+		948DE6F1261ACAAE00219982 /* PlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			children = (
 				948DE69F261AB8A300219982 /* ContentView.swift */,
 				948DE6CC261AB90300219982 /* BeenWantView.swift */,
+				948DE6F1261ACAAE00219982 /* PlaceView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			files = (
 				948DE6A0261AB8A300219982 /* ContentView.swift in Sources */,
 				948DE6D6261ABB8A00219982 /* TherePlace.swift in Sources */,
+				948DE6F2261ACAAE00219982 /* PlaceView.swift in Sources */,
 				948DE6CD261AB90300219982 /* BeenWantView.swift in Sources */,
 				948DE6E8261AC1B000219982 /* User.swift in Sources */,
 				948DE6ED261AC57F00219982 /* PlaceViewModel.swift in Sources */,
