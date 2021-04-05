@@ -1,0 +1,47 @@
+
+
+
+[
+    {   "placeType":"Hike",
+        "placeName":"Red Rock Falls",
+        "placeState":"California",
+        "placeCountry":"United States Of America",
+        "placeCountryCode":1,
+        "commentPrivate": "We took River, Bodhi and Fynn. We walked a little further than marked, but turned around and chilled at the waterfall. Christian went for a swim.",
+        "commentpublic": "Beautiful walk, not too strenuous, the waterfall was amazing",
+        "wantToGo": false,
+        "beenTo": true
+    
+    
+    
+},
+    
+{       "placeType":"Accomodation",
+        "placeName":"River Sound",
+        "placeAddress": "4619 Leonard Rd, Mariposa, 95338",
+        "placeState":"California",
+        "placeCountry":"United States Of America",
+        "placeCountryCode":1,
+        "commentPrivate": "We lived here from 2020 for a year and returned for many years during the spring.",
+        "commentpublic": "Got to be the best airbnb I have ever stayed in",
+        "wantToGo": false,
+        "beenTo": true,
+        "privateSpot": false
+        
+},
+
+{       "placeType":"Other",
+        "placeName":"Caleas Secret Spot in San Francisco",
+        "placeState":"California",
+        "placeCountry":"United States Of America",
+        "placeCountryCode":1,
+        "commentPrivate": "Calea has told me about it but we never got to go there. Apparantly it is a spot to go without kids and with a bottle of wine.",
+        "wantToGo": true,
+        "beenTo": false,
+        "privateSpot": true
+
+}
+        
+]
+
+
