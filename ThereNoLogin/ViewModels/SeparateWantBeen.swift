@@ -7,24 +7,27 @@
 
 import Foundation
 
-struct SeparateWantBeen {
+class SeparateWantBeen: ObservableObject {
     
-    func wantArray(allPlacesArray) -> [TherePlace] {
+    func wantArrayCreator(allPlacesArray: [TherePlace]) -> [TherePlace] {
+        var appendArray = [TherePlace]()
         
-        for i in allPlacesArray
-        var appendarray: [TherePlace]()
-
-        if allPlacesArray[i].wantToGo {
+        for i in allPlacesArray {
             
-            
-        }
+            if i.wantToGo {
+                print("hellloooo")
+                appendArray.append(i)
+                
+            } // end if statement
 
-        else {
+            else {
             
-        }
+            }
 
+        } // End for loop
         
-    }
+        return appendArray
+    } // End function
 
     
-} // End struct
+} // End class

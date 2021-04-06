@@ -11,6 +11,46 @@ class TherePlaceViewModel: ObservableObject {
     
     @Published var placesArray = [TherePlace]()
     
+    func wantArrayCreator(allPlacesArray: [TherePlace]) -> [TherePlace] {
+        var appendArray = [TherePlace]()
+        
+        for i in allPlacesArray {
+            
+            if i.wantToGo {
+                print("hellloooo")
+                appendArray.append(i)
+                
+            } // end if statement
+
+            else {
+            
+            }
+
+        } // End for loop
+        
+        return appendArray
+    } // End function
+    
+    func beenArrayCreator(allPlacesArray: [TherePlace]) -> [TherePlace] {
+        var appendArray = [TherePlace]()
+        
+        for i in allPlacesArray {
+            
+            if i.beenTo {
+                print("hellloooo")
+                appendArray.append(i)
+                
+            } // end if statement
+
+            else {
+            
+            }
+
+        } // End for loop
+        
+        return appendArray
+    } // End function
+    
     init() {
         // TODO: Havent created the data file yet, check naming
         let pathString = Bundle.main.path(forResource: "BeenWantData2", ofType: "json")

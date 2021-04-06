@@ -11,7 +11,10 @@ struct BeenCardView: View {
     
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     
+    
     var body: some View {
+        
+        let beenArray = allPlaces.beenArrayCreator(allPlacesArray: allPlaces.placesArray)
         
         GeometryReader { geo in
             
@@ -21,32 +24,48 @@ struct BeenCardView: View {
                     
                     LazyVStack {
                         
-                        LazyHStack {
+                        
+                        ForEach(beenArray) {
                             
-                            if geo.size.width < 400 {
-                                // If screen width is small make two tiles horizontally
-                            Text("How's your mother?")
+                            beenPlaces in
                             
-                            } // End if
+                            NavigationLink(
+                                destination: PlaceView(),
+                                
+                                label: {
+                                    
+                                    LazyHStack {
+                                        
+                                        if geo.size.width < 400 {
+                                            // If screen width is small make two tiles horizontally
+                                            Text("How's your mother?")
+                                            
+                                        } // End if
+                                        
+                                        else if geo.size.width < 800 {
+                                            
+                                            // If screen width is medium (landscape phone make three tiles horizontally
+                                            
+                                            Text(beenPlaces.placeName)
+                                            // TODO Errors everywhere! arghh!
+                                            Text(beenPlaces.placeType)
+                                            
+                                        } // End else if
+                                        else {
+                                            
+                                            // If screen width is large make four tiles horizontally
+                                            Text("How's your father?")
+                                            
+                                            
+                                        } // End else
+                                        
+                                    } // End LazyHStack
+                                    
+                                } // End label for Navigation Link
+                                
+                            ) // End Argument list for Navigation Link
                             
-                            else if geo.size.width < 800 {
-                                
-                                // If screen width is medium (landscape phone make three tiles horizontally
-                                
-                                Text("How's your sister?")
-                                // TODO Errors everywhere! arghh!
-                                // Text(allPlaces[0].placeType)
-                                
-                            } // End else if
-                            else {
-                                
-                                // If screen width is large make four tiles horizontally
-                                    Text("How's your father?")
-                                
-                                
-                            } // End else
-                            
-                        } // End LazyHStack
+                        } // End ForEach
                         
                     } // End LazyVStack
                     
@@ -55,7 +74,8 @@ struct BeenCardView: View {
             } // End Navigation View
             
         } // End GeometryReader
-    }
+
+    } // End body
 }
 
 struct BeenCardView_Previews: PreviewProvider {

@@ -25,7 +25,7 @@ struct TherePlace: Identifiable, Decodable  {
     var timeVisitedEnd: Date?
     var commentPublic: String?
     var commentPrivate: String?
-    var imageName: String?
+    var imageName: String
     var wantToGo: Bool
     var beenTo: Bool
     var privateSpot: Bool?

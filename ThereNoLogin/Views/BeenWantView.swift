@@ -17,13 +17,15 @@ struct BeenWantView: View {
             
             WantCardView()
                 .tabItem {
-                    
+                    Image(systemName: "lock.rectangle.fill")
+                    Text("Want to go there")
                     
                 }
             
             BeenCardView()
                 .tabItem {
-                    
+                    Image(systemName: "lock.rectangle.fill")
+                    Text("Been there")
                     
                 }
    

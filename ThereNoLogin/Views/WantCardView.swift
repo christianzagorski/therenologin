@@ -11,8 +11,10 @@ struct WantCardView: View {
     
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     
+    
     var body: some View {
         
+        let wantArray = allPlaces.wantArrayCreator(allPlacesArray: allPlaces.placesArray)
         
         GeometryReader { geo in
             
@@ -23,9 +25,9 @@ struct WantCardView: View {
                     LazyVStack {
                         
                         
-                        ForEach(allPlaces.placesArray) {
+                        ForEach(wantArray) {
                             
-                            wantPlaces in
+                            wantPlacesCards in
                             
                             NavigationLink(
                                 destination: PlaceView(),
@@ -43,10 +45,36 @@ struct WantCardView: View {
                                         else if geo.size.width < 800 {
                                             
                                             // If screen width is medium (landscape phone make three tiles horizontally
+                                            ZStack {
+                                                
+                                                
+                                                Rectangle()
+                                                    .cornerRadius(10)
+                                                    .shadow(radius: 10)
+                                                    .foregroundColor(.black)
+                                                
+                                                
+                                                // TODO unwrap this optional
+                                                Image(wantPlacesCards.imageName)
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fill)
+                                                Text(wantPlacesCards.placeName)
+                                                    .foregroundColor(.black)
+                                                
+                                            }
+                                            .frame(width: geo.size.width / 2.2, height: geo.size.width / 2.2, alignment: .leading)
                                             
-                                            Text("How's your sister?")
-                                            // TODO Errors everywhere! arghh!
-                                            Text(wantPlaces.placeType)
+                                            ZStack {
+                                                
+//                                                Rectangle()
+//                                                    .cornerRadius(10)
+//                                                    .shadow(radius: 10)
+                                            
+                                                Text(wantPlacesCards.placeName)
+                                                    .foregroundColor(.black)
+                                            }
+                                            .frame(width: geo.size.width / 2.2, height: geo.size.width / 2.2, alignment: .leading)
+                                            
                                             
                                         } // End else if
                                         else {
