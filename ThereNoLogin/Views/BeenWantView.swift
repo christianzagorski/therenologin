@@ -15,14 +15,14 @@ struct BeenWantView: View {
         
         TabView {
             
-            WantCardView()
+            CardsGridView(beenOrWant: "want")
                 .tabItem {
                     Image(systemName: "lock.rectangle.fill")
                     Text("Want to go there")
                     
                 }
             
-            BeenCardView()
+            CardsGridView(beenOrWant: "been")
                 .tabItem {
                     Image(systemName: "lock.rectangle.fill")
                     Text("Been there")

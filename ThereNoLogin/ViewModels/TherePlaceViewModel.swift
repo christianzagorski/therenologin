@@ -11,44 +11,41 @@ class TherePlaceViewModel: ObservableObject {
     
     @Published var placesArray = [TherePlace]()
     
-    func wantArrayCreator(allPlacesArray: [TherePlace]) -> [TherePlace] {
+    // TODO add beenOrWant variable to decide what array to create
+    func ArrayCreator(allPlacesArray: [TherePlace], beenOrWant: String) -> [TherePlace] {
+        
         var appendArray = [TherePlace]()
         
-        for i in allPlacesArray {
-            
-            if i.wantToGo {
-                print("hellloooo")
-                appendArray.append(i)
+        if beenOrWant == "want" {
+        
+            for i in allPlacesArray {
+                                
+                if i.wantToGo {
+                    appendArray.append(i)
+                } // end if statement
                 
-            } // end if statement
-
-            else {
+                else {}
+                
+            } // End for loop
+        
+        } // End if for 'want'
             
-            }
-
-        } // End for loop
+        else if beenOrWant == "been" {
+            
+            for i in allPlacesArray {
+                                
+                if i.beenTo {
+                    appendArray.append(i)
+                } // end if statement
+                
+                else {}
+                
+            } // End for loop
+        
+        } // End if for 'been'
         
         return appendArray
-    } // End function
-    
-    func beenArrayCreator(allPlacesArray: [TherePlace]) -> [TherePlace] {
-        var appendArray = [TherePlace]()
         
-        for i in allPlacesArray {
-            
-            if i.beenTo {
-                print("hellloooo")
-                appendArray.append(i)
-                
-            } // end if statement
-
-            else {
-            
-            }
-
-        } // End for loop
-        
-        return appendArray
     } // End function
     
     init() {

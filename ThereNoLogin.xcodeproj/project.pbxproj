@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9418D988261D7C9000F58477 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9418D987261D7C9000F58477 /* CardView.swift */; };
 		948DE69E261AB8A300219982 /* ThereNoLoginApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE69D261AB8A300219982 /* ThereNoLoginApp.swift */; };
 		948DE6A0261AB8A300219982 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE69F261AB8A300219982 /* ContentView.swift */; };
 		948DE6A2261AB8AB00219982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 948DE6A1261AB8AB00219982 /* Assets.xcassets */; };
@@ -17,12 +18,9 @@
 		948DE6D6261ABB8A00219982 /* TherePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6D5261ABB8A00219982 /* TherePlace.swift */; };
 		948DE6E0261AC03B00219982 /* BeenWantData2.json in Resources */ = {isa = PBXBuildFile; fileRef = 948DE6DF261AC03B00219982 /* BeenWantData2.json */; };
 		948DE6E8261AC1B000219982 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6E7261AC1B000219982 /* User.swift */; };
-		948DE6ED261AC57F00219982 /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6EC261AC57F00219982 /* PlaceViewModel.swift */; };
+		948DE6ED261AC57F00219982 /* TherePlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6EC261AC57F00219982 /* TherePlaceViewModel.swift */; };
 		948DE6F2261ACAAE00219982 /* PlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6F1261ACAAE00219982 /* PlaceView.swift */; };
-		948DE6FA261B73C900219982 /* WantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6F9261B73C900219982 /* WantCardView.swift */; };
-		948DE702261B74A300219982 /* BeenCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE701261B74A300219982 /* BeenCardView.swift */; };
-		948DE707261B927300219982 /* SeparateWantBeen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE706261B927300219982 /* SeparateWantBeen.swift */; };
-		948DE70F261C1DB000219982 /* HorizontalPlaceCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE70E261C1DAF00219982 /* HorizontalPlaceCards.swift */; };
+		948DE6FA261B73C900219982 /* CardsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6F9261B73C900219982 /* CardsGridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9418D987261D7C9000F58477 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		948DE69A261AB8A300219982 /* ThereNoLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThereNoLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		948DE69D261AB8A300219982 /* ThereNoLoginApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThereNoLoginApp.swift; sourceTree = "<group>"; };
 		948DE69F261AB8A300219982 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,12 +58,9 @@
 		948DE6D5261ABB8A00219982 /* TherePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherePlace.swift; sourceTree = "<group>"; };
 		948DE6DF261AC03B00219982 /* BeenWantData2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BeenWantData2.json; sourceTree = "<group>"; };
 		948DE6E7261AC1B000219982 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		948DE6EC261AC57F00219982 /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
+		948DE6EC261AC57F00219982 /* TherePlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherePlaceViewModel.swift; sourceTree = "<group>"; };
 		948DE6F1261ACAAE00219982 /* PlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceView.swift; sourceTree = "<group>"; };
-		948DE6F9261B73C900219982 /* WantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WantCardView.swift; sourceTree = "<group>"; };
-		948DE701261B74A300219982 /* BeenCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeenCardView.swift; sourceTree = "<group>"; };
-		948DE706261B927300219982 /* SeparateWantBeen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparateWantBeen.swift; sourceTree = "<group>"; };
-		948DE70E261C1DAF00219982 /* HorizontalPlaceCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPlaceCards.swift; sourceTree = "<group>"; };
+		948DE6F9261B73C900219982 /* CardsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsGridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,9 +154,8 @@
 			children = (
 				948DE69F261AB8A300219982 /* ContentView.swift */,
 				948DE6CC261AB90300219982 /* BeenWantView.swift */,
-				948DE6F9261B73C900219982 /* WantCardView.swift */,
-				948DE70E261C1DAF00219982 /* HorizontalPlaceCards.swift */,
-				948DE701261B74A300219982 /* BeenCardView.swift */,
+				948DE6F9261B73C900219982 /* CardsGridView.swift */,
+				9418D987261D7C9000F58477 /* CardView.swift */,
 				948DE6F1261ACAAE00219982 /* PlaceView.swift */,
 			);
 			path = Views;
@@ -185,8 +180,7 @@
 		948DE6D3261ABB1100219982 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				948DE706261B927300219982 /* SeparateWantBeen.swift */,
-				948DE6EC261AC57F00219982 /* PlaceViewModel.swift */,
+				948DE6EC261AC57F00219982 /* TherePlaceViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -332,14 +326,12 @@
 			files = (
 				948DE6A0261AB8A300219982 /* ContentView.swift in Sources */,
 				948DE6D6261ABB8A00219982 /* TherePlace.swift in Sources */,
-				948DE6FA261B73C900219982 /* WantCardView.swift in Sources */,
+				948DE6FA261B73C900219982 /* CardsGridView.swift in Sources */,
 				948DE6F2261ACAAE00219982 /* PlaceView.swift in Sources */,
-				948DE707261B927300219982 /* SeparateWantBeen.swift in Sources */,
 				948DE6CD261AB90300219982 /* BeenWantView.swift in Sources */,
-				948DE702261B74A300219982 /* BeenCardView.swift in Sources */,
 				948DE6E8261AC1B000219982 /* User.swift in Sources */,
-				948DE70F261C1DB000219982 /* HorizontalPlaceCards.swift in Sources */,
-				948DE6ED261AC57F00219982 /* PlaceViewModel.swift in Sources */,
+				948DE6ED261AC57F00219982 /* TherePlaceViewModel.swift in Sources */,
+				9418D988261D7C9000F58477 /* CardView.swift in Sources */,
 				948DE69E261AB8A300219982 /* ThereNoLoginApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
