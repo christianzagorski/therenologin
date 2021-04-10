@@ -8,14 +8,14 @@
 import Foundation
 
 
-struct TherePlace: Identifiable, Decodable  {
+struct TherePlace: Identifiable, Decodable {
     
     var id: UUID?
-    var placeType: String
-    var placeName: String
+    var placeType: String = ""
+    var placeName: String = ""
     var placeAddress: String?
     var placeState: String?
-    var placeCountry: String
+    var placeCountry: String = ""
     var placeCountryCode: Int?
     var latGPS: Float16?
     var lonGPS: Float16?
@@ -25,10 +25,10 @@ struct TherePlace: Identifiable, Decodable  {
     var timeVisitedEnd: Date?
     var commentPublic: String?
     var commentPrivate: String?
-    var imageName: String
-    var wantToGo: Bool
-    var beenTo: Bool
-    var privateSpot: Bool?
+    var imageName: String?
+    var wantToGo: Bool = true
+    var beenTo: Bool = true
+    var privateSpot: Bool = false
 
 }
 

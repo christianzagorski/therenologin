@@ -15,7 +15,7 @@ struct CardsGridView: View {
     
     var body: some View {
         
-        let cardsToDisplayArray = allPlaces.ArrayCreator(allPlacesArray: allPlaces.placesArray, beenOrWant: beenOrWant)
+        let cardsToDisplayArray = allPlaces.arrayCreator(allPlacesArray: allPlaces.placesArray, beenOrWant: beenOrWant)
         
         NavigationView {
             
@@ -25,14 +25,14 @@ struct CardsGridView: View {
                     
                         ForEach(cardsToDisplayArray) {
                             
-                            PlaceCard in
+                            placeCard in
                             
                             NavigationLink(
-                                destination: PlaceView(),
+                                destination: PlaceView(place: placeCard),
                                 
                                 label: {
                                     
-                                    CardView(card: PlaceCard)
+                                    CardView(card: placeCard)
                                     
                                 } // End label for Navigation Link
                                 
