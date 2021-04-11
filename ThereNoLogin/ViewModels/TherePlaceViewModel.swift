@@ -13,10 +13,6 @@ class TherePlaceViewModel: ObservableObject {
     
     // TODO add beenOrWant variable to decide what array to create
     
-    
-    
-    
-    
     func arrayCreator(allPlacesArray: [TherePlace], beenOrWant: String) -> [TherePlace] {
         
         var appendArray = [TherePlace]()

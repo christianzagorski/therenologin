@@ -13,16 +13,19 @@ struct NewPlaceView: View {
 
     @State var newPlaceName: String = ""
     @EnvironmentObject var allPlaces: TherePlaceViewModel
+    @EnvironmentObject var newPlace: NewPlaceViewModel
 
     var body: some View {
-        TextField("Try Yosemite National Park...", text: $newPlaceName, onEditingChanged: { (changed) in
-                        print("Username onEditingChanged - \(changed)")
-                    }) {
-                        print("Username onCommit")
-                    }
-        .padding()
-                    
-                    Text("Your new place: \(newPlaceName)")
+        
+        Text("hello")
+//        TextField("Try Yosemite National Park...", text: $newPlace.placeName, onEditingChanged: { (changed) in
+//                        print("Place Name onEditingChanged - \(changed)")
+//                    }) {
+//                        print("Place Name onCommit")
+//                    }
+//        .padding()
+//
+//        Text("Your new place: \(newPlace.placeName))")
     
     } // End body
     

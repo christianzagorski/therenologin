@@ -12,11 +12,14 @@ struct BeenWantView: View {
     @State private var showNewPlace = false
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     
+    
     var body: some View {
         
         Group {
             if showNewPlace {
                 NewPlaceSequence()
+                    .environmentObject(NewPlaceViewModel())
+                    
                 
             } // End if
             
