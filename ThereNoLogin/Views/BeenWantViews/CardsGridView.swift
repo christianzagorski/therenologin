@@ -11,7 +11,7 @@ struct CardsGridView: View {
     
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     var beenOrWant: String
-    var layout: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+    var layout1: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
     var body: some View {
         
@@ -21,7 +21,7 @@ struct CardsGridView: View {
             
             ScrollView {
                     
-                LazyVGrid(columns: layout, spacing: 10) {
+                LazyVGrid(columns: layout1, spacing: 10) {
                     
                         ForEach(cardsToDisplayArray) {
                             
@@ -34,9 +34,13 @@ struct CardsGridView: View {
                                     
                                     CardView(card: placeCard)
                                     
+                                    
                                 } // End label for Navigation Link
                                 
+                                
                             ) // End Argument list for Navigation Link
+                            
+                            
                             
                         } // End ForEach
                     

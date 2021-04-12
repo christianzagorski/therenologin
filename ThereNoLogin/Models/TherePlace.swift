@@ -12,7 +12,7 @@ struct TherePlace: Identifiable, Decodable {
     
     var id: UUID?
     var placeType: String = ""
-    var placeName: String = "test"
+    var placeName: String = ""
     var placeAddress: String?
     var placeState: String?
     var placeCountry: String = ""
