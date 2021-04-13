@@ -23,7 +23,7 @@ struct CardsGridView: View {
                     
                 LazyVGrid(columns: layout1, spacing: 10) {
                     
-                        ForEach(cardsToDisplayArray) {
+                        ForEach(cardsToDisplayArray, id: \.id) {
                             
                             placeCard in
                             
