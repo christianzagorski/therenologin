@@ -7,19 +7,27 @@
 
 import Foundation
 
-class NewPlaceViewModel: ObservableObject {
-    
-    @Published var aNewPlace: TherePlace
+struct optionalBindCheck {
     
     
-    init() {
-     
-        self.aNewPlace = TherePlace()
+    
+    func checkMe(myOptional: String?) -> String {
+        var optionalCheck = myOptional
+        
+        if optionalCheck == nil {
+            optionalCheck = "yayyyyy"
+            let nonOptionalReturn: String = optionalCheck!
+        return nonOptionalReturn
+        }
+        else {
+        
+        let nonOptionalReturn: String = optionalCheck!
+        return nonOptionalReturn
+        }
+        
+        
     }
-//    newPlace.placeName = "hello"
-    
-//    let tempPlace = newPlace
-//
-//    newPlace.self = tempPlace
-    
+
+
 }
+

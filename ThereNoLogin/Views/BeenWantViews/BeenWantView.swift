@@ -18,8 +18,6 @@ struct BeenWantView: View {
         Group {
             if showNewPlace {
                 NewPlaceSequence()
-                    .environmentObject(NewPlaceViewModel())
-                    
                 
             } // End if
             

@@ -11,21 +11,17 @@ import SwiftUI
 // V1 probably no photo, just information that is entered via text boxes
 struct NewPlaceView: View {
 
-    @State var newPlaceName: String = ""
-    @EnvironmentObject var allPlaces: TherePlaceViewModel
-    @EnvironmentObject var newPlace: NewPlaceViewModel
+    @Binding var typingVar : String
+    var suggestion: String
 
     var body: some View {
         
-        Text("hello")
-//        TextField("Try Yosemite National Park...", text: $newPlace.placeName, onEditingChanged: { (changed) in
-//                        print("Place Name onEditingChanged - \(changed)")
-//                    }) {
-//                        print("Place Name onCommit")
-//                    }
-//        .padding()
-//
-//        Text("Your new place: \(newPlace.placeName))")
+        TextField(suggestion, text: $typingVar, onEditingChanged: { (changed) in
+                        print("Place Name onEditingChanged - \(changed)")
+                    }) {
+                        print("Place Name onCommit")
+                    }
+        .padding()
     
     } // End body
     
