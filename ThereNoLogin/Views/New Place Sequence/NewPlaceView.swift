@@ -15,14 +15,12 @@ struct NewPlaceView: View {
     var suggestion: String
 
     var body: some View {
-        
         TextField(suggestion, text: $typingVar, onEditingChanged: { (changed) in
                         print("Place Name onEditingChanged - \(changed)")
                     }) {
                         print("Place Name onCommit")
                     }
         .padding()
-    
     } // End body
     
 } // End Struct NewPlaceName

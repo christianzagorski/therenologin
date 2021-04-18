@@ -25,6 +25,8 @@
 		948DE6ED261AC57F00219982 /* TherePlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6EC261AC57F00219982 /* TherePlaceViewModel.swift */; };
 		948DE6F2261ACAAE00219982 /* PlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6F1261ACAAE00219982 /* PlaceView.swift */; };
 		948DE6FA261B73C900219982 /* CardsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE6F9261B73C900219982 /* CardsGridView.swift */; };
+		9497994426280A3F0076FD47 /* BindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9497994326280A3F0076FD47 /* BindingExtension.swift */; };
+		94979988262BFAE70076FD47 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94979987262BFAE70076FD47 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		948DE6EC261AC57F00219982 /* TherePlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TherePlaceViewModel.swift; sourceTree = "<group>"; };
 		948DE6F1261ACAAE00219982 /* PlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceView.swift; sourceTree = "<group>"; };
 		948DE6F9261B73C900219982 /* CardsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsGridView.swift; sourceTree = "<group>"; };
+		9497994326280A3F0076FD47 /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
+		94979987262BFAE70076FD47 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				9418D9BF262007E100F58477 /* HiddenExtension.swift */,
+				9497994326280A3F0076FD47 /* BindingExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 				948DE6D2261ABAF300219982 /* Assets */,
 				948DE6A6261AB8AB00219982 /* Info.plist */,
 				948DE6A3261AB8AB00219982 /* Preview Content */,
+				94979987262BFAE70076FD47 /* ImagePicker.swift */,
 			);
 			path = ThereNoLogin;
 			sourceTree = "<group>";
@@ -381,12 +387,14 @@
 				948DE6F2261ACAAE00219982 /* PlaceView.swift in Sources */,
 				948DE6CD261AB90300219982 /* BeenWantView.swift in Sources */,
 				9418D9A0261EBE0C00F58477 /* NewPlaceSequence.swift in Sources */,
+				9497994426280A3F0076FD47 /* BindingExtension.swift in Sources */,
 				948DE6E8261AC1B000219982 /* User.swift in Sources */,
 				948DE6ED261AC57F00219982 /* TherePlaceViewModel.swift in Sources */,
 				9418D9CC26215DC000F58477 /* NewPlaceViewModel.swift in Sources */,
 				9418D998261EAC5100F58477 /* GradBackgroundAnimated.swift in Sources */,
 				9418D9C0262007E100F58477 /* HiddenExtension.swift in Sources */,
 				9418D993261EAAC800F58477 /* NewPlaceView.swift in Sources */,
+				94979988262BFAE70076FD47 /* ImagePicker.swift in Sources */,
 				9418D988261D7C9000F58477 /* CardView.swift in Sources */,
 				948DE69E261AB8A300219982 /* ThereNoLoginApp.swift in Sources */,
 			);

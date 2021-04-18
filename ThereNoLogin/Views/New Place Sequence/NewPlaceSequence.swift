@@ -10,18 +10,23 @@ import SwiftUI
 struct NewPlaceSequence: View {
     
     @EnvironmentObject var allPlaces: TherePlaceViewModel
-    @State var thisNewPlace = TherePlace() // this is the easiest way to instantiate a local case of TherePlace.
+    @State var thisNewPlace = NewPlaceViewModel()
     @State var hiddenArray = [false, true, true, true]
     @State private var backToBeenWant = false
+    @State private var showingImagePicker = false
+    @State private var inputImage: UIImage?
+    @State private var image: Image?
+    
     
     var body: some View {
+        
         
         Group {
             if backToBeenWant {
                 BeenWantView()
-                
+
             } // End if
-            
+
             else {
 
                 ZStack {
@@ -31,17 +36,17 @@ struct NewPlaceSequence: View {
                         Group {
 //
 //                            Text("Enter a name for this place:")
-                            NewPlaceView(typingVar: $thisNewPlace.placeName, suggestion: "Try Yosemite National Park...")
+                            NewPlaceView(typingVar: $thisNewPlace.theNewPlace.placeName, suggestion: "Try Yosemite National Park...")
                                 .padding()
                             Text("Do you Want to go here or have you been here - or both?")
                                 .padding()
-                            Toggle("Want to go?", isOn: $thisNewPlace.wantToGo)
+                            Toggle("Want to go?", isOn: $thisNewPlace.theNewPlace.wantToGo)
                                 .padding()
-                            Toggle("Been here?", isOn: $thisNewPlace.beenTo)
+                            Toggle("Been here?", isOn: $thisNewPlace.theNewPlace.beenTo)
                                 .padding()
                             Text("Is this a private place not to be shared?")
                                 .padding()
-                            Toggle("Private Spot?", isOn: $thisNewPlace.privateSpot)
+                            Toggle("Private Spot?", isOn: $thisNewPlace.theNewPlace.privateSpot)
                                 .padding()
                             // TODO Date Picker defaulting with today
                         } // End first group
@@ -73,18 +78,18 @@ struct NewPlaceSequence: View {
 //                    // Address, Country Picker, State Picker
                     VStack { // Second Screen (hiddenArray[1])
                         Group {
-                        Text("Enter some more information about \(thisNewPlace.placeName)...")
-                            Picker("Choose a Country:", selection: $thisNewPlace.placeCountry) { // default to current country or US
+                            Text("Enter some more information about \(thisNewPlace.theNewPlace.placeName)...")
+                            Picker("Choose a Country:", selection: $thisNewPlace.theNewPlace.placeCountry) { // default to current country or US
                                 Text("USA").tag("USA")
                                 Text("Australia").tag("Australia")
                             }
 
-                            Picker("Choose a State:", selection: $thisNewPlace.placeState) { // default to current country or US
+                            Picker("Choose a State:", selection: $thisNewPlace.theNewPlace.placeState) { // default to current country or US
                                 Text("Yes").tag(false)
                                 Text("No").tag(true)
                             }
                             Text("this is where the second instance of the newplaceview will go")
-                           //NewPlaceView(typingVar: $thisNewPlace.placeAddress, suggestion: "Type an address...")
+                           
                         } // End Group
                         Group {
                             HStack {
@@ -111,18 +116,29 @@ struct NewPlaceSequence: View {
 
                     // Comment Public / Comment Private
                     VStack { // Third Screen (hiddenArray[2])
-                        Text("Enter some commentary about this location...")
+                        Text("Comments that will be visible for all to see about this place...")
+                           
+                        NewPlaceView(typingVar: Binding($thisNewPlace.theNewPlace.commentPublic)!, suggestion: "Try 'Great for Kids'")
                         
-                        //NewPlaceView(typingVar: $thisNewPlace.commentPublic!, suggestion: "Add a public comment...")
-                        let optionalC = optionalBindCheck()
-                        Text(optionalC.checkMe(myOptional: thisNewPlace.commentPublic))
-                        let passinString = optionalC.checkMe(myOptional: thisNewPlace.commentPublic)
-                        NewPlaceView(typingVar: $passinString, suggestion: "Add a public comment...")
                         
-                        //NewPlaceView(typingVar: $thisNewPlace.commentPrivate, suggestion: "Add a private comment...")
+                        Text("Private comments that only you will see about this place...")
+                        NewPlaceView(typingVar: Binding($thisNewPlace.theNewPlace.commentPrivate)!, suggestion: "The kids went skinny dipping in the rockpool'")
+                        
+                        Text("Select an image:")
+                            .onTapGesture {
+                                self.showingImagePicker = true
+                                
+                            }
+                        
+                        
                         Spacer()
                         HStack {
                             Spacer()
+                            Text("Test")
+                                .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+                                    ImagePicker(image: self.$inputImage)
+                                }
+                            
                             Image(systemName: "arrow.left.circle")
                                 .font(.system(size: 60.0))
                                 .onTapGesture {
@@ -133,8 +149,10 @@ struct NewPlaceSequence: View {
                             Image(systemName: "flag.circle")
                                 .font(.system(size: 60.0))
                                 .onTapGesture {
-                                    thisNewPlace.id = UUID()
-                                    self.allPlaces.placesArray.append(thisNewPlace)
+                                    print("comment public \($thisNewPlace.theNewPlace.commentPublic)")
+                                    thisNewPlace.theNewPlace.id = UUID()
+                                    thisNewPlace.returnOptionals()
+                                    self.allPlaces.placesArray.append(thisNewPlace.theNewPlace)
                                     backToBeenWant.toggle()
                                     
                                         print("Appended")
@@ -149,13 +167,16 @@ struct NewPlaceSequence: View {
                 } // End ZStack
                 
             } // End else for return to beenwantview
-            
+
         } // End group for return to beenwantview
                 
     } // End body
 
     
-
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
+    }
     
 } // End NewPlaceSequence struct
 

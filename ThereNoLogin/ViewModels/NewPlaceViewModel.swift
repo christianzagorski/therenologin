@@ -7,26 +7,40 @@
 
 import Foundation
 
-struct optionalBindCheck {
+struct NewPlaceViewModel {
     
+    var theNewPlace = TherePlace()
     
+    // Initializing function changes optional variables to empty strings, so that they can be passed into the TextField
+    init() {
     
-    func checkMe(myOptional: String?) -> String {
-        var optionalCheck = myOptional
-        
-        if optionalCheck == nil {
-            optionalCheck = "yayyyyy"
-            let nonOptionalReturn: String = optionalCheck!
-        return nonOptionalReturn
-        }
-        else {
-        
-        let nonOptionalReturn: String = optionalCheck!
-        return nonOptionalReturn
-        }
-        
+        theNewPlace.placeAddress = ""
+        theNewPlace.placeState = ""
+        theNewPlace.commentPublic = ""
+        theNewPlace.commentPrivate = ""
+        theNewPlace.imageName = ""
         
     }
+    
+    // mutating func returns the properties to nil if data has not been entered.
+    mutating func returnOptionals() {
+        if theNewPlace.placeAddress == "" {
+            self.theNewPlace.placeAddress = nil
+        }
+        if theNewPlace.placeState == "" {
+            self.theNewPlace.placeState = nil
+        }
+        if theNewPlace.commentPublic == "" {
+            self.theNewPlace.commentPublic = nil
+        }
+        if theNewPlace.commentPrivate == "" {
+            self.theNewPlace.commentPrivate = nil
+        }
+        if theNewPlace.imageName == "" {
+            self.theNewPlace.imageName = nil
+        }
+        
+    } // End Func
 
 
 }
