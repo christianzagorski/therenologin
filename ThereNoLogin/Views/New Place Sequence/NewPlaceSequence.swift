@@ -16,6 +16,7 @@ struct NewPlaceSequence: View {
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     @State private var image: Image?
+    let types = ["Hike", "Camping Spot", "Bar", "Eatery", "Accomodation", "Other"]
     
     
     var body: some View {
@@ -34,8 +35,16 @@ struct NewPlaceSequence: View {
                     // Section 1 - Want||Been, Private Y||N, Date, Name
                     VStack { // First Screen (hiddenArray[0])
                         Group {
-//
-//                            Text("Enter a name for this place:")
+                            Text("What type of place is this?")
+                            Picker("Types", selection: Binding($thisNewPlace.theNewPlace.placeType)!) {
+                                ForEach(types, id: \.self) {
+                                                            Text($0)
+                                }
+
+                            }
+                            .pickerStyle(SegmentedPickerStyle())
+
+                            Text("Enter a name for this place:")
                             NewPlaceView(typingVar: $thisNewPlace.theNewPlace.placeName, suggestion: "Try Yosemite National Park...")
                                 .padding()
                             Text("Do you Want to go here or have you been here - or both?")
@@ -79,16 +88,22 @@ struct NewPlaceSequence: View {
                     VStack { // Second Screen (hiddenArray[1])
                         Group {
                             Text("Enter some more information about \(thisNewPlace.theNewPlace.placeName)...")
-                            Picker("Choose a Country:", selection: $thisNewPlace.theNewPlace.placeCountry) { // default to current country or US
+                            Picker("Choose a Country:", selection: Binding($thisNewPlace.theNewPlace.placeCountry)!) { // default to current country or US
                                 Text("USA").tag("USA")
                                 Text("Australia").tag("Australia")
                             }
+                            .pickerStyle(SegmentedPickerStyle())
 
-                            Picker("Choose a State:", selection: $thisNewPlace.theNewPlace.placeState) { // default to current country or US
-                                Text("Yes").tag(false)
-                                Text("No").tag(true)
+                            Text("Choose a State:")
+                            Picker("Choose a State:", selection: Binding($thisNewPlace.theNewPlace.placeState)!) { // default to current country or US
+                                Text("California").tag("CA")
+                                Text("North Carolina").tag("NC")
+                                Text("Oregon").tag("OR")
+                                
                             }
-                            Text("this is where the second instance of the newplaceview will go")
+                            Text("What about an address...")
+                               
+                            NewPlaceView(typingVar: Binding($thisNewPlace.theNewPlace.placeAddress)!, suggestion: "Enter an address...")
                            
                         } // End Group
                         Group {
@@ -116,28 +131,35 @@ struct NewPlaceSequence: View {
 
                     // Comment Public / Comment Private
                     VStack { // Third Screen (hiddenArray[2])
-                        Text("Comments that will be visible for all to see about this place...")
+                        Text("Enter a comment that will be visible for all to see about this place...")
                            
                         NewPlaceView(typingVar: Binding($thisNewPlace.theNewPlace.commentPublic)!, suggestion: "Try 'Great for Kids'")
                         
                         
-                        Text("Private comments that only you will see about this place...")
+                        Text("And a private comments that only you will see about this place if you want...")
                         NewPlaceView(typingVar: Binding($thisNewPlace.theNewPlace.commentPrivate)!, suggestion: "The kids went skinny dipping in the rockpool'")
                         
-                        Text("Select an image:")
-                            .onTapGesture {
-                                self.showingImagePicker = true
-                                
+                        ZStack {
+                            Rectangle()
+                            if image != nil {
+                                image?
+                                    .resizable()
+                                    .scaledToFit()
+                            } else {
+                                Text("Tap to select a picture")
+                                    .foregroundColor(.white)
+                                    .font(.headline)
                             }
-                        
+                           
+                        }
+                        .onTapGesture {
+                            self.showingImagePicker = true
+                        }
                         
                         Spacer()
                         HStack {
                             Spacer()
-                            Text("Test")
-                                .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
-                                    ImagePicker(image: self.$inputImage)
-                                }
+                               
                             
                             Image(systemName: "arrow.left.circle")
                                 .font(.system(size: 60.0))
@@ -149,22 +171,19 @@ struct NewPlaceSequence: View {
                             Image(systemName: "flag.circle")
                                 .font(.system(size: 60.0))
                                 .onTapGesture {
-                                    print("comment public \($thisNewPlace.theNewPlace.commentPublic)")
-                                    thisNewPlace.theNewPlace.id = UUID()
-                                    thisNewPlace.returnOptionals()
-                                    self.allPlaces.placesArray.append(thisNewPlace.theNewPlace)
-                                    backToBeenWant.toggle()
-                                    
-                                        print("Appended")
-                                        print(allPlaces.placesArray.count)
-                                    } // end onTapGesture
+                                savePlace()
+                                } // end onTapGesture
         
                             Spacer()
                         } // End HStack
                     } // End VStack
                     .isHidden(hiddenArray[2])
-//
+                    .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+                        ImagePicker(image: self.$inputImage)
+                    }
+
                 } // End ZStack
+                
                 
             } // End else for return to beenwantview
 
@@ -176,6 +195,18 @@ struct NewPlaceSequence: View {
     func loadImage() {
         guard let inputImage = inputImage else { return }
         image = Image(uiImage: inputImage)
+        return
+    }
+    
+    func savePlace() {
+        
+        thisNewPlace.theNewPlace.id = UUID()
+        thisNewPlace.theNewPlace.whenAdded = Date()	
+        thisNewPlace.returnOptionals()
+        self.allPlaces.placesArray.append(thisNewPlace.theNewPlace)
+        backToBeenWant.toggle()
+        print("Appended new place successfully")
+        print("Total places in array is \(allPlaces.placesArray.count)")
     }
     
 } // End NewPlaceSequence struct

@@ -47,8 +47,11 @@ struct CardsGridView: View {
                 } // End LazyVGrid
                 
             } // End ScrollView
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
             
         } // End Navigation View
+            
 
     } // End body
  

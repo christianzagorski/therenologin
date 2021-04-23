@@ -11,11 +11,11 @@ import Foundation
 struct TherePlace: Identifiable, Decodable {
     
     var id: UUID?
-    var placeType: String = ""
+    var placeType: String?
     var placeName: String = ""
     var placeAddress: String?
     var placeState: String?
-    var placeCountry: String = ""
+    var placeCountry: String?
     var placeCountryCode: Int?
     var latGPS: Float16?
     var lonGPS: Float16?
@@ -29,6 +29,8 @@ struct TherePlace: Identifiable, Decodable {
     var wantToGo: Bool = true
     var beenTo: Bool = true
     var privateSpot: Bool = false
+    var whenAdded: Date?
+    
 
 }
 

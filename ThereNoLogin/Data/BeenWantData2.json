@@ -83,8 +83,72 @@
         "beenTo": false,
         "privateSpot": true
 
-}
-        
+},
+
+{       "placeType":"Other",
+        "placeName":"Caleas Secret Spot in San Francisco",
+        "placeState":"California",
+        "placeCountry":"United States Of America",
+        "placeCountryCode":1,
+        "commentPrivate": "Calea has told me about it but we never got to go there. Apparantly it is a spot to go without kids and with a bottle of wine.",
+        "imageName": "bar",
+        "wantToGo": true,
+        "beenTo": false,
+        "privateSpot": true
+
+},
+
+{       "placeType":"Other",
+        "placeName":"Caleas Secret Spot in San Francisco",
+        "placeState":"California",
+        "placeCountry":"United States Of America",
+        "placeCountryCode":1,
+        "commentPrivate": "Calea has told me about it but we never got to go there. Apparantly it is a spot to go without kids and with a bottle of wine.",
+        "imageName": "bar",
+        "wantToGo": true,
+        "beenTo": false,
+        "privateSpot": true
+
+},
+
+{       "placeType":"Other",
+        "placeName":"Caleas Secret Spot in San Francisco",
+        "placeState":"California",
+        "placeCountry":"United States Of America",
+        "placeCountryCode":1,
+        "commentPrivate": "Calea has told me about it but we never got to go there. Apparantly it is a spot to go without kids and with a bottle of wine.",
+        "imageName": "bar",
+        "wantToGo": true,
+        "beenTo": false,
+        "privateSpot": true
+
+},
+
+{       "placeType":"Other",
+        "placeName":"Caleas Secret Spot in San Francisco",
+        "placeState":"California",
+        "placeCountry":"United States Of America",
+        "placeCountryCode":1,
+        "commentPrivate": "Calea has told me about it but we never got to go there. Apparantly it is a spot to go without kids and with a bottle of wine.",
+        "imageName": "bar",
+        "wantToGo": true,
+        "beenTo": false,
+        "privateSpot": true
+
+},
+
+{       "placeType":"Other",
+        "placeName":"Caleas Secret Spot in San Francisco",
+        "placeState":"California",
+        "placeCountry":"United States Of America",
+        "placeCountryCode":1,
+        "commentPrivate": "Calea has told me about it but we never got to go there. Apparantly it is a spot to go without kids and with a bottle of wine.",
+        "imageName": "bar",
+        "wantToGo": true,
+        "beenTo": false,
+        "privateSpot": true
+
+},
 ]
 
 

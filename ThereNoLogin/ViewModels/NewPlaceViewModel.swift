@@ -14,8 +14,10 @@ struct NewPlaceViewModel {
     // Initializing function changes optional variables to empty strings, so that they can be passed into the TextField
     init() {
     
+        theNewPlace.placeType = "Hike"
         theNewPlace.placeAddress = ""
-        theNewPlace.placeState = ""
+        theNewPlace.placeCountry = "USA"
+        theNewPlace.placeState = "CA"
         theNewPlace.commentPublic = ""
         theNewPlace.commentPrivate = ""
         theNewPlace.imageName = ""
@@ -24,6 +26,12 @@ struct NewPlaceViewModel {
     
     // mutating func returns the properties to nil if data has not been entered.
     mutating func returnOptionals() {
+        if theNewPlace.placeType == "" {
+            self.theNewPlace.placeAddress = nil
+        }
+        if theNewPlace.placeCountry == "" {
+            self.theNewPlace.placeAddress = nil
+        }
         if theNewPlace.placeAddress == "" {
             self.theNewPlace.placeAddress = nil
         }
