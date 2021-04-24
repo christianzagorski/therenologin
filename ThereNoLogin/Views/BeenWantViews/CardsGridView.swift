@@ -11,7 +11,8 @@ struct CardsGridView: View {
     
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     var beenOrWant: String
-    var layout1: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+    var layout1: [GridItem] = [GridItem(.flexible(minimum: 40), spacing: -15),GridItem(.flexible(minimum: 40), spacing: -15)]
+        //Array(repeating: .init(.flexible()), count: 2)
     
     var body: some View {
         
@@ -38,6 +39,7 @@ struct CardsGridView: View {
                                 } // End label for Navigation Link
                                 
                                 
+                                
                             ) // End Argument list for Navigation Link
                             
                             
@@ -45,15 +47,22 @@ struct CardsGridView: View {
                         } // End ForEach
                     
                 } // End LazyVGrid
+                .background(Color.gray.opacity(0.2))
+                
+                
                 
             } // End ScrollView
             .navigationBarTitle("")
             .navigationBarHidden(true)
             
+            
+            
         } // End Navigation View
+        
             
 
     } // End body
+    
  
 } // End struct
 
