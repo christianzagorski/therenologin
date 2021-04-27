@@ -10,13 +10,15 @@ import SwiftUI
 struct CardsGridView: View {
     
     @EnvironmentObject var allPlaces: TherePlaceViewModel
-    var beenOrWant: String
+    var whichTab: Int
     var layout1: [GridItem] = [GridItem(.flexible(minimum: 40), spacing: -15),GridItem(.flexible(minimum: 40), spacing: -15)]
-        //Array(repeating: .init(.flexible()), count: 2)
+        //Array(repeating: .init(.flexible()), count: 2) // Alternative syntax
+    let waySorted = 1
+    let typeFilter = 1
     
     var body: some View {
         
-        let cardsToDisplayArray = allPlaces.arrayCreator(allPlacesArray: allPlaces.placesArray, beenOrWant: beenOrWant)
+        let cardsToDisplayArray = allPlaces.cardArrayViewCreator(allPlacesArray: allPlaces.placesArray, whichTab:whichTab, typeFilter: typeFilter, waySorted: waySorted)
         
         NavigationView {
             
@@ -35,31 +37,23 @@ struct CardsGridView: View {
                                     
                                     CardView(card: placeCard)
                                     
-                                    
                                 } // End label for Navigation Link
                                 
-                                
-                                
                             ) // End Argument list for Navigation Link
-                            
-                            
-                            
+
                         } // End ForEach
                     
                 } // End LazyVGrid
-                .background(Color.gray.opacity(0.2))
-                
-                
+                .padding(.top, 20)
+                .padding(.bottom, 20)
                 
             } // End ScrollView
             .navigationBarTitle("")
             .navigationBarHidden(true)
-            
+            .background(Color.gray.opacity(0.15))
             
             
         } // End Navigation View
-        
-            
 
     } // End body
     

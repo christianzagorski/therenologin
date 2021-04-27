@@ -11,11 +11,11 @@ struct BeenWantView: View {
     
     @State private var showNewPlace = false
     @EnvironmentObject var allPlaces: TherePlaceViewModel
-    @State var sortStyleCode = 1
-    var sortStyleOptions = ["Most Recent", "By Country", "Nearby"]
-    let types = ["Hike", "Camping Spot", "Bar", "Eatery", "Accomodation", "Other"]
-    @State var placeTypeCode = 0
     
+    
+    init() {
+            UITabBar.appearance().barTintColor = UIColor.white
+        }
     
     var body: some View {
 
@@ -30,84 +30,100 @@ struct BeenWantView: View {
                 ZStack {
                     
                     VStack(alignment: .leading) {
-                        Text("Your Favorites")
-                            .font(.largeTitle)
-                            .padding()
                         
-                        
-                            
-                        Menu {
-                            Button(action: {
-                                sortStyleCode = 0
-                            }) {
-                                Label(sortStyleOptions[0], systemImage: "doc")
-                            }
-
-                            Button(action: {
-                                sortStyleCode = 1
-                            }) {
-                                Label(sortStyleOptions[1], systemImage: "folder")
-                            }
-                            Button(action: {
-                                sortStyleCode = 2
-                            }) {
-                                Label(sortStyleOptions[2], systemImage: "folder")
-                            }
-                        
-                        } // End Menu
-                        
-                        
-                        label: {
-                            Label(sortStyleOptions[sortStyleCode], systemImage: "arrow.down")
-                        }
-                        .padding(.bottom)
-                        
-                        Picker("Types", selection: $placeTypeCode) {
-                            ForEach(types, id: \.self) {
-                                                        Text($0)
-                            }
-
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
-                        .padding(.bottom)
+                        TopMenuBar()
                         
                         TabView {
                             
-                            
+                            VStack (alignment: .leading){
+                                Text("Your favorites")
+                                    .fontWeight(.bold)
+                                    .font(.largeTitle)
+                                    .padding(.leading)
+                                
+                                SortMenusView()
+                                
                                 // Instance of the Gridview based on 'want' cards only
-                                CardsGridView(beenOrWant: "want")
+                                CardsGridView(whichTab: 1) // will also pass in filtering for type and
+                            
+                            } // End VStack
                                 .tabItem {
                                     Image(systemName: "bookmark")
-                                    Text("Want to Go")
+                                    Text("Want to go")
                                 }
-                                    .padding(.bottom, 50)
-                            
-
+                                    .padding(.top, 20)
+                        
+                            VStack (alignment: .leading) {
+                                Text("Your want to go list")
+                                    .fontWeight(.bold)
+                                    .font(.largeTitle)
+                                    .padding(.leading)
+                                
+                                SortMenusView()
+                                
                                 // Instance of the Gridview based on 'been' cards only
-                                CardsGridView(beenOrWant: "been")
+                                CardsGridView(whichTab: 2)
+                            
+                            } // End VStack
                                 .tabItem {
                                         Image(systemName: "heart")
                                         Text("Favorites")
                                 }
-                                    .padding(.bottom, 50)
-                   
+                                    
+                                    .padding(.top, 20)
+                            
+                            VStack (alignment: .leading) {
+                                Text("Your collections")
+                                    .fontWeight(.bold)
+                                    .font(.largeTitle)
+                                    .padding(.leading)
+                                
+                                SortMenusView()
+                                
+                                // Instance of the Gridview based on 'been' cards only
+                                CardsGridView(whichTab: 3)
+                            
+                            } // End VStack
+                                .tabItem {
+                                        Image(systemName: "square.grid.2x2")
+                                        Text("Collections")
+                                }
+                                    
+                                    .padding(.top, 20)
+                            
+                            VStack (alignment: .leading) {
+                                Text("Search...")
+                                    .fontWeight(.bold)
+                                    .font(.largeTitle)
+                                    .padding(.leading)
+                                
+                                // Instance of the Gridview based on 'been' cards only
+                                CardsGridView(whichTab: 4)
+                            
+                            } // End VStack
+                                .tabItem {
+                                        Image(systemName: "magnifyingglass")
+                                        Text("Search")
+                                }
+                                    
+                                    .padding(.top, 20)
+                            
+               
                         } // End TabView
-                        .ignoresSafeArea()
-                    
-                        
+
                     } // End VStack
                     
-                    Image(systemName: "plus.circle")
+                    Image(systemName: "plus.circle.fill")
                         .font(.system(size: 65.0))
+                        .foregroundColor(Color.purple)
                         .offset(x: 0, y: 360)
                         .ignoresSafeArea()
                         .onTapGesture {
                             showNewPlace.toggle()
                         }
                 
-
                 } // End ZStack
-            
+                
             } // End else
            
         } // End Group

@@ -14,6 +14,8 @@ struct TherePlace: Identifiable, Decodable {
     var placeType: String?
     var placeName: String = ""
     var placeAddress: String?
+    var placeSuburb: String?
+    var placeZip: Int?
     var placeState: String?
     var placeCountry: String?
     var placeCountryCode: Int?
@@ -26,10 +28,10 @@ struct TherePlace: Identifiable, Decodable {
     var commentPublic: String?
     var commentPrivate: String?
     var imageName: String?
-    var wantToGo: Bool = true
-    var beenTo: Bool = true
+    var wantOrFav: Bool = true
     var privateSpot: Bool = false
     var whenAdded: Date?
+    var whoAdded: String?
     
 
 }

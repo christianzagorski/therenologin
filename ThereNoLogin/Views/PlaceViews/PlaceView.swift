@@ -67,8 +67,7 @@ struct PlaceView: View {
                 else {
                     Text("ImageName is nil")
                 }
-                Text("Want To Go Bool: \(String(place.wantToGo))")
-                Text("Been To Bool: \(String(place.beenTo))")
+                Text("Want (false), Favorite (true): \(String(place.wantOrFav))")
                 Text("Private Spot: \(String(place.privateSpot))")
                 if let placePropertyIfExists = place.whenAdded {
                     Text("When Added: \(placePropertyIfExists)")

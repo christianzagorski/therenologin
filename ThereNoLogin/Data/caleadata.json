@@ -1,0 +1,21 @@
+
+[
+    {   "placeType":"Hike",
+        "placeName":"Lake Tarli Karng",
+        "placeAddress":"Licola",
+        "placeSuburb":"Licola",
+        "placeState":"Victoria",
+        "placeCountry":"Australia",
+        "placeCountryCode":1,
+        "commentPrivate": "Hiked here many times with my Dad and friends as a child and teenager.",
+        "commentPublic": "Remote alpine lake in the victorian wilderness. Cross the river 16 times, 17 km hike each way.",
+        "imageName": "tarli",
+        "wantToGo": false,
+        "beenTo": true,
+        "privateSpot": false
+    
+    
+    
+    },
+    
+]

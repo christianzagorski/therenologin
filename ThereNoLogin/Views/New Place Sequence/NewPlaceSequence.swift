@@ -49,9 +49,7 @@ struct NewPlaceSequence: View {
                                 .padding()
                             Text("Do you Want to go here or have you been here - or both?")
                                 .padding()
-                            Toggle("Want to go?", isOn: $thisNewPlace.theNewPlace.wantToGo)
-                                .padding()
-                            Toggle("Been here?", isOn: $thisNewPlace.theNewPlace.beenTo)
+                            Toggle("Want to go or Favorite?", isOn: $thisNewPlace.theNewPlace.wantOrFav)
                                 .padding()
                             Text("Is this a private place not to be shared?")
                                 .padding()
@@ -200,9 +198,15 @@ struct NewPlaceSequence: View {
     
     func savePlace() {
         
+//        print("imageName for new place is \(thisNewPlace.theNewPlace.imageName!)")
+//        if thisNewPlace.theNewPlace.imageName == nil {
+//            self.thisNewPlace.theNewPlace.imageName = "tarli"
+//        }
         thisNewPlace.theNewPlace.id = UUID()
         thisNewPlace.theNewPlace.whenAdded = Date()	
-        thisNewPlace.returnOptionals()
+        thisNewPlace.returnOptionals() // TODO This is still not working
+        thisNewPlace.theNewPlace.imageName = "tarli"
+        thisNewPlace.theNewPlace.placeSuburb = "Pootown"
         self.allPlaces.placesArray.append(thisNewPlace.theNewPlace)
         backToBeenWant.toggle()
         print("Appended new place successfully")

@@ -11,17 +11,21 @@ class TherePlaceViewModel: ObservableObject {
     
     @Published var placesArray = [TherePlace]()
     
-    // TODO add beenOrWant variable to decide what array to create
+    // Initializer gets the data from the local json file
+    init() {
+        self.placesArray = JsonDataProcessor.getLocalData()
+    }
     
-    func arrayCreator(allPlacesArray: [TherePlace], beenOrWant: String) -> [TherePlace] {
+    // Function cardArrayViewCreator takes all the places and arguments on how the user wants it sorted and generates the places for that view.
+    func cardArrayViewCreator(allPlacesArray: [TherePlace], whichTab: Int, typeFilter: Int?, waySorted: Int) -> [TherePlace] {
         
         var appendArray = [TherePlace]()
         
-        if beenOrWant == "want" {
+        if whichTab == 1 { // Want to go tab
         
             for i in allPlacesArray {
                                 
-                if i.wantToGo {
+                if !i.wantOrFav {
                     appendArray.append(i)
                 } // end if statement
                 
@@ -29,13 +33,13 @@ class TherePlaceViewModel: ObservableObject {
                 
             } // End for loop
         
-        } // End if for 'want'
+        } // End if for 'want' view
             
-        else if beenOrWant == "been" {
+        else if whichTab == 2 { // Favorites tab
             
             for i in allPlacesArray {
                                 
-                if i.beenTo {
+                if i.wantOrFav {
                     appendArray.append(i)
                 } // end if statement
                 
@@ -43,61 +47,40 @@ class TherePlaceViewModel: ObservableObject {
                 
             } // End for loop
         
-        } // End if for 'been'
+        } // End if for 'favorites'
+        
+        else if whichTab == 3 { // Collections tab
+            
+            for i in allPlacesArray {
+                                
+                if i.wantOrFav {
+                    appendArray.append(i)
+                } // end if statement
+                
+                else {}
+                
+            } // End for loop
+        
+        } // End if for 'Collections
+        
+        else if whichTab == 4 { // Search tab
+            
+            for i in allPlacesArray {
+                                
+                if i.wantOrFav {
+                    appendArray.append(i)
+                } // end if statement
+                
+                else {}
+                
+            } // End for loop
+        
+        } // End if for 'Search'
         
         return appendArray
         
     } // End function
     
-    init() {
-        // TODO: Havent created the data file yet, check naming
-        let pathString = Bundle.main.path(forResource: "BeenWantData2", ofType: "json")
-        
-        // TODO: Copied from pizza - this is optional binding statement?? Check what it is doing again
-        if let path = pathString {
-            
-            // Create a URL Object
-            let url = URL(fileURLWithPath: path)
-            
-            // Error handling
-            do {
-            
-                // Create data object with the data at the url
-                let data = try Data(contentsOf: url)
-
-                
-                // Parse the data
-                let decoder = JSONDecoder()
-                
-                do {
-                    // Decode the data into a constant
-                    var placeData = try decoder.decode([TherePlace].self, from: data)
-                
-                     // Loop through places and add Id's
-                     for index in 0..<placeData.count {
-                        placeData[index].id = UUID()
-                    
-                     } // End For loop
-                    
-                    // Assign to quotesArray property
-                    self.placesArray = placeData
-                
-                } // End Second do
-                
-                catch { // Couldnt decode JSON
-                    print("Couldnt decode that JSON file")
-                
-                } // End Catch
-            
-            } // End first do
-            
-            catch {
-                // Execuation will come here if an error is thrown
-                print("Problem with the path Url for the JSON file")
-            } // End first catch
-            
-        } // End path optional binding check
-        
-    } // End init method
+   
     
-} // End PizzaMenMod Class definition
+} // End TherePlaceViewModel Class

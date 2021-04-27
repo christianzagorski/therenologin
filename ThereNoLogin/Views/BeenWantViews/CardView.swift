@@ -14,71 +14,52 @@ struct CardView: View {
     
     var body: some View {
         
-    //GeometryReader { geo in
-        
         ZStack {
             Color.white
-//            Rectangle()
-//                .foregroundColor(Color.black.opacity(0.0))
+
             GeometryReader { geo in
             
-                VStack {
-                Image(card.imageName!)
-                    .resizable()
-                    .scaledToFill()
-                    .aspectRatio(1.65, contentMode: .fit)
+                VStack (alignment: .leading) {
+                    
+                    Image(card.imageName!) // TODO force unwrapped fix
+                        .resizable()
+                        
+                        .frame(width: geo.size.width, height: geo.size.height * 0.45)
+                        .scaledToFill()
                     
                     Spacer()
                     
                     Text(card.placeName)
-                    .foregroundColor(Color.black)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.black)
                         .padding(.bottom)
+                        .padding(.leading, 15)
+                        .font(.system(size: 18))
+                        
+                    
+                    Text("\(card.placeType!) in \(card.placeSuburb!), \(card.placeCountry!)")// TODO Force unwrapped for now
+                        .foregroundColor(Color.gray)
+                        .padding(.bottom)
+                        .padding(.leading, 15)
+                        .padding(.trailing, 15)
+                        .font(.system(size: 14))
+                    
+                    Spacer()
             
-                }
+                } // End VStack
                 
-            }
-            
-                
-            
-            
-        }
-        .frame(minWidth: 0, maxWidth: .infinity)
-        .aspectRatio(0.8, contentMode: .fill)
+            } // End Geo Reader
+             
+        } // End ZStack
+        .aspectRatio(0.75, contentMode: .fill)
         .cornerRadius(10)
         .padding(.leading)
         .padding(.trailing)
         .padding(.top, 5)
-        
-
-        
-        
-//            Image("bar")
-//                .resizable()
-//                .scaledToFill()
-//                .frame(minWidth: 0, maxWidth: .infinity)
-//                .aspectRatio(0.8, contentMode: .fill)
-//                .clipped()
-//                .cornerRadius(10)
-//                .padding(.leading)
-        
-//        ZStack {
-//
-//                Image("bar")
-//
-//
-//                Text(card.placeName)
-//                    .foregroundColor(.black)
-//
-//            } // End ZStack
-//            .frame(width: .infinity, height: 180)
-//            .padding(.leading)
-//            .padding(.trailing)
-//            .cornerRadius(10)
-//
-//        //} // End Geo reader
     
-    } // end body
-}
+    } // End body
+
+} // End Struct
 
 //struct CardView_Previews: PreviewProvider {
 //    static var previews: some View {

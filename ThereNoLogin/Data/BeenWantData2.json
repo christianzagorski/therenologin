@@ -3,15 +3,15 @@
 
 [
     {   "placeType":"Hike",
-        "placeName":"Red Rock Falls",
-        "placeState":"California",
-        "placeCountry":"United States Of America",
+        "placeName":"Lake Tarli Karng",
+        "placeSuburb":"Licola",
+        "placeState":"Victoria",
+        "placeCountry":"Australia",
         "placeCountryCode":1,
-        "commentPrivate": "We took River, Bodhi and Fynn. We walked a little further than marked, but turned around and chilled at the waterfall. Christian went for a swim.",
-        "commentPublic": "Beautiful walk, not too strenuous, the waterfall was amazing",
-        "imageName": "bar",
-        "wantToGo": false,
-        "beenTo": true,
+        "commentPrivate": "Hiked here many times with my Dad and friends as a child and teenager.",
+        "commentPublic": "Remote alpine lake in the victorian wilderness. Cross the river 16 times, 17 km hike each way.",
+        "imageName": "tarli",
+        "wantOrFav": true,
         "privateSpot": false
     
     
@@ -20,135 +20,165 @@
     
 {       "placeType":"Accomodation",
         "placeName":"River Sound",
-        "placeAddress": "4619 Leonard Rd, Mariposa, 95338",
+        "placeAddress": "4619 Leonard Rd",
+        "placeSuburb":"Mariposa",
         "placeState":"California",
-        "placeCountry":"United States Of America",
+        "placeZip": 95338,
+        "placeCountry":"USA",
         "placeCountryCode":1,
         "commentPrivate": "We lived here from 2020 for a year and returned for many years during the spring.",
         "commentPublic": "Got to be the best airbnb I have ever stayed in",
-        "imageName": "bar",
-        "wantToGo": false,
-        "beenTo": true,
+        "imageName": "riversound",
+        "wantOrFav": true,
         "privateSpot": false
         
 },
 
-{       "placeType":"Other",
-        "placeName":"Caleas Secret Spot in San Francisco",
+{       "placeType":"Bar",
+        "placeName":"El Rio",
+        "placeSuburb":"San Francisco",
         "placeState":"California",
-        "placeCountry":"United States Of America",
+        "placeCountry":"USA",
+        "placeCountryCode":1,
+        "commentPrivate": "The bar that Calea and I DIDN'T know about until we go pregnant!",
+        "commentPublic": "Awesome LGBTQ dive bar in the south end of the mission. Great vibes. They sometimes have an awesome day party happening on Sundays",
+        "imageName": "elrio",
+        "wantOrFav": true,
+        "privateSpot": false
+
+},
+
+{       "placeType":"Hike",
+        "placeName":"Wilsons Promontary Sealers Cove",
+        "placeSuburb":"Tidal River",
+        "placeState":"Victoria",
+        "placeCountry":"Australia",
+        "placeCountryCode":1,
+        "commentPrivate": "Hiked many times as a teenager with high school friends",
+        "commentPublic": "9km hike each way through rainforest, scrub and come out at a remote private beach only accessible via walking or boat.",
+        "imageName": "sealers",
+        "wantOrFav": true,
+        "privateSpot": false
+
+},
+
+{       "placeType":"Camping",
+        "placeName":"Green Ant Creek",
+        "placeSuburb":"Litchfield",
+        "placeState":"Northern Territory",
+        "placeCountry":"Australia",
         "placeCountryCode":1,
         "commentPrivate": "Calea has told me about it but we never got to go there. Apparantly it is a spot to go without kids and with a bottle of wine.",
-        "imageName": "bar",
-        "wantToGo": true,
-        "beenTo": false,
+        "commentPublic": "Little known hike in litchfield. Avoid the crowds at Buley and Florence and hike and camp here. There are about 9 places to pitch your tent along the way and lots of places to swim.",
+        "imageName": "greenant",
+        "wantOrFav": true,
+        "privateSpot": false
+
+},
+
+{       "placeType":"Hike",
+        "placeName":"Maragua Crater Hike",
+        "placeSuburb":"Sucre",
+        "placeCountry":"Bolivia",
+        "placeCountryCode":1,
+        "commentPublic": "If you do this hike, do it with Condor Trekkers, the not for profit agency that truly is making a difference.",
+        "commentPrivate": "I was a guide here and did this hike many times taking many groups through in 2009",
+        "imageName": "maragua",
+        "wantOrFav": true,
+        "privateSpot": false
+
+},
+
+{       "placeType":"Place",
+        "placeName":"Torres Del Paine",
+        "placeSuburb":"El Calafate",
+        "placeCountry":"Chile",
+        "placeCountryCode":1,
+        "commentPublic": "The 'w' hike is memorable 3 day hike. Its very popular and can be crowded, but it feels like you are in prehistoric times, and you could see a dinosaur around any corner. The end is incredible, totally worth the effor of getting to the top.",
+        "commentPrivate": "This was where Mel Walsh had 'cry day'",
+        "imageName": "torresdel",
+        "wantOrFav": true,
+        "privateSpot": false
+
+},
+
+{       "placeType":"Boat Trip",
+        "placeName":"Pucallpa Boat Trip",
+        "placeSuburb":"Pucallpa",
+        "placeCountry":"Peru",
+        "placeCountryCode":1,
+        "commentPublic": "While a lot of people take the boat down the amazon, this tributory is much less popular heading north and you will get a much more authentic local experience. Hang your hammock on the deck, but make sure you keep an eye on your gear - thieves are rife!",
+        "commentPrivate": "This was the trip that my camera and laptop were stolen.",
+        "imageName": "pucallpa",
+        "wantOrFav": true,
+        "privateSpot": false
+
+},
+
+{       "placeType":"Back Packing",
+        "placeName":"Hemis High Altitude National Park Hike",
+        "placeSuburb":"Leh",
+        "placeState":"Ladakh",
+        "placeCountry":"India",
+        "placeCountryCode":1,
+        "commentPublic": "A 9 night hike through the remote Southern Himalayas in India. So worth getting off the beaten track for. You might see a snow leopard too. Check out the monastry towards the end, it has to be seen to be believed.",
+        "imageName": "hemis",
+        "wantOrFav": true,
+        "privateSpot": false
+
+},
+
+{       "placeType":"Town",
+        "placeName":"Manali",
+        "placeSuburb":"Manali",
+        "placeState":"Himachal Pradesh",
+        "placeCountry":"India",
+        "placeCountryCode":1,
+        "commentPublic": "Great chilled out town. Very cheap accomodation, lots to do and see. Great to stop and relax for a while.",
+        "commentPrivate": "Anna and I stayed for 2 weeks and hired a motorcycle and drove through apple orchards.",
+        "imageName": "manali",
+        "wantOrFav": true,
+        "privateSpot": false
+
+},
+
+{       "placeType":"Town",
+        "placeName":"Pokhara",
+        "placeSuburb":"Pokhara",
+        "placeCountry":"Nepal",
+        "placeCountryCode":1,
+        "commentPublic": "Gateway to the major hikes in Nepal like Everest base camp and Anapurna. Quiet town with good eateries and acommodation",
+        "imageName": "pokhara",
+        "wantOrFav": true,
+        "privateSpot": false
+
+},
+
+{       "placeType":"Swimming Hole",
+        "placeName":"Chowchilla East Fork River Rockpools",
+        "placeSuburb":"Raymond",
+        "placeState":"California",
+        "placeCountry":"USA",
+        "placeCountryCode":1,
+        "commentPublic": "Great little river that is a bit of a drive from River Sound towards Raymond, down USONA rd. The water is warm and its very private",
+        "imageName": "chowchilla",
+        "wantOrFav": true,
         "privateSpot": true
 
 },
 
-{       "placeType":"Other",
-        "placeName":"Caleas Secret Spot in San Francisco",
-        "placeState":"California",
-        "placeCountry":"United States Of America",
+{       "placeType":"Town",
+        "placeName":"Santa Fe",
+        "placeSuburb":"Santa Fe",
+        "placeState":"New Mexico",
+        "placeCountry":"USA",
         "placeCountryCode":1,
-        "commentPrivate": "Calea has told me about it but we never got to go there. Apparantly it is a spot to go without kids and with a bottle of wine.",
-        "imageName": "bar",
-        "wantToGo": true,
-        "beenTo": false,
-        "privateSpot": true
+        "commentPublic": "Heard it was a a cool town for artists with an eclectic mix of bars and things to do.",
+        "imageName": "santafe",
+        "wantOrFav": false,
+        "privateSpot": false
 
-},
-
-{       "placeType":"Other",
-        "placeName":"Caleas Secret Spot in San Francisco",
-        "placeState":"California",
-        "placeCountry":"United States Of America",
-        "placeCountryCode":1,
-        "commentPrivate": "Calea has told me about it but we never got to go there. Apparantly it is a spot to go without kids and with a bottle of wine.",
-        "imageName": "bar",
-        "wantToGo": true,
-        "beenTo": false,
-        "privateSpot": true
-
-},
-
-{       "placeType":"Other",
-        "placeName":"Caleas Secret Spot in San Francisco",
-        "placeState":"California",
-        "placeCountry":"United States Of America",
-        "placeCountryCode":1,
-        "commentPrivate": "Calea has told me about it but we never got to go there. Apparantly it is a spot to go without kids and with a bottle of wine.",
-        "imageName": "bar",
-        "wantToGo": true,
-        "beenTo": false,
-        "privateSpot": true
-
-},
-
-{       "placeType":"Other",
-        "placeName":"Caleas Secret Spot in San Francisco",
-        "placeState":"California",
-        "placeCountry":"United States Of America",
-        "placeCountryCode":1,
-        "commentPrivate": "Calea has told me about it but we never got to go there. Apparantly it is a spot to go without kids and with a bottle of wine.",
-        "imageName": "bar",
-        "wantToGo": true,
-        "beenTo": false,
-        "privateSpot": true
-
-},
-
-{       "placeType":"Other",
-        "placeName":"Caleas Secret Spot in San Francisco",
-        "placeState":"California",
-        "placeCountry":"United States Of America",
-        "placeCountryCode":1,
-        "commentPrivate": "Calea has told me about it but we never got to go there. Apparantly it is a spot to go without kids and with a bottle of wine.",
-        "imageName": "bar",
-        "wantToGo": true,
-        "beenTo": false,
-        "privateSpot": true
-
-},
-
-{       "placeType":"Other",
-        "placeName":"Caleas Secret Spot in San Francisco",
-        "placeState":"California",
-        "placeCountry":"United States Of America",
-        "placeCountryCode":1,
-        "commentPrivate": "Calea has told me about it but we never got to go there. Apparantly it is a spot to go without kids and with a bottle of wine.",
-        "imageName": "bar",
-        "wantToGo": true,
-        "beenTo": false,
-        "privateSpot": true
-
-},
-
-{       "placeType":"Other",
-        "placeName":"Caleas Secret Spot in San Francisco",
-        "placeState":"California",
-        "placeCountry":"United States Of America",
-        "placeCountryCode":1,
-        "commentPrivate": "Calea has told me about it but we never got to go there. Apparantly it is a spot to go without kids and with a bottle of wine.",
-        "imageName": "bar",
-        "wantToGo": true,
-        "beenTo": false,
-        "privateSpot": true
-
-},
-
-{       "placeType":"Other",
-        "placeName":"Caleas Secret Spot in San Francisco",
-        "placeState":"California",
-        "placeCountry":"United States Of America",
-        "placeCountryCode":1,
-        "commentPrivate": "Calea has told me about it but we never got to go there. Apparantly it is a spot to go without kids and with a bottle of wine.",
-        "imageName": "bar",
-        "wantToGo": true,
-        "beenTo": false,
-        "privateSpot": true
-
-},
+}
 ]
 
 
