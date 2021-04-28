@@ -14,7 +14,7 @@ struct CardsGridView: View {
     var layout1: [GridItem] = [GridItem(.flexible(minimum: 40), spacing: -15),GridItem(.flexible(minimum: 40), spacing: -15)]
         //Array(repeating: .init(.flexible()), count: 2) // Alternative syntax
     let waySorted = 1
-    let typeFilter = 1
+    let typeFilter = "Hike"
     
     var body: some View {
         

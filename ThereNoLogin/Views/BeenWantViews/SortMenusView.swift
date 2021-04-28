@@ -14,6 +14,7 @@ struct SortMenusView: View {
     let types = ["Hike", "Camping Spot", "Bar", "Eatery", "Accomodation", "Other"]
     @State var placeTypeCode = 0
     
+    
     var body: some View {
         
         Menu {
@@ -45,11 +46,13 @@ struct SortMenusView: View {
         
         HStack {
             
-            buttontest(type: "All", setColor: Color.purple)
-            
             ScrollView(.horizontal) {
                 
+                
+                
                 HStack(spacing: 20) {
+                
+                    buttontest(type: "All", setColor: Color.purple)
                     
                     ForEach(types, id: \.self) {
                         

@@ -8,10 +8,11 @@
 import Foundation
 
 
-struct TherePlace: Identifiable, Decodable {
+struct TherePlace: Identifiable, Codable {
     
     var id: UUID?
     var placeType: String?
+    var placeTypeI: Int?
     var placeName: String = ""
     var placeAddress: String?
     var placeSuburb: String?

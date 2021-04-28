@@ -9,13 +9,19 @@ import SwiftUI
 
 struct buttontest: View {
     
-    let type: String
+    var type: String
     @State var setColor: Color = Color.black
+    @EnvironmentObject var allPlaces: TherePlaceViewModel
+    
     
     var body: some View {
     
         HStack {
-            Button(action: {}, label: {
+            Button(action: {
+                self.allPlaces.typeFilt = type
+                print("let var passed in \(type)")
+                print("envi var \(allPlaces.typeFilt)")
+            }, label: {
                 Text(type)
                     .padding()
                     .frame(maxHeight: .infinity)

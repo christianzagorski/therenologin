@@ -44,7 +44,7 @@ struct BeenWantView: View {
                                 SortMenusView()
                                 
                                 // Instance of the Gridview based on 'want' cards only
-                                CardsGridView(whichTab: 1) // will also pass in filtering for type and
+                                CardsGridView(whichTab: 1) // will also pass in filtering for type and sorttype
                             
                             } // End VStack
                                 .tabItem {
@@ -58,61 +58,61 @@ struct BeenWantView: View {
                                     .fontWeight(.bold)
                                     .font(.largeTitle)
                                     .padding(.leading)
-                                
+
                                 SortMenusView()
-                                
+
                                 // Instance of the Gridview based on 'been' cards only
                                 CardsGridView(whichTab: 2)
-                            
+
                             } // End VStack
                                 .tabItem {
                                         Image(systemName: "heart")
                                         Text("Favorites")
                                 }
-                                    
+
                                     .padding(.top, 20)
-                            
+
                             VStack (alignment: .leading) {
                                 Text("Your collections")
                                     .fontWeight(.bold)
                                     .font(.largeTitle)
                                     .padding(.leading)
-                                
+
                                 SortMenusView()
-                                
+
                                 // Instance of the Gridview based on 'been' cards only
                                 CardsGridView(whichTab: 3)
-                            
+
                             } // End VStack
                                 .tabItem {
                                         Image(systemName: "square.grid.2x2")
                                         Text("Collections")
                                 }
-                                    
+
                                     .padding(.top, 20)
-                            
+
                             VStack (alignment: .leading) {
                                 Text("Search...")
                                     .fontWeight(.bold)
                                     .font(.largeTitle)
                                     .padding(.leading)
-                                
+
                                 // Instance of the Gridview based on 'been' cards only
                                 CardsGridView(whichTab: 4)
-                            
+
                             } // End VStack
                                 .tabItem {
                                         Image(systemName: "magnifyingglass")
                                         Text("Search")
                                 }
-                                    
+
                                     .padding(.top, 20)
-                            
-               
+
+
                         } // End TabView
 
                     } // End VStack
-                    
+
                     Image(systemName: "plus.circle.fill")
                         .font(.system(size: 65.0))
                         .foregroundColor(Color.purple)
@@ -121,7 +121,7 @@ struct BeenWantView: View {
                         .onTapGesture {
                             showNewPlace.toggle()
                         }
-                
+
                 } // End ZStack
                 
             } // End else
