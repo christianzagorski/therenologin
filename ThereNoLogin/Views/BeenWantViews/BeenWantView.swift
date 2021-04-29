@@ -11,7 +11,7 @@ struct BeenWantView: View {
     
     @State private var showNewPlace = false
     @EnvironmentObject var allPlaces: TherePlaceViewModel
-    
+    @State var selectedTab = 1
     
     init() {
             UITabBar.appearance().barTintColor = UIColor.white
@@ -33,7 +33,7 @@ struct BeenWantView: View {
                         
                         TopMenuBar()
                         
-                        TabView {
+                        TabView(selection: $selectedTab) {
                             
                             VStack (alignment: .leading){
                                 Text("Your favorites")
@@ -42,35 +42,30 @@ struct BeenWantView: View {
                                     .padding(.leading)
                                 
                                 SortMenusView()
-                                
-                                // Instance of the Gridview based on 'want' cards only
-                                CardsGridView(whichTab: 1) // will also pass in filtering for type and sorttype
+                                CardsGridView()
                             
                             } // End VStack
                                 .tabItem {
-                                    Image(systemName: "bookmark")
-                                    Text("Want to go")
+                                    Image(systemName: "heart"); Text("Favorites")
                                 }
-                                    .padding(.top, 20)
+                                .tag(1)
+                                .padding(.top, 20)
                         
                             VStack (alignment: .leading) {
-                                Text("Your want to go list")
+                                Text("Want to go")
                                     .fontWeight(.bold)
                                     .font(.largeTitle)
                                     .padding(.leading)
 
                                 SortMenusView()
-
-                                // Instance of the Gridview based on 'been' cards only
-                                CardsGridView(whichTab: 2)
+                                CardsGridView()
 
                             } // End VStack
                                 .tabItem {
-                                        Image(systemName: "heart")
-                                        Text("Favorites")
+                                    Image(systemName: "bookmark"); Text("Want to go")
                                 }
-
-                                    .padding(.top, 20)
+                                .tag(2)
+                                .padding(.top, 20)
 
                             VStack (alignment: .leading) {
                                 Text("Your collections")
@@ -79,17 +74,14 @@ struct BeenWantView: View {
                                     .padding(.leading)
 
                                 SortMenusView()
-
-                                // Instance of the Gridview based on 'been' cards only
-                                CardsGridView(whichTab: 3)
+                                CardsGridView()
 
                             } // End VStack
                                 .tabItem {
-                                        Image(systemName: "square.grid.2x2")
-                                        Text("Collections")
+                                    Image(systemName: "square.grid.2x2"); Text("Collections")
                                 }
-
-                                    .padding(.top, 20)
+                                .tag(3)
+                                .padding(.top, 20)
 
                             VStack (alignment: .leading) {
                                 Text("Search...")
@@ -97,19 +89,20 @@ struct BeenWantView: View {
                                     .font(.largeTitle)
                                     .padding(.leading)
 
-                                // Instance of the Gridview based on 'been' cards only
-                                CardsGridView(whichTab: 4)
+                                CardsGridView()
 
                             } // End VStack
                                 .tabItem {
-                                        Image(systemName: "magnifyingglass")
-                                        Text("Search")
+                                    Image(systemName: "magnifyingglass"); Text("Search")
                                 }
-
-                                    .padding(.top, 20)
+                                .tag(4)
+                                .padding(.top, 20)
 
 
                         } // End TabView
+                        .onChange(of: selectedTab) { newValue in
+                                    allPlaces.tabArrayFilter(whichTab: newValue)
+                        }
 
                     } // End VStack
 

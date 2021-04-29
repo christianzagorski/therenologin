@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TopMenuBar: View {
+    
     var body: some View {
         HStack {
             //Image("calea") // Add Image here for login credential photo
@@ -15,7 +16,6 @@ struct TopMenuBar: View {
                 Text("Christian Zagorski")
                     .font(.body)
                     .foregroundColor(.primary)
-               
             }
                 
                 icon: {
@@ -24,7 +24,7 @@ struct TopMenuBar: View {
                         .frame(width: 44, height: 44, alignment: .center)
                         .overlay(Text("CZ"))
                 }
-            .padding(.leading)
+                .padding(.leading)
             
             Spacer()
             Image(systemName: "square.grid.2x2")

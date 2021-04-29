@@ -10,6 +10,7 @@ import SwiftUI
 struct SortMenusView: View {
     
     @State var sortStyleCode = 1
+    @EnvironmentObject var allPlaces: TherePlaceViewModel
     var sortStyleOptions = ["Recently added", "By Country", "Nearby"]
     let types = ["Hike", "Camping Spot", "Bar", "Eatery", "Accomodation", "Other"]
     @State var placeTypeCode = 0
@@ -48,17 +49,15 @@ struct SortMenusView: View {
             
             ScrollView(.horizontal) {
                 
-                
-                
                 HStack(spacing: 20) {
                 
-                    buttontest(type: "All", setColor: Color.purple)
+                    TypeFilterBar(type: "All")
                     
                     ForEach(types, id: \.self) {
                         
-                        typestoshow in
+                        typetoshow in
                     
-                        buttontest(type: typestoshow, setColor: Color.black)
+                        TypeFilterBar(type: typetoshow)
                     
                     } // End ForEach
                     

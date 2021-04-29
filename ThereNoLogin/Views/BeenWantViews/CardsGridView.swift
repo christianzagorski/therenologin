@@ -10,15 +10,10 @@ import SwiftUI
 struct CardsGridView: View {
     
     @EnvironmentObject var allPlaces: TherePlaceViewModel
-    var whichTab: Int
     var layout1: [GridItem] = [GridItem(.flexible(minimum: 40), spacing: -15),GridItem(.flexible(minimum: 40), spacing: -15)]
         //Array(repeating: .init(.flexible()), count: 2) // Alternative syntax
-    let waySorted = 1
-    let typeFilter = "Hike"
     
     var body: some View {
-        
-        let cardsToDisplayArray = allPlaces.cardArrayViewCreator(allPlacesArray: allPlaces.placesArray, whichTab:whichTab, typeFilter: typeFilter, waySorted: waySorted)
         
         NavigationView {
             
@@ -26,7 +21,7 @@ struct CardsGridView: View {
                     
                 LazyVGrid(columns: layout1, spacing: 10) {
                     
-                        ForEach(cardsToDisplayArray, id: \.id) {
+                    ForEach(allPlaces.filteredArray, id: \.id) {
                             
                             placeCard in
                             

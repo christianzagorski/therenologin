@@ -10,99 +10,61 @@ import Foundation
 class TherePlaceViewModel: ObservableObject {
     
     @Published var placesArray = [TherePlace]()
-    var typeFilt = "All"
+    @Published var fullTabArray = [TherePlace]()
     @Published var filteredArray = [TherePlace]()
+    
     // Initializer gets the data from the local json file
     init() {
         self.placesArray = JsonDataProcessor.getLocalData()
+        print(placesArray[0].placeName)
+        print("breakpoint here")
     }
     
-    
-    
-    
-    // Function cardArrayViewCreator takes all the places and arguments on how the user wants it sorted and generates the places for that view.
-    func cardArrayViewCreator(allPlacesArray: [TherePlace], whichTab: Int, typeFilter: String?, waySorted: Int) -> [TherePlace] {
-        
-        var appendArray = [TherePlace]()
-        
-        
-        if whichTab == 1 { // Want to go tab
-            
-            for i in allPlacesArray {
+    // Function tabArrayFilter filters based on the tab that has been pressed
+    func tabArrayFilter(whichTab: Int) {
+        fullTabArray.removeAll()
+        switch whichTab {
+        case 1: for i in placesArray {
                                 
-                if !i.wantOrFav {
-                    
-                    //print(shortNames)
-                            appendArray.append(i)
-                        } // End if for way sorted
+                if i.wantOrFav { fullTabArray.append(i) } // End if for way sorted
                 
-                else {}
+            } // End for loop
+
+        case 2: for i in placesArray {
+                                
+                if !i.wantOrFav { fullTabArray.append(i) } // end if statement
+                
+            } // End for loop
+
+        case 3: for i in placesArray {
+                                
+                if i.wantOrFav { fullTabArray.append(i) } // end if statement
+                
+            } // End for loop
+            
+        case 4: for i in placesArray {
+                                
+                if i.wantOrFav { fullTabArray.append(i) } // end if statement
                 
             } // End for loop
         
-        } // End if for 'want' view
-            
-        else if whichTab == 2 { // Favorites tab
-            
-            for i in allPlacesArray {
-                                
-                if i.wantOrFav {
-                    appendArray.append(i)
-                } // end if statement
-                
-                else {}
-                
-            } // End for loop
+        default: print("No tab default")
         
-        } // End if for 'favorites'
+        } // End Switch/Case
         
-        else if whichTab == 3 { // Collections tab
-            
-            for i in allPlacesArray {
-                                
-                if i.wantOrFav {
-                    appendArray.append(i)
-                } // end if statement
-                
-                else {}
-                
-            } // End for loop
+        filteredArray = fullTabArray
+       
+    } // End func tabArraySorter
         
-        } // End if for 'Collections
-        
-        else if whichTab == 4 { // Search tab
-            
-            for i in allPlacesArray {
-                                
-                if i.wantOrFav {
-                    appendArray.append(i)
-                } // end if statement
-                
-                else {}
-                
-            } // End for loop
-        
-        } // End if for 'Search'
-        
-        
-        if typeFilt != "All" {
-            //let ptype = ["Hike","Bar","Accomodation"]
-            // let placesFilteredByType = allPlacesArray.filter({ptype.contains($0.placeType!)})
-            // self.typeFilt = typeFilter!
-            let placesFilteredByType = appendArray.filter {$0.placeType! == typeFilt}
-            //let placesFilteredByType = appendArray.filter {ptype.contains($0.placeType!)}
-            // print(placesFilteredByType[0].placeName)
-            // let filteredBooks = allBooks.filter({authors.contains($0.author)})
-            
-            return placesFilteredByType
-            
-                
+    func typeArrayFilter(typeFilter: String) {
+       
+        if typeFilter == "All" {
+            filteredArray = fullTabArray
         }
         else {
-            return appendArray
+            filteredArray = fullTabArray.filter {$0.placeType! == typeFilter}
         }
-        
-        
+    
     } // End function
     
 } // End TherePlaceViewModel Class

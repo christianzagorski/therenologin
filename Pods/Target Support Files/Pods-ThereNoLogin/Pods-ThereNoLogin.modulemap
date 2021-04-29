@@ -1,0 +1,6 @@
+framework module Pods_ThereNoLogin {
+  umbrella header "Pods-ThereNoLogin-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -33,7 +33,7 @@
 		9499DDD926363A4200C0E9CF /* caleadata.json in Resources */ = {isa = PBXBuildFile; fileRef = 9499DDD826363A4200C0E9CF /* caleadata.json */; };
 		9499DDDE26366E2100C0E9CF /* TopMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499DDDD26366E2100C0E9CF /* TopMenuBar.swift */; };
 		9499DDEB26366F8100C0E9CF /* SortMenusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499DDEA26366F8100C0E9CF /* SortMenusView.swift */; };
-		9499DDF326367EA600C0E9CF /* buttontest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499DDF226367EA600C0E9CF /* buttontest.swift */; };
+		9499DDF326367EA600C0E9CF /* TypeFilterBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499DDF226367EA600C0E9CF /* TypeFilterBar.swift */; };
 		9499DDF9263758F500C0E9CF /* JsonDataProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499DDF8263758F500C0E9CF /* JsonDataProcessing.swift */; };
 		9499DE042637B6F800C0E9CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9499DE032637B6F800C0E9CF /* GoogleService-Info.plist */; };
 		94EC96A82637C3600099BF25 /* SavePlaceToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC96A72637C3600099BF25 /* SavePlaceToFirebase.swift */; };
@@ -92,7 +92,7 @@
 		9499DDD826363A4200C0E9CF /* caleadata.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = caleadata.json; sourceTree = "<group>"; };
 		9499DDDD26366E2100C0E9CF /* TopMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenuBar.swift; sourceTree = "<group>"; };
 		9499DDEA26366F8100C0E9CF /* SortMenusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortMenusView.swift; sourceTree = "<group>"; };
-		9499DDF226367EA600C0E9CF /* buttontest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttontest.swift; sourceTree = "<group>"; };
+		9499DDF226367EA600C0E9CF /* TypeFilterBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeFilterBar.swift; sourceTree = "<group>"; };
 		9499DDF8263758F500C0E9CF /* JsonDataProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataProcessing.swift; sourceTree = "<group>"; };
 		9499DE032637B6F800C0E9CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		94EC96A72637C3600099BF25 /* SavePlaceToFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePlaceToFirebase.swift; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 				948DE6CC261AB90300219982 /* BeenWantView.swift */,
 				9499DDDD26366E2100C0E9CF /* TopMenuBar.swift */,
 				9499DDEA26366F8100C0E9CF /* SortMenusView.swift */,
-				9499DDF226367EA600C0E9CF /* buttontest.swift */,
+				9499DDF226367EA600C0E9CF /* TypeFilterBar.swift */,
 				948DE6F9261B73C900219982 /* CardsGridView.swift */,
 				9418D987261D7C9000F58477 /* CardView.swift */,
 			);
@@ -577,7 +577,7 @@
 				9499DDDE26366E2100C0E9CF /* TopMenuBar.swift in Sources */,
 				9418D9CC26215DC000F58477 /* NewPlaceViewModel.swift in Sources */,
 				94EC96B02638A97F0099BF25 /* PlaceTypes.swift in Sources */,
-				9499DDF326367EA600C0E9CF /* buttontest.swift in Sources */,
+				9499DDF326367EA600C0E9CF /* TypeFilterBar.swift in Sources */,
 				9418D998261EAC5100F58477 /* GradBackgroundAnimated.swift in Sources */,
 				9418D9C0262007E100F58477 /* HiddenExtension.swift in Sources */,
 				9499DDF9263758F500C0E9CF /* JsonDataProcessing.swift in Sources */,
