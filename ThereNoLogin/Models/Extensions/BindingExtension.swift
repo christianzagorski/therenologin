@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+// found this extension online to assist with binding optionals, which I could not work out. It generated an error and I emailed the author of the blog about but got no response.
+
 extension Binding {
     init(_ source: Binding<Value?>, _ defaultValue: Value) {
         // Ensure a non-nil value in `source`.

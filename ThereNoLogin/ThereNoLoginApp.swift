@@ -45,9 +45,6 @@ struct ThereNoLoginApp: App {
         WindowGroup {
             BeenWantView()
                 .environmentObject(allPlaces)
-                .onAppear {
-                    allPlaces.tabArrayFilter(whichTab: 1)
-                }
             
         }
     }

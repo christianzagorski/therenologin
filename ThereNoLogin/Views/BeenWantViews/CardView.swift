@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// this view creates each card for the grid with image, place name and some other details.
+
 struct CardView: View {
 
     @EnvironmentObject var allPlaces: TherePlaceViewModel
@@ -23,7 +25,6 @@ struct CardView: View {
                     
                     Image(card.imageName!) // TODO force unwrapped fix
                         .resizable()
-                        
                         .frame(width: geo.size.width, height: geo.size.height * 0.45)
                         .scaledToFill()
                     

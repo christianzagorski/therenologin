@@ -10,6 +10,8 @@ import FirebaseFirestore
 //import FirebaseFirestoreSwift
 import Combine
 
+// Have started working with firebase, but havent made a lot of progress yet....
+
 
 class placeRepository: ObservableObject {
     private let path: String = "places"

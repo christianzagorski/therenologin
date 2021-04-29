@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+// a very message 'add place' sequence. Now have design input to build out. this view struct was created early, hence significant proportion of code will be redundant / need re writing. BUT essentially works.
+
+// Optionals stumping me and app is crashing if the user does not enter anything into the textfields.
+
 struct NewPlaceSequence: View {
     
     @EnvironmentObject var allPlaces: TherePlaceViewModel

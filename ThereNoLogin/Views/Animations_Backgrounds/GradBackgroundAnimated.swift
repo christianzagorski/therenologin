@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// Currently not being actively used, but development came from design input at early stage of project. will likely use during loading screen and login sequence.
+
 struct GradBackgroundAnimated: View {
     
     // Animation of Background Gradient parameters

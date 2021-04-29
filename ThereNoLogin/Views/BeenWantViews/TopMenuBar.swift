@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+//  At this stage just a placeholder for user credentials settings and a map view.
+// TODO - May delete for the MVP
+
 struct TopMenuBar: View {
     
     var body: some View {

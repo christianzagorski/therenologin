@@ -7,6 +7,8 @@
 
 import Foundation
 
+// class decodes the local json file in the app.
+
 class JsonDataProcessor {
     
 

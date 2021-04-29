@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+// used for the add sequence to hide view content as the sequence progresses.
+
 extension View {
     
     /// Hide or show the view based on a boolean value.

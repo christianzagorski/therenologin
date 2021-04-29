@@ -7,6 +7,8 @@
 
 import Foundation
 
+// Placeholder only at this stage
+
 //struct user {
 //
 //    let id: UUID?

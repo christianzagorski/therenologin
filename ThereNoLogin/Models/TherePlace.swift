@@ -7,6 +7,11 @@
 
 import Foundation
 
+// Main place model that has all the properties for the place. Non exhaustive yet.
+
+// TODO - some variables to be added: 'Collection', 'Gem' bool.....
+
+// Obvs all the dates / times / location data is not here. API will provide this.
 
 struct TherePlace: Identifiable, Codable {
     

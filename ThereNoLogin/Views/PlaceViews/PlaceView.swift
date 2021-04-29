@@ -8,6 +8,8 @@
 import SwiftUI
 // This is the full screen view where the detail on the place is shown. It has a large image as a pinned header. When scroll down, all information about the place is shown. from this screen you can share the place with a friend, remove from want or been list, edit the place information, delete the place alltogether, etc.
 
+// TODO - At the moment it is just a dump of place properties
+
 struct PlaceView: View {
     
     var place: TherePlace

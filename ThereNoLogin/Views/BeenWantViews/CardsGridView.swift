@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// Uses a navigation view, scrollview and lazyVgrid to display cards that each represent a place. Set at 2 cards across, will need to make this device dynamic at some point.
+
 struct CardsGridView: View {
     
     @EnvironmentObject var allPlaces: TherePlaceViewModel
@@ -30,7 +32,7 @@ struct CardsGridView: View {
                                 
                                 label: {
                                     
-                                    CardView(card: placeCard)
+                                    CardView(card: placeCard)  // each iteration generates one card
                                     
                                 } // End label for Navigation Link
                                 
@@ -43,7 +45,7 @@ struct CardsGridView: View {
                 .padding(.bottom, 20)
                 
             } // End ScrollView
-            .navigationBarTitle("")
+            //.navigationBarTitle("")
             .navigationBarHidden(true)
             .background(Color.gray.opacity(0.15))
             

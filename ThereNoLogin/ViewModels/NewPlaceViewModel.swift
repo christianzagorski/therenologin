@@ -7,6 +7,8 @@
 
 import Foundation
 
+// needs work, have design input now.
+
 struct NewPlaceViewModel {
     
     var theNewPlace = TherePlace()

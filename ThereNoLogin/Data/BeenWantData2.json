@@ -102,7 +102,7 @@
 
 },
 
-{       "placeType":"Boat Trip",
+{       "placeType":"Other",
         "placeName":"Pucallpa Boat Trip",
         "placeSuburb":"Pucallpa",
         "placeCountry":"Peru",
@@ -177,6 +177,42 @@
         "imageName": "santafe",
         "wantOrFav": false,
         "privateSpot": false
+
+},
+{       "placeType":"Other",
+        "placeName":"Blairgowrie Jump rock",
+        "placeSuburb":"Blairgowrie",
+        "placeState":"Victoria",
+        "placeCountry":"Australia",
+        "placeCountryCode":1,
+        "commentPublic": "Jump rock about 10m high",
+        "imageName": "blairjump",
+        "wantOrFav": true,
+        "privateSpot": true
+
+},
+{       "placeType":"Other",
+        "placeName":"Oahu Jump rock",
+        "placeSuburb":"Waimea Bay",
+        "placeState":"Hawaii",
+        "placeCountry":"USA",
+        "placeCountryCode":1,
+        "commentPublic": "Jump rock about 8m high",
+        "imageName": "hawaiijump",
+        "wantOrFav": true,
+        "privateSpot": true
+
+},
+{       "placeType":"Other",
+        "placeName":"Tule River Jump rock",
+        "placeSuburb":"Camp Wishon",
+        "placeState":"California",
+        "placeCountry":"USA",
+        "placeCountryCode":1,
+        "commentPublic": "Jump rock about 16m high",
+        "imageName": "tulejump",
+        "wantOrFav": false,
+        "privateSpot": true
 
 }
 ]

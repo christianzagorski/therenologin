@@ -7,44 +7,36 @@
 
 import SwiftUI
 
+// Views that allow two ways to filter the place array - 1st by recently added/country / nearby, and 2nd by place type.
 struct SortMenusView: View {
     
     @State var sortStyleCode = 1
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     var sortStyleOptions = ["Recently added", "By Country", "Nearby"]
-    let types = ["Hike", "Camping Spot", "Bar", "Eatery", "Accomodation", "Other"]
-    @State var placeTypeCode = 0
-    
     
     var body: some View {
         
+        // TODO - will update this to be buttons, menu style was original design direction, but this changed.
         Menu {
-            Button(action: {
-                sortStyleCode = 0
-            }) {
+            Button(action: {sortStyleCode = 0}) {
                 Label(sortStyleOptions[0], systemImage: "doc")
             }
 
-            Button(action: {
-                sortStyleCode = 1
-            }) {
+            Button(action: {sortStyleCode = 1}) {
                 Label(sortStyleOptions[1], systemImage: "folder")
             }
-            Button(action: {
-                sortStyleCode = 2
-            }) {
+            Button(action: {sortStyleCode = 2}) {
                 Label(sortStyleOptions[2], systemImage: "folder")
             }
-        
+
         } // End Menu
 
-        label: {
-            Label(sortStyleOptions[sortStyleCode], systemImage: "chevron.down")
-        }
+        label: {Label(sortStyleOptions[sortStyleCode], systemImage: "chevron.down")}
             .padding(.bottom)
             .padding(.leading)
             .foregroundColor(Color.black)
         
+        // 2nd filter is capsule buttons which show a static array of place types, defined in a model.
         HStack {
             
             ScrollView(.horizontal) {
@@ -53,7 +45,7 @@ struct SortMenusView: View {
                 
                     TypeFilterBar(type: "All")
                     
-                    ForEach(types, id: \.self) {
+                    ForEach(allPlaces.placeTypes.placeTypes, id: \.self) {
                         
                         typetoshow in
                     

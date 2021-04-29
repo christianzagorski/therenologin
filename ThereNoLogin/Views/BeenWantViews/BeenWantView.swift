@@ -19,7 +19,7 @@ struct BeenWantView: View {
     
     var body: some View {
 
-        Group {
+        Group { // Using group view to instantiate the NewPlaceSequence when the button is pressed (state value updates)
             if showNewPlace {
                 NewPlaceSequence()
                 
@@ -29,20 +29,21 @@ struct BeenWantView: View {
             
                 ZStack {
                     
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 0) {
                         
-                        TopMenuBar()
+                        TopMenuBar() // User Info, map view button & some other info
                         
+                        // The tabview will be the main navigation window. First shows a title, then some sort menus, then the main card grid.
                         TabView(selection: $selectedTab) {
                             
-                            VStack (alignment: .leading){
+                            VStack (alignment: .leading, spacing: 0){  // First tab - favorites
                                 Text("Your favorites")
                                     .fontWeight(.bold)
                                     .font(.largeTitle)
                                     .padding(.leading)
                                 
-                                SortMenusView()
-                                CardsGridView()
+                                SortMenusView() // Shows two menus for sorting vertically stacked
+                                CardsGridView() // the main view with the places cards.
                             
                             } // End VStack
                                 .tabItem {
@@ -51,7 +52,7 @@ struct BeenWantView: View {
                                 .tag(1)
                                 .padding(.top, 20)
                         
-                            VStack (alignment: .leading) {
+                            VStack (alignment: .leading) { // Second tab - Want to go
                                 Text("Want to go")
                                     .fontWeight(.bold)
                                     .font(.largeTitle)
@@ -67,7 +68,7 @@ struct BeenWantView: View {
                                 .tag(2)
                                 .padding(.top, 20)
 
-                            VStack (alignment: .leading) {
+                            VStack (alignment: .leading) { // Third tab - collections
                                 Text("Your collections")
                                     .fontWeight(.bold)
                                     .font(.largeTitle)
@@ -83,7 +84,7 @@ struct BeenWantView: View {
                                 .tag(3)
                                 .padding(.top, 20)
 
-                            VStack (alignment: .leading) {
+                            VStack (alignment: .leading) { // Forth tab - Search
                                 Text("Search...")
                                     .fontWeight(.bold)
                                     .font(.largeTitle)
@@ -100,13 +101,14 @@ struct BeenWantView: View {
 
 
                         } // End TabView
+                        // When tab is pressed, the viewmodel creates a new tabArray specific to the tab being pressed, and defaults to no filters applied.
                         .onChange(of: selectedTab) { newValue in
                                     allPlaces.tabArrayFilter(whichTab: newValue)
                         }
 
                     } // End VStack
 
-                    Image(systemName: "plus.circle.fill")
+                    Image(systemName: "plus.circle.fill") // Over the TabView is the add button
                         .font(.system(size: 65.0))
                         .foregroundColor(Color.purple)
                         .offset(x: 0, y: 360)

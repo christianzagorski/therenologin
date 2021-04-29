@@ -7,11 +7,11 @@
 
 import SwiftUI
 
+// This view represents each button for the type filter.
 struct TypeFilterBar: View {
     
     var type: String
     @EnvironmentObject var allPlaces: TherePlaceViewModel
-    
     
     var body: some View {
     
@@ -20,7 +20,7 @@ struct TypeFilterBar: View {
                 allPlaces.typeArrayFilter(typeFilter: type)
             }, label: {
                 Text(type)
-                    .padding()
+                    .padding(.leading)
                     .frame(maxHeight: .infinity)
                     .clipShape(Capsule())
                     .foregroundColor(Color.black)

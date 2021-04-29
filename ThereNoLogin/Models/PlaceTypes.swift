@@ -7,9 +7,11 @@
 
 import Foundation
 
+// static structure, this list will get updated.
+
 struct PlaceTypes {
     
-    let placeTypes = [1:"Hike", 2:"Camping Spot", 3:"Bar", 4:"Eatery", 5:"Accomodation", 6:"Other"]
+    let placeTypes: [String] = ["Hike", "Camping", "Bar", "Eatery", "Accomodation", "Place", "Back Packing", "Town", "Other"]
 
 }
 
