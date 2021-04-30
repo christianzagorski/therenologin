@@ -1,59 +1,53 @@
 //
-//  NewPlaceSearchView.swift
+//  NewPlaceSearchView1.swift
 //  ThereNoLogin
 //
-//  Created by Christian Zagorski on 4/29/21.
+//  Created by Christian Zagorski on 4/30/21.
 //
 
 import SwiftUI
 
 struct NewPlaceSearchView: View {
-    @State var output: String = ""
-    @State var input: String = ""
-    @State var typing = false
+    @State private var goToConfigView = false
     
     var body: some View {
-        VStack {
-            HStack {
-                Image(systemName: "chevron.left")
-                    .padding(.leading)
-                Spacer()
-                Text("Add new place")
-                Spacer()
-            }
-                
-            TextField("", text: $input, onEditingChanged: {
-                self.typing = $0
-            }, onCommit: {
-                self.output = self.input
-            })
-
-            .padding()
-            .overlay(
-                RoundedRectangle(cornerRadius: 25)
-                    .stroke(Color.black, lineWidth: 1)
-            )
-            .padding()
-                
-
-            
         
-            Spacer()
+        Group { // Using group view to instantiate the NewPlaceSequence when the button is pressed (state value updates)
+            if goToConfigView {
+                
+                NewPlaceConfigurationView()
+                
+            } // End if
             
-            if !typing {
-                if !output.isEmpty {
-                    Text("You typed: \(output)")
-                }
-            } else if !input.isEmpty {
-                Text("You are typing: \(input)")
-            }
-        }
+            else {
+                VStack {
+                    HStack {
+                        Image(systemName: "chevron.left")
+                            .padding(.leading)
+                        Spacer()
+                        Text("Add new place")
+                        Spacer()
+                    }
+                    
+                    NewPlaceTextView(frameType: "oneline", suggestionString: "Search")
+                    
+                    PlaceCardInActiveSearchView()
+                        .onTapGesture {
+                            goToConfigView = true
+                        }
+                    
+                    Spacer()
+                } // End Vstack
+            
+            } // End else
+        
+        } // End Group
 
-    } // End body property
+    } // End Body
 
-} // End struct NewPlaceSearchView
+} // End struct
 
-struct NewPlaceSearchView_Previews: PreviewProvider {
+struct NewPlaceSearchView1_Previews: PreviewProvider {
     static var previews: some View {
         NewPlaceSearchView()
     }
