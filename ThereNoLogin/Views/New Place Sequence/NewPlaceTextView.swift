@@ -10,9 +10,10 @@ import SwiftUI
 struct NewPlaceTextView: View {
     var frameType: String = "oneline"
     var suggestionString: String
-    @State var output: String = ""
+    @State var output: String = "this is some text"
     @State var input: String = ""
     @State var typing = false
+    @State var output2: String = "this is also some text"
     
     var body: some View {
         VStack {
@@ -40,6 +41,8 @@ struct NewPlaceTextView: View {
             } else if !input.isEmpty {
                 //Text("You are typing: \(input)")
             }
+            TextEditor(text: $output2)
+                        .foregroundColor(.secondary)
         }
 
     } // End body property

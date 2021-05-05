@@ -23,6 +23,7 @@ struct NewPlaceViewModel {
         theNewPlace.commentPublic = ""
         theNewPlace.commentPrivate = ""
         theNewPlace.imageName = ""
+     
         
     }
     

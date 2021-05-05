@@ -39,6 +39,7 @@ struct TherePlace: Identifiable, Codable {
     var whenAdded: Date?
     var whoAdded: String?
     
+    
 
 }
 

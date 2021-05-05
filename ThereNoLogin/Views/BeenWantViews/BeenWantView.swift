@@ -22,7 +22,7 @@ struct BeenWantView: View {
         Group { // Using group view to instantiate the NewPlaceSequence when the button is pressed (state value updates)
             if showNewPlace {
                 //NewPlaceSequence()
-                NewPlaceSearchView()
+                NewPlaceSequence()
                 
             } // End if
             

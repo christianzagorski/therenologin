@@ -1,3 +1,5 @@
+
+// Google places API Key: AIzaSyCltrn6xUfNf6StY7EgjWUeslcWJ9S84lg
 //
 //  ThereNoLoginApp.swift
 //  ThereNoLogin
@@ -7,11 +9,22 @@
 
 import SwiftUI
 //import Firebase
+import Foundation
+import Firebase
+import Combine
 
 
 @main
 struct ThereNoLoginApp: App {
+    
     @StateObject var allPlaces = TherePlaceViewModel()
+    
+    init () {
+        
+        FirebaseApp.configure()
+        
+    }
+    
     
 //    init() {
 //        FirebaseApp.configure()
@@ -43,7 +56,8 @@ struct ThereNoLoginApp: App {
     
     var body: some Scene {
         WindowGroup {
-            BeenWantView()
+            TestView()
+            //BeenWantView()
                 .environmentObject(allPlaces)
             
         }
