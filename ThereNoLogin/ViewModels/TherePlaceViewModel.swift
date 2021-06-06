@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 // View model has three place property arrays (see below). Currently outside of the tabview filtering, it only has filtering by type, need to think about how i could incorporate the secondary filter dynamically.
 
@@ -22,6 +23,7 @@ class TherePlaceViewModel: ObservableObject {
     init() {
         self.placesArray = JsonDataProcessor.getLocalData()
         tabArrayFilter(whichTab: 1)
+        
     }
     
     // Function tabArrayFilter filters based on the tab that has been pressed

@@ -6,16 +6,19 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct BeenWantView: View {
     
     @State private var showNewPlace = false
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     @State var selectedTab = 1
+    @Binding var loggedIn: Bool
     
-    init() {
-            UITabBar.appearance().barTintColor = UIColor.white
-        }
+//    init() {
+//            UITabBar.appearance().barTintColor = UIColor.white
+//            loggedIn = true
+//        }
     
     var body: some View {
 
@@ -38,10 +41,15 @@ struct BeenWantView: View {
                         TabView(selection: $selectedTab) {
                             
                             VStack (alignment: .leading, spacing: 0){  // First tab - favorites
-                                Text("Your favorites")
-                                    .fontWeight(.bold)
-                                    .font(.largeTitle)
-                                    .padding(.leading)
+                                Button {
+                                    try! Auth.auth().signOut()
+                                    loggedIn = false
+                                } label: {
+                                    Text("Your Favorites")
+                                }
+//                                    .fontWeight(.bold)
+//                                    .font(.largeTitle)
+//                                    .padding(.leading)
                                 
                                 SortMenusView() // Shows two menus for sorting vertically stacked
                                 CardsGridView() // the main view with the places cards.
@@ -50,7 +58,7 @@ struct BeenWantView: View {
                                 .tabItem {
                                     Image(systemName: "heart"); Text("Favorites")
                                 }
-                                .tag(1)
+                                .tag(1) // TODO define an enum in a constants struct and change this for clarity
                                 .padding(.top, 20)
                         
                             VStack (alignment: .leading) { // Second tab - Want to go

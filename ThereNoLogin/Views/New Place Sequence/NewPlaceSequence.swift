@@ -29,7 +29,7 @@ struct NewPlaceSequence: View {
         
         Group {
             if backToBeenWant {
-                BeenWantView()
+                //BeenWantView()
 
             } // End if
 
@@ -214,7 +214,7 @@ struct NewPlaceSequence: View {
         thisNewPlace.theNewPlace.placeSuburb = "Pootown"
         self.allPlaces.placesArray.append(thisNewPlace.theNewPlace)
         backToBeenWant.toggle()
-        firebaseDataStore.addNewPlace(newPlace: thisNewPlace.theNewPlace)
+        //firebaseDataStore.addNewPlace(newPlace: thisNewPlace.theNewPlace)
         print("Appended new place successfully")
         print("Total places in array is \(allPlaces.placesArray.count)")
     }

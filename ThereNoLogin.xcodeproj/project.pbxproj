@@ -18,6 +18,10 @@
 		9418D9C0262007E100F58477 /* HiddenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9418D9BF262007E100F58477 /* HiddenExtension.swift */; };
 		9418D9CC26215DC000F58477 /* NewPlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9418D9CB26215DC000F58477 /* NewPlaceViewModel.swift */; };
 		941F37542641084F002F9097 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F37532641084F002F9097 /* TestView.swift */; };
+		94554C3C266C1D75007B829F /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94554C3B266C1D74007B829F /* LaunchView.swift */; };
+		94554C42266C1DF1007B829F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94554C41266C1DF1007B829F /* ContentView.swift */; };
+		94554C4A266C1E3A007B829F /* LoginForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94554C49266C1E3A007B829F /* LoginForm.swift */; };
+		94554C4F266C1E64007B829F /* CreateForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94554C4E266C1E64007B829F /* CreateForm.swift */; };
 		948DE69E261AB8A300219982 /* ThereNoLoginApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE69D261AB8A300219982 /* ThereNoLoginApp.swift */; };
 		948DE6A2261AB8AB00219982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 948DE6A1261AB8AB00219982 /* Assets.xcassets */; };
 		948DE6A5261AB8AB00219982 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 948DE6A4261AB8AB00219982 /* Preview Assets.xcassets */; };
@@ -43,6 +47,9 @@
 		94E54A25263BB8E30025B974 /* PlaceCardInActiveSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E54A24263BB8E30025B974 /* PlaceCardInActiveSearchView.swift */; };
 		94EC96A82637C3600099BF25 /* SavePlaceToFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC96A72637C3600099BF25 /* SavePlaceToFirebase.swift */; };
 		94EC96B02638A97F0099BF25 /* PlaceTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC96AF2638A97F0099BF25 /* PlaceTypes.swift */; };
+		94F157AB26423FFC00224402 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F157AA26423FFC00224402 /* PhotoService.swift */; };
+		94F157B02642420B00224402 /* photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F157AF2642420B00224402 /* photo.swift */; };
+		94F158232644DAA900224402 /* LoginAuthentificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F158222644DAA900224402 /* LoginAuthentificationVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +83,10 @@
 		9418D9BF262007E100F58477 /* HiddenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenExtension.swift; sourceTree = "<group>"; };
 		9418D9CB26215DC000F58477 /* NewPlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceViewModel.swift; sourceTree = "<group>"; };
 		941F37532641084F002F9097 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		94554C3B266C1D74007B829F /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		94554C41266C1DF1007B829F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		94554C49266C1E3A007B829F /* LoginForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginForm.swift; sourceTree = "<group>"; };
+		94554C4E266C1E64007B829F /* CreateForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateForm.swift; sourceTree = "<group>"; };
 		948DE69A261AB8A300219982 /* ThereNoLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThereNoLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		948DE69D261AB8A300219982 /* ThereNoLoginApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThereNoLoginApp.swift; sourceTree = "<group>"; };
 		948DE6A1261AB8AB00219982 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +118,9 @@
 		94E54A24263BB8E30025B974 /* PlaceCardInActiveSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCardInActiveSearchView.swift; sourceTree = "<group>"; };
 		94EC96A72637C3600099BF25 /* SavePlaceToFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePlaceToFirebase.swift; sourceTree = "<group>"; };
 		94EC96AF2638A97F0099BF25 /* PlaceTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTypes.swift; sourceTree = "<group>"; };
+		94F157AA26423FFC00224402 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
+		94F157AF2642420B00224402 /* photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photo.swift; sourceTree = "<group>"; };
+		94F158222644DAA900224402 /* LoginAuthentificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAuthentificationVM.swift; sourceTree = "<group>"; };
 		BEEC42B015B41FC119E7EBCF /* Pods-ThereNoLoginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThereNoLoginTests.debug.xcconfig"; path = "Target Support Files/Pods-ThereNoLoginTests/Pods-ThereNoLoginTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA79B7B999A813250224769B /* Pods_ThereNoLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThereNoLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB455392A0CE71316223E406 /* Pods-ThereNoLoginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThereNoLoginTests.release.xcconfig"; path = "Target Support Files/Pods-ThereNoLoginTests/Pods-ThereNoLoginTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +206,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		94554C40266C1DAF007B829F /* Login Views */ = {
+			isa = PBXGroup;
+			children = (
+				94554C3B266C1D74007B829F /* LaunchView.swift */,
+				94554C41266C1DF1007B829F /* ContentView.swift */,
+				94554C49266C1E3A007B829F /* LoginForm.swift */,
+				94554C4E266C1E64007B829F /* CreateForm.swift */,
+			);
+			path = "Login Views";
+			sourceTree = "<group>";
+		};
 		948DE691261AB8A300219982 = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +286,7 @@
 		948DE6CB261AB8DC00219982 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				94554C40266C1DAF007B829F /* Login Views */,
 				941F37532641084F002F9097 /* TestView.swift */,
 				9418D9B0261EBED000F58477 /* PlaceViews */,
 				9418D9A9261EBE6300F58477 /* BeenWantViews */,
@@ -292,6 +318,7 @@
 			children = (
 				9418D9CB26215DC000F58477 /* NewPlaceViewModel.swift */,
 				948DE6EC261AC57F00219982 /* TherePlaceViewModel.swift */,
+				94F158222644DAA900224402 /* LoginAuthentificationVM.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -303,6 +330,7 @@
 				948DE6D5261ABB8A00219982 /* TherePlace.swift */,
 				948DE6E7261AC1B000219982 /* User.swift */,
 				94EC96AF2638A97F0099BF25 /* PlaceTypes.swift */,
+				94F157AF2642420B00224402 /* photo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -312,6 +340,7 @@
 			children = (
 				9499DDF8263758F500C0E9CF /* JsonDataProcessing.swift */,
 				94EC96A72637C3600099BF25 /* SavePlaceToFirebase.swift */,
+				94F157AA26423FFC00224402 /* PhotoService.swift */,
 			);
 			path = "Data Processing";
 			sourceTree = "<group>";
@@ -351,6 +380,7 @@
 				948DE697261AB8A300219982 /* Frameworks */,
 				948DE698261AB8A300219982 /* Resources */,
 				422FAE0F3CB84CFF18E11536 /* [CP] Embed Pods Frameworks */,
+				37EA8FF33FB38C080180143E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -389,6 +419,7 @@
 				948DE6B3261AB8AC00219982 /* Frameworks */,
 				948DE6B4261AB8AC00219982 /* Resources */,
 				C89CD73F24BA721264717711 /* [CP] Embed Pods Frameworks */,
+				22916C4AC5134CABD99F0C81 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -494,6 +525,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		22916C4AC5134CABD99F0C81 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ThereNoLogin-ThereNoLoginUITests/Pods-ThereNoLogin-ThereNoLoginUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ThereNoLogin-ThereNoLoginUITests/Pods-ThereNoLogin-ThereNoLoginUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ThereNoLogin-ThereNoLoginUITests/Pods-ThereNoLogin-ThereNoLoginUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		37EA8FF33FB38C080180143E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ThereNoLogin/Pods-ThereNoLogin-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ThereNoLogin/Pods-ThereNoLogin-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ThereNoLogin/Pods-ThereNoLogin-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		422FAE0F3CB84CFF18E11536 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -580,6 +645,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				948DE6D6261ABB8A00219982 /* TherePlace.swift in Sources */,
+				94554C3C266C1D75007B829F /* LaunchView.swift in Sources */,
+				94F158232644DAA900224402 /* LoginAuthentificationVM.swift in Sources */,
 				948DE6FA261B73C900219982 /* CardsGridView.swift in Sources */,
 				948DE6F2261ACAAE00219982 /* PlaceView.swift in Sources */,
 				948DE6CD261AB90300219982 /* BeenWantView.swift in Sources */,
@@ -588,6 +655,7 @@
 				948DE6E8261AC1B000219982 /* User.swift in Sources */,
 				948DE6ED261AC57F00219982 /* TherePlaceViewModel.swift in Sources */,
 				94EC96A82637C3600099BF25 /* SavePlaceToFirebase.swift in Sources */,
+				94554C42266C1DF1007B829F /* ContentView.swift in Sources */,
 				94E54A1B263BA8480025B974 /* NewPlaceTextView.swift in Sources */,
 				9499DDEB26366F8100C0E9CF /* SortMenusView.swift in Sources */,
 				9499DDDE26366E2100C0E9CF /* TopMenuBar.swift in Sources */,
@@ -599,9 +667,13 @@
 				9418D9C0262007E100F58477 /* HiddenExtension.swift in Sources */,
 				94E54A20263BB11F0025B974 /* NewPlaceConfigurationView.swift in Sources */,
 				9499DDF9263758F500C0E9CF /* JsonDataProcessing.swift in Sources */,
+				94554C4A266C1E3A007B829F /* LoginForm.swift in Sources */,
+				94F157AB26423FFC00224402 /* PhotoService.swift in Sources */,
 				9418D993261EAAC800F58477 /* NewPlaceView.swift in Sources */,
+				94554C4F266C1E64007B829F /* CreateForm.swift in Sources */,
 				94979988262BFAE70076FD47 /* ImagePicker.swift in Sources */,
 				94E54A25263BB8E30025B974 /* PlaceCardInActiveSearchView.swift in Sources */,
+				94F157B02642420B00224402 /* photo.swift in Sources */,
 				9418D988261D7C9000F58477 /* CardView.swift in Sources */,
 				941F37542641084F002F9097 /* TestView.swift in Sources */,
 				948DE69E261AB8A300219982 /* ThereNoLoginApp.swift in Sources */,

@@ -11,6 +11,8 @@ pod 'Alamofire', '~> 5.2'
 pod 'Firebase/Firestore'
 pod 'Firebase/Analytics'
 pod 'Firebase/Storage'
+pod 'Firebase/Auth'
+pod 'FirebaseUI' 
 
 
   target 'ThereNoLoginTests' do
