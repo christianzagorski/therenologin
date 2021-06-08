@@ -26,29 +26,15 @@ struct LoginForm: View {
                     Section {
                         TextField("Email", text: $currentUserAuth.email)
                         SecureField("Password", text: $currentUserAuth.password)
-                    }
-                    
-                    if currentUserAuth.errorMessage != nil {
-                        Section {
+                        if currentUserAuth.errorMessage != nil {
                             Text(currentUserAuth.errorMessage!)
                         }
-                    } // End if
+                    }
                     
                     Button(action: {
                         
-                        // Perform login
-                        if currentUserAuth.signIn() {
-                            print("upon login tap: \(currentUserAuth.loggedIn)")
-                            currentUserAuth.checkLogin()
-                            loginShowing = 0
-                            firebaseCall.getCurrentUsername()
-                            print("at login auth or click currentusername \(firebaseCall.currentUsername)")
-                                
-                            
-                            
-                                
-                        }
-                        
+                        currentUserAuth.signIn()
+                
                     }, label: {
                         HStack {
                             Spacer()
@@ -56,7 +42,7 @@ struct LoginForm: View {
                             Spacer()
                         }
                     })
-                    
+                  
                     Button(action: {
                         
                         // dismiss loginform sheet
@@ -79,6 +65,12 @@ struct LoginForm: View {
             } // End Navigation View
         
         } // End VStack
+    }
+    
+    func comp() {
+    
+    
+//    firebaseCall.getCurrentUsername()
     }
     
 }

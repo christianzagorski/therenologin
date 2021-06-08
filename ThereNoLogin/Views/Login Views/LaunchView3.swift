@@ -20,7 +20,11 @@ struct LaunchView3: View {
              // TODO change from sheet to a tab view...
             
             // Check the logged in property and show the appropriate view
-            if !currentUserAuth.loggedIn {
+            
+        Group {
+            
+        
+        if !currentUserAuth.loggedIn {
                 Group {
                     switch logOrCreate {
                     case 1: LoginForm(loginShowing: $logOrCreate)
@@ -39,9 +43,7 @@ struct LaunchView3: View {
                     
                     } // End Switch
                 }
-                .onAppear {
-                    currentUserAuth.checkLogin()
-                }
+                
             } // End If
             
             else {
@@ -50,8 +52,15 @@ struct LaunchView3: View {
                 BeenWantView()
             
             } // End Else
-    
+        
+        } // End Group 1
+        .onAppear {
+            currentUserAuth.checkLogin()
+            print("print at appear of Launch View: LOGGED IN? \(currentUserAuth.loggedIn)")
+            
+        }
     } // End Body
+    
 } // End Struct
 
 struct LaunchView3_Previews: PreviewProvider {

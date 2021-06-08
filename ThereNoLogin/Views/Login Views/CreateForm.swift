@@ -14,7 +14,9 @@ struct CreateForm: View {
     
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     @EnvironmentObject var currentUserAuth: LoginAuthViewModel
+    @EnvironmentObject var firebaseCall: FirebaseDataProcessor
     @Binding var loginShowing: Int
+    @State var name = "empty"
     //@State private var email: String = ""
     //private var name: String = ""
     //@State private var password: String = ""
@@ -29,7 +31,7 @@ struct CreateForm: View {
                 
                 Section {
                     TextField("Email", text: $currentUserAuth.email)
-                    TextField("Name", text: $currentUserAuth.name)
+                    TextField("Name", text: $name)
                     SecureField("Password", text: $currentUserAuth.password)
                 }
                 
@@ -43,6 +45,7 @@ struct CreateForm: View {
                     
                     // Create account
                     currentUserAuth.createAccount()
+                    firebaseCall.saveFirstName(name: name)
                 }, label: {
                     HStack {
                         Spacer()

@@ -20,7 +20,6 @@
 		941F37542641084F002F9097 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F37532641084F002F9097 /* TestView.swift */; };
 		942C5274266CA38C00CE7BD7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C5273266CA38C00CE7BD7 /* Constants.swift */; };
 		942C5279266D994700CE7BD7 /* LaunchView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 942C5278266D994700CE7BD7 /* LaunchView3.swift */; };
-		94554C42266C1DF1007B829F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94554C41266C1DF1007B829F /* ContentView.swift */; };
 		94554C4A266C1E3A007B829F /* LoginForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94554C49266C1E3A007B829F /* LoginForm.swift */; };
 		94554C4F266C1E64007B829F /* CreateForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94554C4E266C1E64007B829F /* CreateForm.swift */; };
 		948DE69E261AB8A300219982 /* ThereNoLoginApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948DE69D261AB8A300219982 /* ThereNoLoginApp.swift */; };
@@ -86,7 +85,6 @@
 		941F37532641084F002F9097 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		942C5273266CA38C00CE7BD7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		942C5278266D994700CE7BD7 /* LaunchView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView3.swift; sourceTree = "<group>"; };
-		94554C41266C1DF1007B829F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		94554C49266C1E3A007B829F /* LoginForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginForm.swift; sourceTree = "<group>"; };
 		94554C4E266C1E64007B829F /* CreateForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateForm.swift; sourceTree = "<group>"; };
 		948DE69A261AB8A300219982 /* ThereNoLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThereNoLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,7 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				942C5278266D994700CE7BD7 /* LaunchView3.swift */,
-				94554C41266C1DF1007B829F /* ContentView.swift */,
 				94554C49266C1E3A007B829F /* LoginForm.swift */,
 				94554C4E266C1E64007B829F /* CreateForm.swift */,
 			);
@@ -665,7 +662,6 @@
 				948DE6E8261AC1B000219982 /* User.swift in Sources */,
 				948DE6ED261AC57F00219982 /* TherePlaceViewModel.swift in Sources */,
 				94EC96A82637C3600099BF25 /* FirebaseDataProcessor.swift in Sources */,
-				94554C42266C1DF1007B829F /* ContentView.swift in Sources */,
 				94E54A1B263BA8480025B974 /* NewPlaceTextView.swift in Sources */,
 				9499DDEB26366F8100C0E9CF /* SortMenusView.swift in Sources */,
 				9499DDDE26366E2100C0E9CF /* TopMenuBar.swift in Sources */,

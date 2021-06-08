@@ -22,9 +22,9 @@ class FirebaseDataProcessor: ObservableObject {
     
     func getCurrentUsername() {
         
-        let currentUser = Auth.auth().currentUser
+        let currentUserId = Auth.auth().currentUser
         
-        let document = db.collection("users").document(currentUser?.uid ?? "nil")
+        let document = db.collection("users").document(currentUserId?.uid ?? "nil")
         
         document.getDocument { (docSnapshot, error) in
             //Check for error and handle

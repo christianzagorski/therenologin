@@ -17,8 +17,9 @@ import Combine
 struct ThereNoLoginApp: App {
     
     @StateObject var allPlaces = TherePlaceViewModel()
-    @StateObject var currentUserAuth = LoginAuthViewModel()
     @StateObject var firebaseCall = FirebaseDataProcessor()
+    @StateObject var currentUserAuth = LoginAuthViewModel()
+    
     
     init () {
         FirebaseApp.configure()
