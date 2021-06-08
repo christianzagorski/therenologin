@@ -54,7 +54,6 @@ struct CreateForm: View {
                     }
                 })
                 Button(action: {
-                    
                     try! Auth.auth().signOut()
                     currentUserAuth.loggedIn = false
                     loginShowing = 0

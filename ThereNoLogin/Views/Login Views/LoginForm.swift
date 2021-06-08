@@ -32,9 +32,8 @@ struct LoginForm: View {
                     }
                     
                     Button(action: {
-                        
                         currentUserAuth.signIn()
-                
+                        // TODO - Pull user data and places down here
                     }, label: {
                         HStack {
                             Spacer()
@@ -44,12 +43,9 @@ struct LoginForm: View {
                     })
                   
                     Button(action: {
-                        
-                        // dismiss loginform sheet
                         try! Auth.auth().signOut()
                         currentUserAuth.loggedIn = false
                         loginShowing = 0
-                        
                         
                     }, label: {
                         HStack {

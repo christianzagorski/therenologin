@@ -12,20 +12,16 @@ struct LaunchView3: View {
     @State var createFormShowing = false
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     @EnvironmentObject var currentUserAuth: LoginAuthViewModel
+    @EnvironmentObject var firebaseCall: FirebaseDataProcessor
     @State var logOrCreate = 0
     
     
     var body: some View {
-        
-             // TODO change from sheet to a tab view...
             
-            // Check the logged in property and show the appropriate view
-            
-        Group {
-            
+        Group { // Group 1
         
         if !currentUserAuth.loggedIn {
-                Group {
+                Group { //Group 2
                     switch logOrCreate {
                     case 1: LoginForm(loginShowing: $logOrCreate)
                     case 2: CreateForm(loginShowing: $logOrCreate)
@@ -42,22 +38,19 @@ struct LaunchView3: View {
                         }
                     
                     } // End Switch
-                }
+                } // End Group 2
                 
             } // End If
             
             else {
-                
-                // Show logged in view
                 BeenWantView()
-            
+                //LoadingView()
+                
             } // End Else
         
         } // End Group 1
         .onAppear {
             currentUserAuth.checkLogin()
-            print("print at appear of Launch View: LOGGED IN? \(currentUserAuth.loggedIn)")
-            
         }
     } // End Body
     

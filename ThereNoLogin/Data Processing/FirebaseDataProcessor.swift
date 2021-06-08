@@ -4,6 +4,7 @@
 //
 //  Created by Christian Zagorski on 4/26/21.
 //
+// Handles all data queries and writes to Firestore and Firebase Storage
 
 import Foundation
 import SwiftUI
@@ -12,13 +13,19 @@ import FirebaseStorage
 import Combine
 import FirebaseAuth
 
-// Handles all data queries and writes to Firestore and Firebase Storage
-
 class FirebaseDataProcessor: ObservableObject {
     
+// MARK - Properties
     let storage = Storage.storage()
     let db = Firestore.firestore()
     var currentUsername: String = "empty"
+    @Published var loadingComplete = true
+    
+// MARK - loadUserData
+    func loadUserData() {}
+    
+// MARK - loadUserPlaces
+    func loadUserPlaces() {}
     
     func getCurrentUsername() {
         
@@ -42,9 +49,6 @@ class FirebaseDataProcessor: ObservableObject {
                 print("error: no data returned from document call")
             }
         } // end getDocument call
-        
-        // let currentUserName = currentUserPath.("name")
-        
         
     } // End getCurrentUsername method
    
@@ -107,7 +111,6 @@ class FirebaseDataProcessor: ObservableObject {
         } // end If let
         
     } // End saveFirstName Method
-
 
 } // end FirebaseDataProcessor Class
 
