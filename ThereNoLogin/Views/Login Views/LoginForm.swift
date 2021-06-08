@@ -13,6 +13,8 @@ struct LoginForm: View {
     
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     @EnvironmentObject var currentUserAuth: LoginAuthViewModel
+    @EnvironmentObject var firebaseCall: FirebaseDataProcessor
+    @Binding var loginShowing: Int
     
     var body: some View {
         
@@ -35,12 +37,22 @@ struct LoginForm: View {
                     Button(action: {
                         
                         // Perform login
-                        currentUserAuth.signIn()
+                        if currentUserAuth.signIn() {
+                            print("upon login tap: \(currentUserAuth.loggedIn)")
+                            currentUserAuth.checkLogin()
+                            loginShowing = 0
+                            firebaseCall.getCurrentUsername()
+                            print("at login auth or click currentusername \(firebaseCall.currentUsername)")
+                                
+                            
+                            
+                                
+                        }
                         
                     }, label: {
                         HStack {
                             Spacer()
-                            Text("Sign in")
+                            Text("Login")
                             Spacer()
                         }
                     })
@@ -48,8 +60,10 @@ struct LoginForm: View {
                     Button(action: {
                         
                         // dismiss loginform sheet
+                        try! Auth.auth().signOut()
                         currentUserAuth.loggedIn = false
-                        currentUserAuth.loginFormShowing = false
+                        loginShowing = 0
+                        
                         
                     }, label: {
                         HStack {
@@ -60,7 +74,7 @@ struct LoginForm: View {
                     }) // End Button
                 
                 }
-                .navigationBarTitle("Sign In")
+                .navigationBarTitle("Login to Travel Gems")
             
             } // End Navigation View
         
@@ -69,8 +83,8 @@ struct LoginForm: View {
     
 }
 
-struct LoginForm_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginForm()
-    }
-}
+//struct LoginForm_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginForm()
+//    }
+//}

@@ -18,6 +18,7 @@ struct ThereNoLoginApp: App {
     
     @StateObject var allPlaces = TherePlaceViewModel()
     @StateObject var currentUserAuth = LoginAuthViewModel()
+    @StateObject var firebaseCall = FirebaseDataProcessor()
     
     init () {
         FirebaseApp.configure()
@@ -25,10 +26,11 @@ struct ThereNoLoginApp: App {
     
     var body: some Scene {
         WindowGroup {
-            LaunchView()
+            LaunchView3()
                 //BeenWantView()
                     .environmentObject(allPlaces)
                     .environmentObject(currentUserAuth)
+                    .environmentObject(firebaseCall)
             
         }
     }

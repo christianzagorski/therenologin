@@ -12,11 +12,14 @@ import SwiftUI
 
 struct TopMenuBar: View {
     
+    
+    @EnvironmentObject var firebaseCall: FirebaseDataProcessor
+    
     var body: some View {
         HStack {
             //Image("calea") // Add Image here for login credential photo
             Label {
-                Text("Christian Zagorski")
+                Text(firebaseCall.currentUsername)
                     .font(.body)
                     .foregroundColor(.primary)
             }
@@ -36,6 +39,8 @@ struct TopMenuBar: View {
                 .padding(.trailing, 10)
         
         } // End HStack
+        
+        
         
     } // End Body
     

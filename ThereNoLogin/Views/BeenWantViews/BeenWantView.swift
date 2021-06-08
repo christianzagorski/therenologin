@@ -12,13 +12,13 @@ struct BeenWantView: View {
     
     @State private var showNewPlace = false
     @EnvironmentObject var allPlaces: TherePlaceViewModel
+    @EnvironmentObject var currentUserAuth: LoginAuthViewModel
+    @EnvironmentObject var firebaseCall: FirebaseDataProcessor
     @State var selectedTab = 1
-    @Binding var loggedIn: Bool
     
-//    init() {
-//            UITabBar.appearance().barTintColor = UIColor.white
-//            loggedIn = true
-//        }
+    init() {
+            UITabBar.appearance().barTintColor = UIColor.white
+        }
     
     var body: some View {
 
@@ -42,9 +42,14 @@ struct BeenWantView: View {
                             
                             VStack (alignment: .leading, spacing: 0){  // First tab - favorites
                                 Button {
+                                    print("after 1 \(currentUserAuth.loggedIn)")
                                     try! Auth.auth().signOut()
-                                    loggedIn = false
+                                    currentUserAuth.loggedIn = false
+                                    print("after 2 \(currentUserAuth.loggedIn)")
+                                    print(Auth.auth().currentUser ?? "Anonymous")
+                                    
                                 } label: {
+                                    
                                     Text("Your Favorites")
                                 }
 //                                    .fontWeight(.bold)
@@ -128,9 +133,11 @@ struct BeenWantView: View {
 
                 } // End ZStack
                 
+                
             } // End else
            
         } // End Group
+        
         
     } // End body
     

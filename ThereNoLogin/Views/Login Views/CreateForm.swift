@@ -14,6 +14,7 @@ struct CreateForm: View {
     
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     @EnvironmentObject var currentUserAuth: LoginAuthViewModel
+    @Binding var loginShowing: Int
     //@State private var email: String = ""
     //private var name: String = ""
     //@State private var password: String = ""
@@ -49,6 +50,18 @@ struct CreateForm: View {
                         Spacer()
                     }
                 })
+                Button(action: {
+                    
+                    try! Auth.auth().signOut()
+                    currentUserAuth.loggedIn = false
+                    loginShowing = 0
+                }, label: {
+                    HStack {
+                        Spacer()
+                        Text("Cancel")
+                        Spacer()
+                    }
+                })
             }
             .navigationBarTitle("Create an Account")
             
@@ -58,9 +71,9 @@ struct CreateForm: View {
     
     
 }
-
-struct CreateForm_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateForm()
-    }
-}
+//
+//struct CreateForm_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CreateForm()
+//    }
+//}

@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class LoginAuthViewModel: ObservableObject {
 
-    let firebaseDataStore = FirebaseDataProcessor()
+    
     @Published var loggedIn = true
     @Published var name: String = ""
     @Published var email: String = ""
@@ -20,33 +20,39 @@ class LoginAuthViewModel: ObservableObject {
     @Published var loginFormShowing = false
     @Published var createFormShowing = false
     
+    init() {
+        
+    }
+    
     func checkLogin() {
         
         loggedIn = Auth.auth().currentUser == nil ? false : true
-        print("LoggedIn variable in viewmodel: \(loggedIn)")
+        print("Logged in? \(loggedIn)")
+        
     
     } // End func checkLogin
 
     
-    func signIn() {
+    func signIn() -> Bool {
         
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             
-            DispatchQueue.main.async {
+           // DispatchQueue.main.async {
                 if error == nil {
                     
                     // Sign in successful
-                    self.loginFormShowing = false
+                    self.loggedIn = true
                     
-                    // Dismiss this sheet
                 }
                 else {
                     // If there's an issue with logging in
                     self.errorMessage = error!.localizedDescription
         
                 }
-            }
+            //}
         }
+        print("inside signin method")
+        return true
         
     } // End signIn Function
     

@@ -12,15 +12,41 @@ import FirebaseStorage
 import Combine
 import FirebaseAuth
 
-// Have started working with firebase, but havent made a lot of progress yet....
+// Handles all data queries and writes to Firestore and Firebase Storage
 
-struct FirebaseDataProcessor {
+class FirebaseDataProcessor: ObservableObject {
     
-    
-    // let currentuser = "5Ud4EbTmXuN2LkXL2T4w"
     let storage = Storage.storage()
     let db = Firestore.firestore()
+    var currentUsername: String = "empty"
     
+    func getCurrentUsername() {
+        
+        let currentUser = Auth.auth().currentUser
+        
+        let document = db.collection("users").document(currentUser?.uid ?? "nil")
+        
+        document.getDocument { (docSnapshot, error) in
+            //Check for error and handle
+            
+            if let error = error {
+                // handle error
+                print("error getting document from firebase: \(error.localizedDescription)")
+                
+            } else if let docSnapshot = docSnapshot {
+                let userData = docSnapshot.data()
+                self.currentUsername = userData!["name"] as! String
+        
+            } else {
+                // No data returned, handle appropriately
+                print("error: no data returned from document call")
+            }
+        } // end getDocument call
+        
+        // let currentUserName = currentUserPath.("name")
+        
+        
+    } // End getCurrentUsername method
    
     func testReferences() {
         let storageRef = storage.reference()
@@ -40,16 +66,6 @@ struct FirebaseDataProcessor {
         let imagesRef = storageRef.child("images")
         let imagefileRef = imagesRef.child("chowchilla.jpg")
         
-        
-        //        let storageRef = storage.reference()
-//        print("Storage reference \(String(storageRef.fullPath))")
-//        let imagesRef = storageRef.child("images")
-//        var spaceRef = storageRef.child("images/chowchilla.jpg")
-//        let path = spaceRef.fullPath
-//        print("full path reference \(path))")
-//        let myRef = storageRef.child("images/island.jpg")
-        
-        //let pathReference = storage.reference(withPath: "images/chowchilla.jpg")
         var myImage = UIImage()
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
         print("line before getData call")
@@ -69,20 +85,6 @@ struct FirebaseDataProcessor {
         
         return myImage
     } // end testMyFirebasePhotoJpg method
-    
-//    func addNewPlace(newPlace: TherePlace) {
-//
-//        let currentUserPlaces = db.collection("users/\(currentuser)/places")
-//            //.collection("Orders/orderid123/Products").get()
-//
-//        //Create a doc with given identifier
-//       // currentUserPlaces.document(newPlace.placeName).setData(["placeType":newPlace.placeType!, "placeName":newPlace.placeName,"wantOrFav":newPlace.wantOrFav,"privateSpot":newPlace.privateSpot])
-//        //Create a doc with unique identifer
-//        currentUserPlaces.document().setData(["placeType":newPlace.placeType!, "placeName":newPlace.placeName,"wantOrFav":newPlace.wantOrFav,"privateSpot":newPlace.privateSpot])
-//
-//        //Create doc with given data
-//
-//    } // End addNewPlace method
 
     func saveFirstName(name: String) {
         
@@ -101,11 +103,12 @@ struct FirebaseDataProcessor {
                     // Error
                 }
             }
-        }
+            
+        } // end If let
         
     } // End saveFirstName Method
 
 
-}
+} // end FirebaseDataProcessor Class
 
 

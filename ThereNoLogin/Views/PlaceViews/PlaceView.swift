@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 // This is the full screen view where the detail on the place is shown. It has a large image as a pinned header. When scroll down, all information about the place is shown. from this screen you can share the place with a friend, remove from want or been list, edit the place information, delete the place alltogether, etc.
 
 // TODO - At the moment it is just a dump of place properties
@@ -14,6 +15,7 @@ struct PlaceView: View {
     
     var place: TherePlace
     @EnvironmentObject var allPlaces: TherePlaceViewModel
+    @EnvironmentObject var currentUserAuth: LoginAuthViewModel
     
     var body: some View {
         VStack {
@@ -21,6 +23,7 @@ struct PlaceView: View {
                 Text("Name: \(place.placeName)")
                 if let placePropertyIfExists = place.placeType {
                     Text("Type: \(placePropertyIfExists)")
+                    
                 }
                 else {
                     Text("Place Type is nil")
@@ -50,6 +53,11 @@ struct PlaceView: View {
                     Text("CountryCode is nil")
                 }
             } // End Group
+            .onAppear(perform: {
+                print("after 2 \(currentUserAuth.loggedIn)")
+                print("current user")
+                print(Auth.auth().currentUser ?? "Anonymous")
+            })
             Group {
                 if let placePropertyIfExists = place.commentPublic {
                     Text("Public Comment: \(placePropertyIfExists)")
