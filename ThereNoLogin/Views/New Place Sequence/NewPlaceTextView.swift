@@ -10,10 +10,11 @@ import SwiftUI
 struct NewPlaceTextView: View {
     var frameType: String = "oneline"
     var suggestionString: String
-    @State var output: String = "this is some text"
+    @Binding var output: String
     @State var input: String = ""
     @State var typing = false
     @State var output2: String = "this is also some text"
+//    @Binding var textOutput: String
     
     var body: some View {
         VStack {
@@ -22,6 +23,8 @@ struct NewPlaceTextView: View {
                 self.typing = $0
             }, onCommit: {
                 self.output = self.input
+                
+                
             })
 
             .padding()
@@ -61,15 +64,15 @@ struct NewPlaceTextView: View {
         case "multi": textHeight = 120.0
         default: textHeight = 40.0
         } // End Switch/Case
-        
+        				
         let textHeightCGFloat = CGFloat(textHeight)
         return textHeightCGFloat
     }
     
 } // End struct NewPlaceSearchView
 
-struct NewPlaceTextView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewPlaceSearchView()
-    }
-}
+//struct NewPlaceTextView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NewPlaceSearchView()
+//    }
+//}

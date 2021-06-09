@@ -10,7 +10,8 @@ import FirebaseAuth
 
 struct BeenWantView: View {
     
-    @State private var showNewPlace = false
+    @StateObject var newPlaceVM = NewPlaceViewModel()
+    @State var showNewPlace = false
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     @EnvironmentObject var currentUserAuth: LoginAuthViewModel
     @EnvironmentObject var firebaseCall: FirebaseDataProcessor
@@ -25,7 +26,8 @@ struct BeenWantView: View {
         Group { // Using group view to instantiate the NewPlaceSequence when the button is pressed (state value updates)
             if showNewPlace {
                 //NewPlaceSequence()
-                NewPlaceSequence()
+                NewPlaceSearchView(showNewPlace: $showNewPlace)
+                    .environmentObject(newPlaceVM)
                 
             } // End if
             

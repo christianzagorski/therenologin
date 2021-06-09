@@ -27,6 +27,11 @@ class FirebaseDataProcessor: ObservableObject {
 // MARK - loadUserPlaces
     func loadUserPlaces() {}
     
+    
+    func savePlaceToCurrentUser() {
+        print("hello saveplacetocurrentuser")
+    }
+    
     func getCurrentUsername() {
         
         let currentUserId = Auth.auth().currentUser

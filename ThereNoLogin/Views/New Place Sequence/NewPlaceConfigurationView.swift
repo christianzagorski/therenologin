@@ -8,14 +8,27 @@
 import SwiftUI
 
 struct NewPlaceConfigurationView: View {
+    
+    @EnvironmentObject var firebaseCall: FirebaseDataProcessor
+    @EnvironmentObject var newPlaceVM: NewPlaceViewModel
     @State var privateTab: Bool = true
+    @State var commentPublic: String = ""
+    @State var commentPrivate: String = ""
+    @Binding var goToConfigView: Bool
+    
     var body: some View {
         
         VStack (alignment: .leading) {
             Group { // Group 1
                 HStack {
-                    Image(systemName: "chevron.left")
-                        .padding(.leading)
+                    Button(action: {
+                        goToConfigView = false
+
+                    }, label: {
+                        Image(systemName: "chevron.left")
+                            .padding(.leading)
+                        })
+                    
                     Spacer()
                     Text("Add new place")
                     Spacer()
@@ -45,6 +58,11 @@ struct NewPlaceConfigurationView: View {
                 } // End HStack for place tile
                 Spacer()
                 HStack {
+                    Spacer()
+                    PlaceTypeToggle()
+                    Spacer()
+                }
+                HStack {
                     Image(systemName: "plus.circle.fill")
                         .font(.system(size: 20.0))
                         .foregroundColor(Color.black)
@@ -64,9 +82,9 @@ struct NewPlaceConfigurationView: View {
             
             Group { // Group 3
                 Text("Comments or tips").padding(.leading)
-                NewPlaceTextView(frameType: "multi", suggestionString: "Best Mararitas on the planet")
+                NewPlaceTextView(frameType: "multi", suggestionString: "Best Mararitas on the planet", output: $commentPublic)
                 Text("Private notes").padding(.leading)
-                NewPlaceTextView(frameType: "multi", suggestionString: "Notes for your eyes only.")
+                NewPlaceTextView(frameType: "multi", suggestionString: "Notes for your eyes only.", output: $commentPrivate)
                 Spacer()
                 HStack {
                     Toggle("Keep Private?", isOn: $privateTab)
@@ -83,6 +101,9 @@ struct NewPlaceConfigurationView: View {
                         .foregroundColor(Color.white)
                 }
                 .padding()
+                .onTapGesture {
+                    firebaseCall.savePlaceToCurrentUser()
+                }
                 
             } // End Group 3
             
@@ -92,9 +113,9 @@ struct NewPlaceConfigurationView: View {
 
 } // End struct
 
-struct NewPlaceConfigurationView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewPlaceConfigurationView(privateTab: true)
-    }
-}
+//struct NewPlaceConfigurationView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NewPlaceConfigurationView(privateTab: true)
+//    }
+//}
 

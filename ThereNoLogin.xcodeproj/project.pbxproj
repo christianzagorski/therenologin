@@ -48,6 +48,8 @@
 		94E54A25263BB8E30025B974 /* PlaceCardInActiveSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E54A24263BB8E30025B974 /* PlaceCardInActiveSearchView.swift */; };
 		94EC96A82637C3600099BF25 /* FirebaseDataProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC96A72637C3600099BF25 /* FirebaseDataProcessor.swift */; };
 		94EC96B02638A97F0099BF25 /* PlaceTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC96AF2638A97F0099BF25 /* PlaceTypes.swift */; };
+		94EEDE4D2671133B004C784C /* PlaceTypeToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEDE4C2671133B004C784C /* PlaceTypeToggle.swift */; };
+		94EEDE52267115BA004C784C /* ToggleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEDE51267115BA004C784C /* ToggleConfig.swift */; };
 		94F157AB26423FFC00224402 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F157AA26423FFC00224402 /* PhotoService.swift */; };
 		94F157B02642420B00224402 /* photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F157AF2642420B00224402 /* photo.swift */; };
 		94F158232644DAA900224402 /* LoginAuthentificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F158222644DAA900224402 /* LoginAuthentificationVM.swift */; };
@@ -120,6 +122,8 @@
 		94E54A24263BB8E30025B974 /* PlaceCardInActiveSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCardInActiveSearchView.swift; sourceTree = "<group>"; };
 		94EC96A72637C3600099BF25 /* FirebaseDataProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDataProcessor.swift; sourceTree = "<group>"; };
 		94EC96AF2638A97F0099BF25 /* PlaceTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTypes.swift; sourceTree = "<group>"; };
+		94EEDE4C2671133B004C784C /* PlaceTypeToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTypeToggle.swift; sourceTree = "<group>"; };
+		94EEDE51267115BA004C784C /* ToggleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleConfig.swift; sourceTree = "<group>"; };
 		94F157AA26423FFC00224402 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		94F157AF2642420B00224402 /* photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photo.swift; sourceTree = "<group>"; };
 		94F158222644DAA900224402 /* LoginAuthentificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAuthentificationVM.swift; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 				94E54A1F263BB11F0025B974 /* NewPlaceConfigurationView.swift */,
 				9418D992261EAAC700F58477 /* NewPlaceView.swift */,
 				94E54A24263BB8E30025B974 /* PlaceCardInActiveSearchView.swift */,
+				94EEDE4C2671133B004C784C /* PlaceTypeToggle.swift */,
+				94EEDE51267115BA004C784C /* ToggleConfig.swift */,
 			);
 			path = "New Place Sequence";
 			sourceTree = "<group>";
@@ -670,11 +676,13 @@
 				948DE6CD261AB90300219982 /* BeenWantView.swift in Sources */,
 				9418D9A0261EBE0C00F58477 /* NewPlaceSequence.swift in Sources */,
 				9497994426280A3F0076FD47 /* BindingExtension.swift in Sources */,
+				94EEDE4D2671133B004C784C /* PlaceTypeToggle.swift in Sources */,
 				948DE6E8261AC1B000219982 /* User.swift in Sources */,
 				948DE6ED261AC57F00219982 /* TherePlaceViewModel.swift in Sources */,
 				94EC96A82637C3600099BF25 /* FirebaseDataProcessor.swift in Sources */,
 				94E54A1B263BA8480025B974 /* NewPlaceTextView.swift in Sources */,
 				9499DDEB26366F8100C0E9CF /* SortMenusView.swift in Sources */,
+				94EEDE52267115BA004C784C /* ToggleConfig.swift in Sources */,
 				9499DDDE26366E2100C0E9CF /* TopMenuBar.swift in Sources */,
 				94057E93263C51EC005645C4 /* NewPlaceSearchView.swift in Sources */,
 				9418D9CC26215DC000F58477 /* NewPlaceViewModel.swift in Sources */,

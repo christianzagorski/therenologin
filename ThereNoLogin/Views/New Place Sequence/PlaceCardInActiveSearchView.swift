@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PlaceCardInActiveSearchView: View {
+    
+    @EnvironmentObject var newPlaceVM: NewPlaceViewModel
+    
     var body: some View {
         HStack {
             Image("sealers")
@@ -16,7 +19,7 @@ struct PlaceCardInActiveSearchView: View {
                 .cornerRadius(10.0)
                 .padding(.leading)
             VStack (alignment: .leading) {
-                Text("Placename")
+                Text(verbatim: newPlaceVM.aNewPlace.placeName)
                     .font(Font.title2.weight(.bold))
                     .padding(.bottom, 5)
                 Text("Placesubtext with a litte more")
@@ -30,8 +33,8 @@ struct PlaceCardInActiveSearchView: View {
     }
 }
 
-struct PlaceCardInActiveSearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlaceCardInActiveSearchView()
-    }
-}
+//struct PlaceCardInActiveSearchView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PlaceCardInActiveSearchView()
+//    }
+//}

@@ -8,28 +8,40 @@
 import SwiftUI
 
 struct NewPlaceSearchView: View {
+    
+    
+    @EnvironmentObject var newPlaceVM: NewPlaceViewModel
     @State private var goToConfigView = false
+    @Binding var showNewPlace: Bool
+    @State var placeName: String = ""
     
     var body: some View {
         
-        Group { // Using group view to instantiate the NewPlaceSequence when the button is pressed (state value updates)
+        Group {
             if goToConfigView {
                 
-                NewPlaceConfigurationView()
+                NewPlaceConfigurationView(goToConfigView: $goToConfigView)
                 
             } // End if
             
             else {
                 VStack {
                     HStack {
-                        Image(systemName: "chevron.left")
-                            .padding(.leading)
+                        
+                        Button(action: {
+                            showNewPlace = false
+
+                        }, label: {
+                            Image(systemName: "chevron.left")
+                                .padding(.leading)
+                            })
+                        
                         Spacer()
                         Text("Add new place")
                         Spacer()
                     }
                     
-                    NewPlaceTextView(frameType: "oneline", suggestionString: "Search")
+                    NewPlaceTextView(frameType: "oneline", suggestionString: "Search", output: $newPlaceVM.aNewPlace.placeName)
                     
                     PlaceCardInActiveSearchView()
                         .onTapGesture {
@@ -37,6 +49,7 @@ struct NewPlaceSearchView: View {
                         }
                     
                     Spacer()
+                    
                 } // End Vstack
             
             } // End else
@@ -47,8 +60,8 @@ struct NewPlaceSearchView: View {
 
 } // End struct
 
-struct NewPlaceSearchView1_Previews: PreviewProvider {
-    static var previews: some View {
-        NewPlaceSearchView()
-    }
-}
+//struct NewPlaceSearchView1_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NewPlaceSearchView(false)
+//    }
+//}
