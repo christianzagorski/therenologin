@@ -50,6 +50,7 @@ struct LaunchView3: View {
         
         } // End Group 1
         .onAppear {
+            firebaseCall.getCurrentUsername()
             currentUserAuth.checkLogin()
         }
     } // End Body

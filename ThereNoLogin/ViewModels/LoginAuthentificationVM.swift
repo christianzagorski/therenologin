@@ -15,8 +15,6 @@ class LoginAuthViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var errorMessage: String?
-    @Published var loginFormShowing = false
-    @Published var createFormShowing = false
     
     init() {}
     
@@ -38,6 +36,7 @@ class LoginAuthViewModel: ObservableObject {
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
                 self.checkLogin()
+                
                 
             }
         }

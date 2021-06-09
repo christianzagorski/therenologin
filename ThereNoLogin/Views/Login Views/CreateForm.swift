@@ -46,6 +46,8 @@ struct CreateForm: View {
                     // Create account
                     currentUserAuth.createAccount()
                     firebaseCall.saveFirstName(name: name)
+                    loginShowing = 0
+                    
                 }, label: {
                     HStack {
                         Spacer()

@@ -9,15 +9,12 @@ import Foundation
 
 // Placeholder only at this stage
 
-//struct user {
-//
-//    let id: UUID?
-//    let firstName: String
-//    let lastName: String
+struct user {
+
+    let id: UUID?
+    let firstName: String?
+    let lastName: String?
 //    let myCountries: Countries
 //    let myPlaces: Places
-//
-//
-//    
-//
-//}
+
+} // End user struct

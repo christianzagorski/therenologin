@@ -18,7 +18,7 @@ class FirebaseDataProcessor: ObservableObject {
 // MARK - Properties
     let storage = Storage.storage()
     let db = Firestore.firestore()
-    var currentUsername: String = "empty"
+    @Published var currentUsername: String = ""
     @Published var loadingComplete = true
     
 // MARK - loadUserData
@@ -41,8 +41,12 @@ class FirebaseDataProcessor: ObservableObject {
                 print("error getting document from firebase: \(error.localizedDescription)")
                 
             } else if let docSnapshot = docSnapshot {
-                let userData = docSnapshot.data()
-                self.currentUsername = userData!["name"] as! String
+                if let userData = docSnapshot.data() {
+                    self.currentUsername = userData["name"] as! String // TODO fix force unwrap here
+                }
+                else {
+                    self.currentUsername = "nilname"
+                }
         
             } else {
                 // No data returned, handle appropriately
@@ -92,24 +96,21 @@ class FirebaseDataProcessor: ObservableObject {
 
     func saveFirstName(name: String) {
         
-        if let currentUser = Auth.auth().currentUser {
-        
-            let cleansedFirstName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                    let currentUser = Auth.auth().currentUser
+                    let cleansedFirstName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+                    let db = Firestore.firestore()
+                    let path = db.collection("users").document(currentUser!.uid)
+                    path.setData(["name":cleansedFirstName]) { error in
+                        
+                    }
+                self.getCurrentUsername()
+                    
+                } // end If
                 
-            let db = Firestore.firestore()
-            let path = db.collection("users").document(currentUser.uid)
-            path.setData(["name":cleansedFirstName]) { error in
-                
-                if error == nil {
-                    // Saved
-                }
-                else {
-                    // Error
-                }
-            }
-            
-        } // end If let
-        
+        }
+       
     } // End saveFirstName Method
 
 } // end FirebaseDataProcessor Class

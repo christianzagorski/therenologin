@@ -39,11 +39,6 @@ struct TopMenuBar: View {
                 .padding(.trailing, 10)
         
         } // End HStack
-        .onAppear() {
-            firebaseCall.getCurrentUsername()
-        }
-        
-        
         
     } // End Body
     

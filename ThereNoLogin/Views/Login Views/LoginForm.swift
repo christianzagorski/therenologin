@@ -33,6 +33,14 @@ struct LoginForm: View {
                     
                     Button(action: {
                         currentUserAuth.signIn()
+                        Auth.auth().addStateDidChangeListener { (auth, user) in
+                            if user != nil {
+                                firebaseCall.getCurrentUsername()
+                                loginShowing = 0
+                                
+                            }
+                            }
+                        
                         // TODO - Pull user data and places down here
                     }, label: {
                         HStack {
@@ -66,7 +74,7 @@ struct LoginForm: View {
     func comp() {
     
     
-//    firebaseCall.getCurrentUsername()
+
     }
     
 }
