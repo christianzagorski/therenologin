@@ -28,8 +28,18 @@ class FirebaseDataProcessor: ObservableObject {
     func loadUserPlaces() {}
     
     
-    func savePlaceToCurrentUser() {
+    func savePlaceToCurrentUser(newPlace: [String: Any]) {
         print("hello saveplacetocurrentuser")
+        
+        
+        db.collection("data").document("one").setData(newPlace) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+        
     }
     
     func getCurrentUsername() {

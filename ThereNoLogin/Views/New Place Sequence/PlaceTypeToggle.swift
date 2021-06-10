@@ -9,10 +9,11 @@ import SwiftUI
 
 struct PlaceTypeToggle: View {
     @State private var showGreeting = true
+    @EnvironmentObject var newPlaceVM: NewPlaceViewModel
 
        var body: some View {
            VStack {
-               Toggle("", isOn: $showGreeting)
+               Toggle("", isOn: $newPlaceVM.aNewPlaceNoOptionals.wantOrFav)
                    .toggleStyle(CheckmarkToggleStyle())
 
                if showGreeting {

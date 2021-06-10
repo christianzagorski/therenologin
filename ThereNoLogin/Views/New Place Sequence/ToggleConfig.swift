@@ -10,12 +10,14 @@ import SwiftUI
 
 struct CheckmarkToggleStyle: ToggleStyle {
     
+//    let favText = (Text(Image(systemName: "heart")) + Text(" Favorite")) // TODO make a string??
+    
     func makeBody(configuration: Configuration) -> some View {
         
         
         HStack {
-            let favText = String(Image(systemName: "heart")) + Text(" Favorite")
-            let wantText = String(Image(systemName: "bookmark")) + Text(" Want to go")
+            
+//            let wantText = String(Image(systemName: "bookmark")) + Text(" Want to go")
             configuration.label
             Spacer()
             Rectangle()
@@ -29,7 +31,7 @@ struct CheckmarkToggleStyle: ToggleStyle {
                         
 //                        .padding(.all, 3)
                         .overlay(
-                            (configuration.isOn ? Text(wantText) : Text(favText))
+                            (configuration.isOn ? (Text(Image(systemName: "bookmark")) + Text(" Want to go")) : (Text(Image(systemName: "heart")) + Text(" Favorite")))
                                 .foregroundColor(.white)
                             //                            Image(systemName: configuration.isOn ? "checkmark" : "xmark")
 //                                .resizable()

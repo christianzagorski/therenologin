@@ -44,8 +44,10 @@ struct NewPlaceTextView: View {
             } else if !input.isEmpty {
                 //Text("You are typing: \(input)")
             }
-            TextEditor(text: $output2)
-                        .foregroundColor(.secondary)
+
+            // TODO need to work out best approach for multiline because of swiftui contraints
+            //            TextEditor(text: $output2)
+//                        .foregroundColor(.secondary)
         }
 
     } // End body property

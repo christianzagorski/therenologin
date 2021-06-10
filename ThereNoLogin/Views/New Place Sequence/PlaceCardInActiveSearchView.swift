@@ -19,10 +19,10 @@ struct PlaceCardInActiveSearchView: View {
                 .cornerRadius(10.0)
                 .padding(.leading)
             VStack (alignment: .leading) {
-                Text(verbatim: newPlaceVM.aNewPlace.placeName)
+                Text(verbatim: newPlaceVM.aNewPlaceNoOptionals.placeName)
                     .font(Font.title2.weight(.bold))
                     .padding(.bottom, 5)
-                Text("Placesubtext with a litte more")
+                Text("A \(newPlaceVM.aNewPlaceNoOptionals.placeType) in \(newPlaceVM.aNewPlaceNoOptionals.placeCountry)")
                     .font(Font.headline.weight(.light))
                     
             }

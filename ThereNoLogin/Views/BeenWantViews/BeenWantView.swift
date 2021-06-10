@@ -44,12 +44,9 @@ struct BeenWantView: View {
                             
                             VStack (alignment: .leading, spacing: 0){  // First tab - favorites
                                 Button {
-                                    print("after 1 \(currentUserAuth.loggedIn)")
-                                    print(Auth.auth().currentUser ?? "Anonymous")
+                                    
                                     try! Auth.auth().signOut()
                                     currentUserAuth.loggedIn = false
-                                    print("after 2 \(currentUserAuth.loggedIn)")
-                                    print(Auth.auth().currentUser ?? "Anonymous")
                                     
                                 } label: {
                                     

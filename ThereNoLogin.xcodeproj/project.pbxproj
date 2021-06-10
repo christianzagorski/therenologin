@@ -50,6 +50,7 @@
 		94EC96B02638A97F0099BF25 /* PlaceTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EC96AF2638A97F0099BF25 /* PlaceTypes.swift */; };
 		94EEDE4D2671133B004C784C /* PlaceTypeToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEDE4C2671133B004C784C /* PlaceTypeToggle.swift */; };
 		94EEDE52267115BA004C784C /* ToggleConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEDE51267115BA004C784C /* ToggleConfig.swift */; };
+		94EEDE572671BFF5004C784C /* NewTherePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EEDE562671BFF5004C784C /* NewTherePlace.swift */; };
 		94F157AB26423FFC00224402 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F157AA26423FFC00224402 /* PhotoService.swift */; };
 		94F157B02642420B00224402 /* photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F157AF2642420B00224402 /* photo.swift */; };
 		94F158232644DAA900224402 /* LoginAuthentificationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F158222644DAA900224402 /* LoginAuthentificationVM.swift */; };
@@ -124,6 +125,7 @@
 		94EC96AF2638A97F0099BF25 /* PlaceTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTypes.swift; sourceTree = "<group>"; };
 		94EEDE4C2671133B004C784C /* PlaceTypeToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTypeToggle.swift; sourceTree = "<group>"; };
 		94EEDE51267115BA004C784C /* ToggleConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleConfig.swift; sourceTree = "<group>"; };
+		94EEDE562671BFF5004C784C /* NewTherePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTherePlace.swift; sourceTree = "<group>"; };
 		94F157AA26423FFC00224402 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		94F157AF2642420B00224402 /* photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photo.swift; sourceTree = "<group>"; };
 		94F158222644DAA900224402 /* LoginAuthentificationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAuthentificationVM.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 			children = (
 				9418D9C42620090400F58477 /* Extensions */,
 				948DE6D5261ABB8A00219982 /* TherePlace.swift */,
+				94EEDE562671BFF5004C784C /* NewTherePlace.swift */,
 				948DE6E7261AC1B000219982 /* User.swift */,
 				94EC96AF2638A97F0099BF25 /* PlaceTypes.swift */,
 				94F157AF2642420B00224402 /* photo.swift */,
@@ -701,6 +704,7 @@
 				94979988262BFAE70076FD47 /* ImagePicker.swift in Sources */,
 				94E54A25263BB8E30025B974 /* PlaceCardInActiveSearchView.swift in Sources */,
 				94F157B02642420B00224402 /* photo.swift in Sources */,
+				94EEDE572671BFF5004C784C /* NewTherePlace.swift in Sources */,
 				9418D988261D7C9000F58477 /* CardView.swift in Sources */,
 				941F37542641084F002F9097 /* TestView.swift in Sources */,
 				948DE69E261AB8A300219982 /* ThereNoLoginApp.swift in Sources */,

@@ -38,24 +38,9 @@ struct NewPlaceConfigurationView: View {
             } // End group 1
             
             Group { // Group 2
-                HStack {
-                    Spacer()
-                    VStack (alignment: .leading) {
-                        Text("Placename")
-                            .font(Font.title2.weight(.bold))
-                            .padding(.bottom, 5)
-                        Text("Placesubtext with a litte more")
-                            .font(Font.headline.weight(.light))
-                    }
-                    Spacer()
-                    Image("sealers")
-                        .resizable()
-                        .frame(width: 70, height: 70)
-                        .cornerRadius(10.0)
-                        .padding(.leading)
-                        
-                    Spacer()
-                } // End HStack for place tile
+                PlaceCardInActiveSearchView()
+//                placeTypeToDisplay: $newPlaceVM.aNewPlaceNoOptionals.placeType, placeCountryToDisplay: $newPlaceVM.aNewPlaceNoOptionals.placeCountry, placeNameToDisplay: $newPlaceVM.aNewPlaceNoOptionals.placeName)
+                
                 Spacer()
                 HStack {
                     Spacer()
@@ -82,12 +67,12 @@ struct NewPlaceConfigurationView: View {
             
             Group { // Group 3
                 Text("Comments or tips").padding(.leading)
-                NewPlaceTextView(frameType: "multi", suggestionString: "Best Mararitas on the planet", output: $commentPublic)
+                NewPlaceTextView(frameType: "multi", suggestionString: "Best Mararitas on the planet", output: $newPlaceVM.aNewPlaceNoOptionals.commentPublic)
                 Text("Private notes").padding(.leading)
-                NewPlaceTextView(frameType: "multi", suggestionString: "Notes for your eyes only.", output: $commentPrivate)
+                NewPlaceTextView(frameType: "multi", suggestionString: "Notes for your eyes only.", output: $newPlaceVM.aNewPlaceNoOptionals.commentPrivate)
                 Spacer()
                 HStack {
-                    Toggle("Keep Private?", isOn: $privateTab)
+                    Toggle("Keep Private?", isOn: $newPlaceVM.aNewPlaceNoOptionals.privateSpot)
                         .padding()
                 } // End HStack for private toggle
                 Spacer()
@@ -102,7 +87,8 @@ struct NewPlaceConfigurationView: View {
                 }
                 .padding()
                 .onTapGesture {
-                    firebaseCall.savePlaceToCurrentUser()
+                    newPlaceVM.returnNoOptionals()
+                    firebaseCall.savePlaceToCurrentUser(newPlace: newPlaceVM.convertObjectToDictionary())
                 }
                 
             } // End Group 3
