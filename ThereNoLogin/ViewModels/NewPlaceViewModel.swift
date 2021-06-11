@@ -15,49 +15,130 @@ class NewPlaceViewModel: ObservableObject{
     @Published var aNewPlaceNoOptionals = NewTherePlace()
     
     
+    func testDictionaryExtension() -> [String: Any] {
+        let a = aNewPlace
+        print(a.dictionary)
+        let b = a.dictionary
+        
+        return b!
+    }
+    
     func convertObjectToDictionary() -> [String : Any] {
+        var placeToWriteToFirebaseDictionary: [String: String] = [:]
         
-        let placeToWriteToFirebaseDictionary: [String: Any] = [
-            "placeName": aNewPlace.placeType,
-            "placeType": aNewPlace.placeName,
-            "placeName": aNewPlace.placeName,
-            "placeName": aNewPlace.placeName,
-            "placeName": aNewPlace.placeName,
-            "placeName": aNewPlace.placeName,
-            "placeName": aNewPlace.placeName,
-            "placeName": aNewPlace.placeName,
-            "placeName": aNewPlace.placeName,
-            "placeName": aNewPlace.placeName,
-            "placeName": aNewPlace.placeName,
-            "booleanExample": true,
-            "numberExample": 3.14159265,
-            
-                ] // End docData Dictionary Array
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
         
+        //        var placeTypeI: Int?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
         
-        var id: UUID?
-        var placeType: String?
-        var placeTypeI: Int?
-        var placeName: String = ""
-        var placeAddress: String?
-        var placeSuburb: String?
-        var placeZip: Int?
-        var placeState: String?
-        var placeCountry: String?
-        var placeCountryCode: Int?
-        var latGPS: Float16?
-        var lonGPS: Float16?
-        var dateVisitedStart: Date?
-        var dateVisitedEnd: Date?
-        var timeVisitedStart: Date?
-        var timeVisitedEnd: Date?
-        var commentPublic: String?
-        var commentPrivate: String?
-        var imageName: String?
-        var wantOrFav: Bool = true
-        var privateSpot: Bool = false
-        var whenAdded: Date?
-        var whoAdded: String?
+        //        var placeName: String = ""
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var placeAddress: String?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var placeSuburb: String?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var placeZip: Int?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var placeState: String?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var placeCountry: String?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var placeCountryCode: Int?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+
+        //        var latGPS: Float16?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var lonGPS: Float16?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var dateVisitedStart: Date?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var dateVisitedEnd: Date?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var timeVisitedStart: Date?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var timeVisitedEnd: Date?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var commentPublic: String?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+
+        //        var commentPrivate: String?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var imageName: String?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var wantOrFav: Bool = true
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var privateSpot: Bool = false
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+        
+        //        var whenAdded: Date?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+
+        //        var whoAdded: String?
+        if let placeType = aNewPlace.placeType {
+            placeToWriteToFirebaseDictionary["placeType"] = placeType
+        }
+
     
         return placeToWriteToFirebaseDictionary
     
@@ -65,6 +146,15 @@ class NewPlaceViewModel: ObservableObject{
     
     // func returns the properties to nil if data has not been entered.
     func returnNoOptionals() {
+        
+        aNewPlace.id = UUID()
+        
+        aNewPlace.placeName = aNewPlaceNoOptionals.placeName
+        
+        aNewPlace.wantOrFav = aNewPlaceNoOptionals.wantOrFav
+        
+        aNewPlace.privateSpot = aNewPlaceNoOptionals.privateSpot
+        
         if aNewPlaceNoOptionals.placeType == "" { self.aNewPlace.placeType = nil }
         else { aNewPlace.placeType = aNewPlaceNoOptionals.placeType }
         

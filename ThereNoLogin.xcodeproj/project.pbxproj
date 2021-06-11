@@ -43,6 +43,7 @@
 		9499DDF326367EA600C0E9CF /* TypeFilterBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499DDF226367EA600C0E9CF /* TypeFilterBar.swift */; };
 		9499DDF9263758F500C0E9CF /* JsonDataProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9499DDF8263758F500C0E9CF /* JsonDataProcessing.swift */; };
 		9499DE042637B6F800C0E9CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9499DE032637B6F800C0E9CF /* GoogleService-Info.plist */; };
+		94D2AB9A26730EC600393294 /* EncodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D2AB9926730EC600393294 /* EncodableExtension.swift */; };
 		94E54A1B263BA8480025B974 /* NewPlaceTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E54A1A263BA8470025B974 /* NewPlaceTextView.swift */; };
 		94E54A20263BB11F0025B974 /* NewPlaceConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E54A1F263BB11F0025B974 /* NewPlaceConfigurationView.swift */; };
 		94E54A25263BB8E30025B974 /* PlaceCardInActiveSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E54A24263BB8E30025B974 /* PlaceCardInActiveSearchView.swift */; };
@@ -118,6 +119,7 @@
 		9499DDF226367EA600C0E9CF /* TypeFilterBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeFilterBar.swift; sourceTree = "<group>"; };
 		9499DDF8263758F500C0E9CF /* JsonDataProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataProcessing.swift; sourceTree = "<group>"; };
 		9499DE032637B6F800C0E9CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		94D2AB9926730EC600393294 /* EncodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtension.swift; sourceTree = "<group>"; };
 		94E54A1A263BA8470025B974 /* NewPlaceTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceTextView.swift; sourceTree = "<group>"; };
 		94E54A1F263BB11F0025B974 /* NewPlaceConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceConfigurationView.swift; sourceTree = "<group>"; };
 		94E54A24263BB8E30025B974 /* PlaceCardInActiveSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCardInActiveSearchView.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				942C5273266CA38C00CE7BD7 /* Constants.swift */,
+				94D2AB9926730EC600393294 /* EncodableExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				94554C4F266C1E64007B829F /* CreateForm.swift in Sources */,
 				94979988262BFAE70076FD47 /* ImagePicker.swift in Sources */,
 				94E54A25263BB8E30025B974 /* PlaceCardInActiveSearchView.swift in Sources */,
+				94D2AB9A26730EC600393294 /* EncodableExtension.swift in Sources */,
 				94F157B02642420B00224402 /* photo.swift in Sources */,
 				94EEDE572671BFF5004C784C /* NewTherePlace.swift in Sources */,
 				9418D988261D7C9000F58477 /* CardView.swift in Sources */,

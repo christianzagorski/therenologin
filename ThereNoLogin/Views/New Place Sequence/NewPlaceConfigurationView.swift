@@ -67,12 +67,13 @@ struct NewPlaceConfigurationView: View {
             
             Group { // Group 3
                 Text("Comments or tips").padding(.leading)
-                NewPlaceTextView(frameType: "multi", suggestionString: "Best Mararitas on the planet", output: $newPlaceVM.aNewPlaceNoOptionals.commentPublic)
+                NewPlaceTextView(frameType: "multi", suggestionString: "Best Mararitas on the planet", input: $newPlaceVM.aNewPlaceNoOptionals.commentPublic)
                 Text("Private notes").padding(.leading)
-                NewPlaceTextView(frameType: "multi", suggestionString: "Notes for your eyes only.", output: $newPlaceVM.aNewPlaceNoOptionals.commentPrivate)
+                NewPlaceTextView(frameType: "multi", suggestionString: "Notes for your eyes only.", input: $newPlaceVM.aNewPlaceNoOptionals.commentPrivate)
                 Spacer()
                 HStack {
                     Toggle("Keep Private?", isOn: $newPlaceVM.aNewPlaceNoOptionals.privateSpot)
+                        // $newPlaceVM.aNewPlaceNoOptionals.wantOrFav
                         .padding()
                 } // End HStack for private toggle
                 Spacer()
@@ -87,8 +88,12 @@ struct NewPlaceConfigurationView: View {
                 }
                 .padding()
                 .onTapGesture {
+                    
                     newPlaceVM.returnNoOptionals()
-                    firebaseCall.savePlaceToCurrentUser(newPlace: newPlaceVM.convertObjectToDictionary())
+                    firebaseCall.savePlaceToCurrentUser(newPlace: newPlaceVM.testDictionaryExtension())
+                    // TODO navigate back to beenwantview
+                    // TODO clear values from aNewPlace
+//                    firebaseCall.savePlaceToCurrentUser(newPlace: newPlaceVM.convertObjectToDictionary())
                 }
                 
             } // End Group 3

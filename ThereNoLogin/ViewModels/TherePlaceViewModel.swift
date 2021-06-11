@@ -21,7 +21,7 @@ class TherePlaceViewModel: ObservableObject {
     
     // Initializer gets the data from the local json file, and creates an array of places for the favorites tab.
     init() {
-        self.placesArray = JsonDataProcessor.getLocalData()
+        self.placesArray = JsonDataProcessor.getLocalData() // TODO turned this off to test encoder protocol
         tabArrayFilter(whichTab: 1)
         
     }

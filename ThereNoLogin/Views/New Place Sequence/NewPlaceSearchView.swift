@@ -44,19 +44,19 @@ struct NewPlaceSearchView: View {
                         Spacer()
                     }
                     
-                    NewPlaceTextView(frameType: "oneline", suggestionString: "Search (But temp place name", output: $newPlaceVM.aNewPlaceNoOptionals.placeName)
+                    NewPlaceTextView(frameType: "oneline", suggestionString: "Search (But temp place name", input: $newPlaceVM.aNewPlaceNoOptionals.placeName)
                     Spacer()
                     Spacer()
                     
                     Group {
                     
-                        NewPlaceTextView(frameType: "oneline", suggestionString: "Type Temp Input", output: $newPlaceVM.aNewPlaceNoOptionals.placeType)
+                        NewPlaceTextView(frameType: "oneline", suggestionString: "Type Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeType)
                         
-                        NewPlaceTextView(frameType: "oneline", suggestionString: "City Temp Input", output: $newPlaceVM.aNewPlaceNoOptionals.placeSuburb)
+                        NewPlaceTextView(frameType: "oneline", suggestionString: "City Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeSuburb)
                         
-                        NewPlaceTextView(frameType: "oneline", suggestionString: "State Temp Input", output: $newPlaceVM.aNewPlaceNoOptionals.placeState)
+                        NewPlaceTextView(frameType: "oneline", suggestionString: "State Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeState)
                         
-                        NewPlaceTextView(frameType: "oneline", suggestionString: "Country Temp Input", output: $newPlaceVM.aNewPlaceNoOptionals.placeCountry)
+                        NewPlaceTextView(frameType: "oneline", suggestionString: "Country Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeCountry)
                         
                         
                     }

@@ -13,7 +13,7 @@ import Foundation
 
 // Obvs all the dates / times / location data is not here. API will provide this.
 
-struct TherePlace: Identifiable, Codable {
+struct TherePlace: Identifiable, Encodable, Decodable {
     
     var id: UUID?
     var placeType: String?

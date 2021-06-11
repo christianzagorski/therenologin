@@ -10,8 +10,9 @@ import SwiftUI
 struct NewPlaceTextView: View {
     var frameType: String = "oneline"
     var suggestionString: String
-    @Binding var output: String
-    @State var input: String = ""
+    @State var output: String = ""
+    @Binding var input: String
+//    @State var input: String = ""
     @State var typing = false
     @State var output2: String = "this is also some text"
 //    @Binding var textOutput: String

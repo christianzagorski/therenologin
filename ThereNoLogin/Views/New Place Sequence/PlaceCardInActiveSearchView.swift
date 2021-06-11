@@ -22,7 +22,7 @@ struct PlaceCardInActiveSearchView: View {
                 Text(verbatim: newPlaceVM.aNewPlaceNoOptionals.placeName)
                     .font(Font.title2.weight(.bold))
                     .padding(.bottom, 5)
-                Text("A \(newPlaceVM.aNewPlaceNoOptionals.placeType) in \(newPlaceVM.aNewPlaceNoOptionals.placeCountry)")
+                Text("\(newPlaceVM.aNewPlaceNoOptionals.placeType) in \(newPlaceVM.aNewPlaceNoOptionals.placeCountry)")
                     .font(Font.headline.weight(.light))
                     
             }

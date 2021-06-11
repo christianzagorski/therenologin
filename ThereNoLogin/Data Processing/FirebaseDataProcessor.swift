@@ -31,8 +31,10 @@ class FirebaseDataProcessor: ObservableObject {
     func savePlaceToCurrentUser(newPlace: [String: Any]) {
         print("hello saveplacetocurrentuser")
         
+        let currentUserId = Auth.auth().currentUser
+        let places = db.collection("users").document(currentUserId!.uid).collection("places")
         
-        db.collection("data").document("one").setData(newPlace) { err in
+        places.document().setData(newPlace) { err in
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
