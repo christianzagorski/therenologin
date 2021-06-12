@@ -19,6 +19,7 @@ struct ThereNoLoginApp: App {
     @StateObject var allPlaces = TherePlaceViewModel()
     @StateObject var firebaseCall = FirebaseDataProcessor()
     @StateObject var currentUserAuth = LoginAuthViewModel()
+    @StateObject var newPlaceVM = NewPlaceViewModel()
     
     
     init () {
@@ -32,6 +33,7 @@ struct ThereNoLoginApp: App {
                     .environmentObject(allPlaces)
                     .environmentObject(currentUserAuth)
                     .environmentObject(firebaseCall)
+                    .environmentObject(newPlaceVM)
             
         }
     }

@@ -11,8 +11,8 @@ struct NewPlaceSearchView: View {
     
     
     @EnvironmentObject var newPlaceVM: NewPlaceViewModel
-    @State private var goToConfigView = false
-    @Binding var showNewPlace: Bool
+//    @State private var goToConfigView = false
+//    @Binding var showNewPlace: Bool
     @State var cityName: String = ""
     @State var countryName: String = ""
     @State var stateName: String = ""
@@ -21,9 +21,9 @@ struct NewPlaceSearchView: View {
     var body: some View {
         
         Group {
-            if goToConfigView {
+            if newPlaceVM.goToConfigView {
                 
-                NewPlaceConfigurationView(goToConfigView: $goToConfigView)
+                NewPlaceConfigurationView()
                 
             } // End if
             
@@ -32,7 +32,7 @@ struct NewPlaceSearchView: View {
                     HStack {
                         
                         Button(action: {
-                            showNewPlace = false
+                            newPlaceVM.showNewPlace = false
 
                         }, label: {
                             Image(systemName: "chevron.left")
@@ -67,7 +67,7 @@ struct NewPlaceSearchView: View {
 
 
                         .onTapGesture {
-                            goToConfigView = true
+                            newPlaceVM.goToConfigView = true
 //                            newPlaceVM.commitOptionalToPlace(stringToCommit: typeName, stringPropertyToCommitTo: "placeType", intToCommit: nil, intPropertyToCommitTo: nil)
 //                            newPlaceVM.commitOptionalToPlace(stringToCommit: cityName, stringPropertyToCommitTo: "placeSuburb", intToCommit: nil, intPropertyToCommitTo: nil)
 //                            newPlaceVM.commitOptionalToPlace(stringToCommit: stateName, stringPropertyToCommitTo: "placeState", intToCommit: nil, intPropertyToCommitTo: nil)

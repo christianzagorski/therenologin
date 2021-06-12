@@ -14,7 +14,7 @@ struct NewPlaceConfigurationView: View {
     @State var privateTab: Bool = true
     @State var commentPublic: String = ""
     @State var commentPrivate: String = ""
-    @Binding var goToConfigView: Bool
+//    @Binding var goToConfigView: Bool
     
     var body: some View {
         
@@ -22,7 +22,7 @@ struct NewPlaceConfigurationView: View {
             Group { // Group 1
                 HStack {
                     Button(action: {
-                        goToConfigView = false
+                        newPlaceVM.goToConfigView = false
 
                     }, label: {
                         Image(systemName: "chevron.left")
@@ -91,6 +91,8 @@ struct NewPlaceConfigurationView: View {
                     
                     newPlaceVM.returnNoOptionals()
                     firebaseCall.savePlaceToCurrentUser(newPlace: newPlaceVM.testDictionaryExtension())
+                    newPlaceVM.goToConfigView = false
+                    newPlaceVM.showNewPlace = false
                     // TODO navigate back to beenwantview
                     // TODO clear values from aNewPlace
 //                    firebaseCall.savePlaceToCurrentUser(newPlace: newPlaceVM.convertObjectToDictionary())

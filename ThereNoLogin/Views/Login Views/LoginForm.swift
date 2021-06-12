@@ -54,6 +54,7 @@ struct LoginForm: View {
                         try! Auth.auth().signOut()
                         currentUserAuth.loggedIn = false
                         loginShowing = 0
+                        // TODO - need to clear the values in the textfields after committing or cancelling
                         
                     }, label: {
                         HStack {

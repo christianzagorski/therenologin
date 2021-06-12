@@ -10,11 +10,12 @@ import FirebaseAuth
 
 struct BeenWantView: View {
     
-    @StateObject var newPlaceVM = NewPlaceViewModel()
-    @State var showNewPlace = false
+    
+//    @State var showNewPlace = false
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     @EnvironmentObject var currentUserAuth: LoginAuthViewModel
     @EnvironmentObject var firebaseCall: FirebaseDataProcessor
+    @EnvironmentObject var newPlaceVM: NewPlaceViewModel
     @State var selectedTab = 1
     
     init() {
@@ -24,10 +25,10 @@ struct BeenWantView: View {
     var body: some View {
 
         Group { // Using group view to instantiate the NewPlaceSequence when the button is pressed (state value updates)
-            if showNewPlace {
+            if newPlaceVM.showNewPlace {
                 //NewPlaceSequence()
-                NewPlaceSearchView(showNewPlace: $showNewPlace)
-                    .environmentObject(newPlaceVM)
+                NewPlaceSearchView()
+                    
                 
             } // End if
             
@@ -128,7 +129,7 @@ struct BeenWantView: View {
                         .offset(x: 0, y: 360)
                         .ignoresSafeArea()
                         .onTapGesture {
-                            showNewPlace.toggle()
+                            newPlaceVM.showNewPlace.toggle()
                         }
 
                 } // End ZStack

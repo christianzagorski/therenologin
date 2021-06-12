@@ -9,12 +9,14 @@ import Foundation
 
 // needs work, have design input now.
 
-class NewPlaceViewModel: ObservableObject{
+class NewPlaceViewModel: ObservableObject {
     
     @Published var aNewPlace = TherePlace()
     @Published var aNewPlaceNoOptionals = NewTherePlace()
+    @Published var showNewPlace: Bool = false
+    @Published var goToConfigView: Bool = false
     
-    
+    // TODO - rename this and clean up
     func testDictionaryExtension() -> [String: Any] {
         let a = aNewPlace
         print(a.dictionary)
@@ -22,6 +24,8 @@ class NewPlaceViewModel: ObservableObject{
         
         return b!
     }
+    
+   // TODO - I think this is no longer needed - Check
     
     func convertObjectToDictionary() -> [String : Any] {
         var placeToWriteToFirebaseDictionary: [String: String] = [:]
@@ -181,6 +185,7 @@ class NewPlaceViewModel: ObservableObject{
         
     } // End Func
 
+    // TODO - I think this is not needed now - Check
     func commitOptionalToPlace (stringToCommit: String?, stringPropertyToCommitTo: String?, intToCommit: Int?, intPropertyToCommitTo: String?) {
         
         if let stringToCommit = stringToCommit {
@@ -228,6 +233,8 @@ class NewPlaceViewModel: ObservableObject{
         } // end if let
         
     } // end commitOptionalToPlace Function
+    
+    // TODO - need to make a method (or decide where else it should go) that clears all properties when you click back and/or you 'add new place'
 
 } // End Class
 

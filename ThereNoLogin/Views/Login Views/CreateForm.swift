@@ -47,6 +47,7 @@ struct CreateForm: View {
                     currentUserAuth.createAccount()
                     firebaseCall.saveFirstName(name: name)
                     loginShowing = 0
+                    // TODO - need to clear the values in the textfields after committing or cancelling
                     
                 }, label: {
                     HStack {
