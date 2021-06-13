@@ -17,9 +17,6 @@ struct CreateForm: View {
     @EnvironmentObject var firebaseCall: FirebaseDataProcessor
     @Binding var loginShowing: Int
     @State var name = "empty"
-    //@State private var email: String = ""
-    //private var name: String = ""
-    //@State private var password: String = ""
     
     @State private var errorMessage: String?
     
@@ -33,12 +30,12 @@ struct CreateForm: View {
                     TextField("Email", text: $currentUserAuth.email)
                     TextField("Name", text: $name)
                     SecureField("Password", text: $currentUserAuth.password)
-                }
+                } // End Section
                 
                 if errorMessage != nil {
                     Section {
                         Text(errorMessage!)
-                    }
+                    } // End Section
                 }
                 
                 Button(action: {
@@ -67,8 +64,8 @@ struct CreateForm: View {
                         Spacer()
                     }
                 })
-            }
-            .navigationBarTitle("Create an Account")
+            } // End Form
+//            .navigationBarTitle("Create an Account")
             
         }
         

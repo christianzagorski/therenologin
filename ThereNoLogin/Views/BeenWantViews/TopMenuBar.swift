@@ -31,6 +31,9 @@ struct TopMenuBar: View {
                         .overlay(Text("CZ"))
                 }
                 .padding(.leading)
+                .onTapGesture {
+                    firebaseCall.loadUserPlaces()
+                }
             
             Spacer()
             Image(systemName: "square.grid.2x2")

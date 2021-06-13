@@ -20,6 +20,7 @@ class FirebaseDataProcessor: ObservableObject {
     let db = Firestore.firestore()
     @Published var currentUsername: String = ""
     @Published var loadingComplete = true // TODO - need to fix the loading pattern
+//    var loadedPlace: TherePlace
     
 // MARK - loadUserData
     func loadUserData() {}
@@ -28,6 +29,7 @@ class FirebaseDataProcessor: ObservableObject {
     func loadUserPlaces() {
         
 // TODO - Code to load the placesIndex document into memory as a dictionary
+        
             // places index will be a document that contains and index of placeindexnumber: placeid
         
 // TODO - Code to count the number of places (documents) in the places collection (minus the index document), from the placesIndex document
@@ -39,29 +41,35 @@ class FirebaseDataProcessor: ObservableObject {
         //        let places = db.collection("users").document(currentUserId!.uid).collection("places")
 
         let currentUserId = Auth.auth().currentUser
+        let places = db.collection("users").document(currentUserId!.uid).collection("places") // Places Collection
+        let fullrefplacesIndex = db.collection("users").document(currentUserId!.uid).collection("places").document("placesIndex")
+        let placesWithoutIndex = places.whereField("placeName", isNotEqualTo: "")
         
-        let document = db.collection("users").document(currentUserId?.uid ?? "nil")
-        
-        document.getDocument { (docSnapshot, error) in
-            //Check for error and handle
-            
-            if let error = error {
-                // handle error
-                print("error getting document from firebase: \(error.localizedDescription)")
-                
-            } else if let docSnapshot = docSnapshot {
-                if let userData = docSnapshot.data() {
-                    self.currentUsername = userData["name"] as! String // TODO fix force unwrap here
+        print("loadUserPlaces")
+        placesWithoutIndex.getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    print("hello")
+                    print(querySnapshot!.documents)
+                    for document in querySnapshot!.documents {
+//                        print("\(document.documentID) => \(document.data())")
+                        print("document \(document.documentID)")
+                        
+                        do {
+//                            self.loadedPlace = try document.data() as TherePlace
+//                            var placeData = try decoder.decode([TherePlace].self, from: document.data)
+//                            try? document.data(as: TherePlace.self)
+                        }
+                        catch {
+                            print(error)
+                        }
+                        
+                        
+                        
+                    }
                 }
-                else {
-                    self.currentUsername = "nilname"
-                }
-        
-            } else {
-                // No data returned, handle appropriately
-                print("error: no data returned from document call")
-            }
-        } // end getDocument call
+        }
         
         
     }
@@ -73,56 +81,65 @@ class FirebaseDataProcessor: ObservableObject {
         var numberOfPlaces: Int = 0 // Number of places in placesIndexRef
         let currentUserId = Auth.auth().currentUser // Current User ID
         let places = db.collection("users").document(currentUserId!.uid).collection("places") // Places Collection
-        let placesIndexRef = places.document("placesIndex") //only creates a reference nothing stored until you use set data
- 
-        print("placesIndexRef path \(placesIndexRef.path)")
+        let fullrefplacesIndex = db.collection("users").document(currentUserId!.uid).collection("places").document("placesIndex")
+      
+        fullrefplacesIndex.getDocument { (document, error) in
+            
+//            while document == nil {}
+                        
+                if let document = document, document.exists {
+                    
+                    let dataDescription = document.data()
+//                    let dataDescription = document.data().map(String.init(describing:))
+//                    while dataDescription == nil {}
+//                    print("placesIndex Document data: \(dataDescription ?? "nil")")
+                    numberOfPlaces = dataDescription?.count ?? 0
+                    print("numberOfPlaces: \(numberOfPlaces)")
+                    setNewPlacetoDoc()
+                } else {
+                    print("places index Document does not exist")
+                    fullrefplacesIndex.setData([:]) { err in
+                        numberOfPlaces = 0
+                        setNewPlacetoDoc()
+                    }
+                    
+                }
+            } // End full placesIndex creation submodule
         
-        // Check that placesIndex exists,
-        placesIndexRef.getDocument { (document, error) in
-               
-            if let documentSnapshot = document, documentSnapshot.exists {
-        
-        // if it does load placesIndex document and count the number of places
-                print("placesIndex Document data: \(String(describing: document!.data()))")
-                let placesIndexDict = document!.data()// Can force unwrap because have checked existence already
-                numberOfPlaces = placesIndexDict!.count
-                print( "Number of places in user profile: \(numberOfPlaces)" )
-            }
-        
-            // and if not create it
-            else {
-                print("placesIndex Document does not exist")
-                placesIndexRef.setData([:])
-                numberOfPlaces = 0
-            }
-        }
-        // This section saves document of the place to the collection, and gets the doc id.
-        print("hello saveplacetocurrentuser")
-            // create empty document
-        let newDoc = places.document()
-            // get the new document ID
-        docId = newDoc.documentID
-            // Set the newPlace to the new document
-        newDoc.setData(newPlace) { err in
-            if let err = err {
-                print("Error writing newPlace document: \(err)")
-            }
-            else {
-                print("New Place Document successfully written!")
-            }
-        }
-        
-        // Add newplace documentID to the placesIndex document
-        print("docID \(docId)")
-        print("numberofplaces \(numberOfPlaces)")
-            placesIndexRef.updateData([String(numberOfPlaces + 1): docId]) { err in
+        func setNewPlacetoDoc() {
+            
+            // This section saves document of the place to the collection, and gets the doc id.
+            print("hello saveplacetocurrentuser")
+                // create empty document
+            let newDoc = places.document()
+                // get the new document ID
+            docId = newDoc.documentID
+            print("docId \(docId)")
+            
+    //            // Set the newPlace to the new document
+            newDoc.setData(newPlace) { err in
                 if let err = err {
-                    print("Error updating placesIndex document: \(err)")
+                    print("Error writing newPlace document: \(err)")
                 }
                 else {
-                    print("newPlace DocumentID successfully updated to the placesIndex document")
+                    print("New Place Document successfully written!")
                 }
-            } // End updataData submethod
+            }
+   
+            // Add newplace documentID to the placesIndex document
+    
+            print("docID \(docId)")
+            print("numberofplaces \(numberOfPlaces)")
+                fullrefplacesIndex.updateData([String(numberOfPlaces + 1): docId]) { err in
+                    if let err = err {
+                        print("Error updating placesIndex document: \(err)")
+                    }
+                    else {
+                        print("newPlace DocumentID successfully updated to the placesIndex document")
+                    }
+                } // End updataData submethod
+        
+        } // end setNewPlaceToDoc
         
     } // End savePlaceToCurrentUser Method
     
