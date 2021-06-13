@@ -69,11 +69,13 @@ class FirebaseDataProcessor: ObservableObject {
     
     func savePlaceToCurrentUser(newPlace: [String: Any]) {
         
-        var docId: String = ""
-        var numberOfPlaces: Int = 0
-        let currentUserId = Auth.auth().currentUser
-        let places = db.collection("users").document(currentUserId!.uid).collection("places")
+        var docId: String = "" // Document ID
+        var numberOfPlaces: Int = 0 // Number of places in placesIndexRef
+        let currentUserId = Auth.auth().currentUser // Current User ID
+        let places = db.collection("users").document(currentUserId!.uid).collection("places") // Places Collection
         let placesIndexRef = places.document("placesIndex") //only creates a reference nothing stored until you use set data
+ 
+        print("placesIndexRef path \(placesIndexRef.path)")
         
         // Check that placesIndex exists,
         placesIndexRef.getDocument { (document, error) in
@@ -81,16 +83,15 @@ class FirebaseDataProcessor: ObservableObject {
             if let documentSnapshot = document, documentSnapshot.exists {
         
         // if it does load placesIndex document and count the number of places
-                print("Document data: \(String(describing: document!.data()))")
-                let placesIndexDict = document!.data() // Can force unwrap because have checked existence already
+                print("placesIndex Document data: \(String(describing: document!.data()))")
+                let placesIndexDict = document!.data()// Can force unwrap because have checked existence already
                 numberOfPlaces = placesIndexDict!.count
                 print( "Number of places in user profile: \(numberOfPlaces)" )
-                
             }
         
             // and if not create it
             else {
-                print("Document does not exist")
+                print("placesIndex Document does not exist")
                 placesIndexRef.setData([:])
                 numberOfPlaces = 0
             }
@@ -104,17 +105,19 @@ class FirebaseDataProcessor: ObservableObject {
             // Set the newPlace to the new document
         newDoc.setData(newPlace) { err in
             if let err = err {
-                print("Error writing document: \(err)")
+                print("Error writing newPlace document: \(err)")
             }
             else {
-                print("Document successfully written!")
+                print("New Place Document successfully written!")
             }
         }
         
         // Add newplace documentID to the placesIndex document
-            placesIndexRef.updateData([numberOfPlaces + 1: docId]) { err in
+        print("docID \(docId)")
+        print("numberofplaces \(numberOfPlaces)")
+            placesIndexRef.updateData([String(numberOfPlaces + 1): docId]) { err in
                 if let err = err {
-                    print("Error updating document: \(err)")
+                    print("Error updating placesIndex document: \(err)")
                 }
                 else {
                     print("newPlace DocumentID successfully updated to the placesIndex document")
