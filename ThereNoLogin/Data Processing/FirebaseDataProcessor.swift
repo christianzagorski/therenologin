@@ -28,92 +28,43 @@ class FirebaseDataProcessor: ObservableObject {
     
 // MARK - loadUserPlaces
     func loadUserPlaces(userCompletionHandler: @escaping ([TherePlace]?, Error?) -> Void) {
-        
-// TODO - Code to load the placesIndex document into memory as a dictionary
-        
-            // places index will be a document that contains and index of placeindexnumber: placeid
-        
-// TODO - Code to count the number of places (documents) in the places collection (minus the index document), from the placesIndex document
-
-        
-// TODO - code to load each place document (for statement that loops through the documents with the placeid from the placesIndex documente
-
-        //        let currentUserId = Auth.auth().currentUser
-        //        let places = db.collection("users").document(currentUserId!.uid).collection("places")
 
         let currentUserId = Auth.auth().currentUser
         let places = db.collection("users").document(currentUserId!.uid).collection("places") // Places Collection
-        let fullrefplacesIndex = db.collection("users").document(currentUserId!.uid).collection("places").document("placesIndex")
         let placesWithoutIndex = places.whereField("placeName", isNotEqualTo: "")
         var placesArray = [TherePlace]()
         
-        print("loadUserPlaces")
         placesWithoutIndex.getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    print("hello")
-                    print(querySnapshot!.documents)
-                    for document in querySnapshot!.documents {
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
 //                        print("\(document.documentID) => \(document.data())")
-                        print("document \(document.documentID)")
-                        print("document data \(document.data())")
-                        
-                        let result = Result {
-                             try document.data(as: TherePlace.self)
+                    
+                    let result = Result { try document.data(as: TherePlace.self) }
+                       switch result {
+                       case .success(let placeToSave):
+                           if let placeToSave = placeToSave {
+                            var placeToSaveVar = placeToSave
+                            placeToSaveVar.imageName = "hawaiijump" // TODO fix with firebase Storage
+                            placesArray.append(placeToSaveVar)
+                            
+                           } else {
+                               // A nil value was successfully initialized from the DocumentSnapshot,
+                               // or the DocumentSnapshot was nil.
+                               print("Document does not exist")
                            }
-                           switch result {
-                           case .success(let placeToSave):
-                               if let placeToSave = placeToSave {
-                                   // A `City` value was successfully initialized from the DocumentSnapshot.
-                                   print("Place: \(placeToSave)")
-                                var placeToSaveVar = placeToSave
-                                placeToSaveVar.imageName = "hawaiijump"
-                                placesArray.append(placeToSaveVar)
-                                
-                               
-                                
-                               } else {
-                                   // A nil value was successfully initialized from the DocumentSnapshot,
-                                   // or the DocumentSnapshot was nil.
-                                   print("Document does not exist")
-                               }
-                           case .failure(let error):
-                               // A `City` value could not be initialized from the DocumentSnapshot.
-                               print("Error decoding city: \(error)")
-                           }
-                        userCompletionHandler(placesArray, nil)
-                        
-                        
-//                        let dict = document.data()
-//                        let dic = ["2": "B", "1": "A", "3": "C"]
-//                        let encoder = JSONEncoder()
-//                        if let jsonData = try? encoder.encode(dict) {
-//                            if let jsonString = String(data: jsonData, encoding: .utf8) {
-//                                print(jsonString)
-//                            }
-//                        }
-                        
-                     
-
-                        
-//                        do {
-//                            self.loadedPlace = try document.data() as TherePlace
-//                            var placeData = try decoder.decode([TherePlace].self, from: document.data)
-//                            try? document.data(as: TherePlace.self)
-//                        }
-//                        catch {
-//                            print(error)
-//                        }
-                        
-                        
-                        
-                    }
-                }
-        }
+                       case .failure(let error):
+                           // A `place` value could not be initialized from the DocumentSnapshot.
+                           print("Error decoding city: \(error)")
+                       } // end switch
+                    
+                } // End for loop cycle through documents
+                userCompletionHandler(placesArray, nil)
+            } // end else
+        } // End get document firebase server call
         
-        
-    }
+    } // End func loadUserPlaces
     
     
     func savePlaceToCurrentUser(newPlace: [String: Any]) {
@@ -131,11 +82,7 @@ class FirebaseDataProcessor: ObservableObject {
                 if let document = document, document.exists {
                     
                     let dataDescription = document.data()
-//                    let dataDescription = document.data().map(String.init(describing:))
-//                    while dataDescription == nil {}
-//                    print("placesIndex Document data: \(dataDescription ?? "nil")")
                     numberOfPlaces = dataDescription?.count ?? 0
-                    print("numberOfPlaces: \(numberOfPlaces)")
                     setNewPlacetoDoc()
                 } else {
                     print("places index Document does not exist")
@@ -145,9 +92,10 @@ class FirebaseDataProcessor: ObservableObject {
                     }
                     
                 }
-            } // End full placesIndex creation submodule
+            
+        } // End full placesIndex creation submodule
         
-        func setNewPlacetoDoc() {
+        func setNewPlacetoDoc() {  // Sub method
             
             // This section saves document of the place to the collection, and gets the doc id.
             print("hello saveplacetocurrentuser")
@@ -169,8 +117,6 @@ class FirebaseDataProcessor: ObservableObject {
    
             // Add newplace documentID to the placesIndex document
     
-            print("docID \(docId)")
-            print("numberofplaces \(numberOfPlaces)")
                 fullrefplacesIndex.updateData([String(numberOfPlaces + 1): docId]) { err in
                     if let err = err {
                         print("Error updating placesIndex document: \(err)")
@@ -180,7 +126,7 @@ class FirebaseDataProcessor: ObservableObject {
                     }
                 } // End updataData submethod
         
-        } // end setNewPlaceToDoc
+        } // end setNewPlaceToDoc sub method
         
     } // End savePlaceToCurrentUser Method
     

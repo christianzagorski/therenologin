@@ -40,24 +40,14 @@ struct LoginForm: View {
                                 firebaseCall.getCurrentUsername()
                                 firebaseCall.loadUserPlaces(userCompletionHandler: {loadedUserPlaces, error in
                                     if let loadedUserPlaces = loadedUserPlaces {
-                                        print("user first name is : \(loadedUserPlaces[0].placeName)")
                                         self.allPlaces.loadUserPlaces(firebaseLoadedPlaces: loadedUserPlaces)
-                                        print("loadedUserPlaces")
-                                        print(loadedUserPlaces)
-                                        
-                                        print("places array in VM:")
-                                        print(allPlaces.placesArray)
                                         loginShowing = 0
-                                        
                                     }
                                     
                                 }) // end loadUserPlaces in firebaseCall
-                                    
-                                
-                                
-                                
+                            
                             }
-                            }
+                        }
                         
                         // TODO - Pull user data and places down here
                     }, label: {

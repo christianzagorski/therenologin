@@ -47,15 +47,7 @@ struct LaunchView3: View {
                     .onAppear {
                         firebaseCall.loadUserPlaces(userCompletionHandler: {loadedUserPlaces, error in
                             if let loadedUserPlaces = loadedUserPlaces {
-                                print("user first name is : \(loadedUserPlaces[0].placeName)")
                                 self.allPlaces.loadUserPlaces(firebaseLoadedPlaces: loadedUserPlaces)
-                                print("loadedUserPlaces")
-                                print(loadedUserPlaces)
-                                
-                                print("places array in VM:")
-                                print(allPlaces.placesArray)
-                                
-                                
                             }
                             
                         }) // end loadUserPlaces in firebaseCall
