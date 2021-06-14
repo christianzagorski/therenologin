@@ -74,7 +74,6 @@ struct NewPlaceConfigurationView: View {
                 Spacer()
                 HStack {
                     Toggle("Keep Private?", isOn: $newPlaceVM.aNewPlaceNoOptionals.privateSpot)
-                        // $newPlaceVM.aNewPlaceNoOptionals.wantOrFav
                         .padding()
                 } // End HStack for private toggle
                 Spacer()

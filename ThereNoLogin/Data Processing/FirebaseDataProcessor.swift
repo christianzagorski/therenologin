@@ -98,12 +98,10 @@ class FirebaseDataProcessor: ObservableObject {
         func setNewPlacetoDoc() {  // Sub method
             
             // This section saves document of the place to the collection, and gets the doc id.
-            print("hello saveplacetocurrentuser")
                 // create empty document
             let newDoc = places.document()
                 // get the new document ID
             docId = newDoc.documentID
-            print("docId \(docId)")
             
     //            // Set the newPlace to the new document
             newDoc.setData(newPlace) { err in
