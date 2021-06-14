@@ -31,7 +31,7 @@ struct CheckmarkToggleStyle: ToggleStyle {
                         
 //                        .padding(.all, 3)
                         .overlay(
-                            (configuration.isOn ? (Text(Image(systemName: "bookmark")) + Text(" Want to go")) : (Text(Image(systemName: "heart")) + Text(" Favorite")))
+                            (configuration.isOn ? (Text(Image(systemName: "heart")) + Text(" Favorite")) : (Text(Image(systemName: "bookmark")) + Text(" Want to go")))
                                 .foregroundColor(.white)
                             //                            Image(systemName: configuration.isOn ? "checkmark" : "xmark")
 //                                .resizable()

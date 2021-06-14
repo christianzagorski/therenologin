@@ -11,6 +11,7 @@ struct NewPlaceConfigurationView: View {
     
     @EnvironmentObject var firebaseCall: FirebaseDataProcessor
     @EnvironmentObject var newPlaceVM: NewPlaceViewModel
+    @EnvironmentObject var allPlaces: TherePlaceViewModel
     @State var privateTab: Bool = true
     @State var commentPublic: String = ""
     @State var commentPrivate: String = ""
@@ -90,13 +91,17 @@ struct NewPlaceConfigurationView: View {
                 .onTapGesture {
                     
                     newPlaceVM.returnNoOptionals()
-                    firebaseCall.savePlaceToCurrentUser(newPlace: newPlaceVM.testDictionaryExtension())
+                    firebaseCall.savePlaceToCurrentUser(newPlace: newPlaceVM.testDictionaryExtension()) // TODO Add completion handler here
                     newPlaceVM.goToConfigView = false
                     newPlaceVM.showNewPlace = false
-                    // TODO navigate back to beenwantview
+                    firebaseCall.loadUserPlaces(userCompletionHandler: { loadedUserPlaces, error in
+                        if let loadedUserPlaces = loadedUserPlaces {
+                            self.allPlaces.loadUserPlaces(firebaseLoadedPlaces: loadedUserPlaces)
+                        }
+                        
+                    }) // end loadUserPlaces in firebaseCall
                     // TODO clear values from aNewPlace
-//                    firebaseCall.savePlaceToCurrentUser(newPlace: newPlaceVM.convertObjectToDictionary())
-                }
+                } // end onTapGesture
                 
             } // End Group 3
             

@@ -27,10 +27,10 @@ struct LoadingView: View {
             
             
         } // End ZStack
-        .onAppear {
-            firebaseCall.loadUserData()
-            firebaseCall.loadUserPlaces()
-        }
+//        .onAppear {
+//            firebaseCall.loadUserData()
+//            firebaseCall.loadUserPlaces()
+//        }
     }
 }
 

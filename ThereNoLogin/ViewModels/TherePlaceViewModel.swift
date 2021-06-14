@@ -27,8 +27,9 @@ class TherePlaceViewModel: ObservableObject {
         
     }
     
-    func loadUserPlaces() {
-        self.placesArray = 
+    func loadUserPlaces(firebaseLoadedPlaces: [TherePlace]) {
+        self.placesArray = firebaseLoadedPlaces
+        tabArrayFilter(whichTab: 1)
     }
     
     // Function tabArrayFilter filters based on the tab that has been pressed

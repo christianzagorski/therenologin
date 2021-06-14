@@ -32,11 +32,29 @@ struct LoginForm: View {
                     }
                     
                     Button(action: {
+                        print("Login button pressed")
                         currentUserAuth.signIn()
+                        
                         Auth.auth().addStateDidChangeListener { (auth, user) in
                             if user != nil {
                                 firebaseCall.getCurrentUsername()
-                                loginShowing = 0
+                                firebaseCall.loadUserPlaces(userCompletionHandler: {loadedUserPlaces, error in
+                                    if let loadedUserPlaces = loadedUserPlaces {
+                                        print("user first name is : \(loadedUserPlaces[0].placeName)")
+                                        self.allPlaces.loadUserPlaces(firebaseLoadedPlaces: loadedUserPlaces)
+                                        print("loadedUserPlaces")
+                                        print(loadedUserPlaces)
+                                        
+                                        print("places array in VM:")
+                                        print(allPlaces.placesArray)
+                                        loginShowing = 0
+                                        
+                                    }
+                                    
+                                }) // end loadUserPlaces in firebaseCall
+                                    
+                                
+                                
                                 
                             }
                             }
@@ -51,6 +69,7 @@ struct LoginForm: View {
                     })
                   
                     Button(action: {
+                        print("cancel button pressed")
                         try! Auth.auth().signOut()
                         currentUserAuth.loggedIn = false
                         loginShowing = 0

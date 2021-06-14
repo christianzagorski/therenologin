@@ -27,7 +27,7 @@ class FirebaseDataProcessor: ObservableObject {
     func loadUserData() {}
     
 // MARK - loadUserPlaces
-    func loadUserPlaces() {
+    func loadUserPlaces(userCompletionHandler: @escaping ([TherePlace]?, Error?) -> Void) {
         
 // TODO - Code to load the placesIndex document into memory as a dictionary
         
@@ -67,7 +67,11 @@ class FirebaseDataProcessor: ObservableObject {
                                if let placeToSave = placeToSave {
                                    // A `City` value was successfully initialized from the DocumentSnapshot.
                                    print("Place: \(placeToSave)")
-                                placesArray.append(placeToSave)
+                                var placeToSaveVar = placeToSave
+                                placeToSaveVar.imageName = "hawaiijump"
+                                placesArray.append(placeToSaveVar)
+                                
+                               
                                 
                                } else {
                                    // A nil value was successfully initialized from the DocumentSnapshot,
@@ -78,6 +82,7 @@ class FirebaseDataProcessor: ObservableObject {
                                // A `City` value could not be initialized from the DocumentSnapshot.
                                print("Error decoding city: \(error)")
                            }
+                        userCompletionHandler(placesArray, nil)
                         
                         
 //                        let dict = document.data()
