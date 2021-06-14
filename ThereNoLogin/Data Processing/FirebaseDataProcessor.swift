@@ -44,6 +44,7 @@ class FirebaseDataProcessor: ObservableObject {
         let places = db.collection("users").document(currentUserId!.uid).collection("places") // Places Collection
         let fullrefplacesIndex = db.collection("users").document(currentUserId!.uid).collection("places").document("placesIndex")
         let placesWithoutIndex = places.whereField("placeName", isNotEqualTo: "")
+        var placeToSave = TherePlace()
         
         print("loadUserPlaces")
         placesWithoutIndex.getDocuments() { (querySnapshot, err) in
@@ -55,15 +56,27 @@ class FirebaseDataProcessor: ObservableObject {
                     for document in querySnapshot!.documents {
 //                        print("\(document.documentID) => \(document.data())")
                         print("document \(document.documentID)")
+                        print("document data \(document.data())")
+                        let dict = document.data()
+                        let dic = ["2": "B", "1": "A", "3": "C"]
+                        let encoder = JSONEncoder()
+                        if let jsonData = try? encoder.encode(dict) {
+                            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                                print(jsonString)
+                            }
+                        }
                         
-                        do {
+                     
+
+                        
+//                        do {
 //                            self.loadedPlace = try document.data() as TherePlace
 //                            var placeData = try decoder.decode([TherePlace].self, from: document.data)
 //                            try? document.data(as: TherePlace.self)
-                        }
-                        catch {
-                            print(error)
-                        }
+//                        }
+//                        catch {
+//                            print(error)
+//                        }
                         
                         
                         

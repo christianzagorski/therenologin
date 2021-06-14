@@ -25,12 +25,12 @@ class NewPlaceViewModel: ObservableObject {
         return b!
     }
     
-    func convertDictToObject() -> TherePlace {
-        let myDict: [String: Any]
-        let placeObject = Decodable(dictionary2: myDict)
-
-        return placeObject
-    }
+//    func convertDictToObject() -> TherePlace {
+//        let myDict: [String: Any]
+//        let placeObject = Decodable(dictionary2: myDict)
+//
+//        return placeObject
+//    }
     
    // TODO - I think this is no longer needed - Check
     

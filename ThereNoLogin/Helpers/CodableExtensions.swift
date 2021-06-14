@@ -26,3 +26,9 @@ extension Decodable {
         self = newValue
       }
 }
+
+extension Data {
+    func decodedObject<D: Decodable>(using decoder: JSONDecoder = .init()) throws -> D {
+        try decoder.decode(D.self, from: self)
+    }
+}
