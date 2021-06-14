@@ -12,6 +12,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import Combine
 import FirebaseAuth
+import FirebaseFirestoreSwift
 
 class FirebaseDataProcessor: ObservableObject {
     
@@ -44,7 +45,7 @@ class FirebaseDataProcessor: ObservableObject {
         let places = db.collection("users").document(currentUserId!.uid).collection("places") // Places Collection
         let fullrefplacesIndex = db.collection("users").document(currentUserId!.uid).collection("places").document("placesIndex")
         let placesWithoutIndex = places.whereField("placeName", isNotEqualTo: "")
-        var placeToSave = TherePlace()
+        var placesArray = [TherePlace]()
         
         print("loadUserPlaces")
         placesWithoutIndex.getDocuments() { (querySnapshot, err) in
@@ -57,14 +58,36 @@ class FirebaseDataProcessor: ObservableObject {
 //                        print("\(document.documentID) => \(document.data())")
                         print("document \(document.documentID)")
                         print("document data \(document.data())")
-                        let dict = document.data()
-                        let dic = ["2": "B", "1": "A", "3": "C"]
-                        let encoder = JSONEncoder()
-                        if let jsonData = try? encoder.encode(dict) {
-                            if let jsonString = String(data: jsonData, encoding: .utf8) {
-                                print(jsonString)
-                            }
-                        }
+                        
+                        let result = Result {
+                             try document.data(as: TherePlace.self)
+                           }
+                           switch result {
+                           case .success(let placeToSave):
+                               if let placeToSave = placeToSave {
+                                   // A `City` value was successfully initialized from the DocumentSnapshot.
+                                   print("Place: \(placeToSave)")
+                                placesArray.append(placeToSave)
+                                
+                               } else {
+                                   // A nil value was successfully initialized from the DocumentSnapshot,
+                                   // or the DocumentSnapshot was nil.
+                                   print("Document does not exist")
+                               }
+                           case .failure(let error):
+                               // A `City` value could not be initialized from the DocumentSnapshot.
+                               print("Error decoding city: \(error)")
+                           }
+                        
+                        
+//                        let dict = document.data()
+//                        let dic = ["2": "B", "1": "A", "3": "C"]
+//                        let encoder = JSONEncoder()
+//                        if let jsonData = try? encoder.encode(dict) {
+//                            if let jsonString = String(data: jsonData, encoding: .utf8) {
+//                                print(jsonString)
+//                            }
+//                        }
                         
                      
 

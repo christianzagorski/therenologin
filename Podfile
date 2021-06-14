@@ -13,7 +13,7 @@ pod 'Firebase/Analytics'
 pod 'Firebase/Storage'
 pod 'Firebase/Auth'
 pod 'FirebaseUI' 
-pod 'FirebaseFirestoreSwift'
+pod 'FirebaseFirestoreSwift', '> 7.0-beta'
 
 
   target 'ThereNoLoginTests' do
