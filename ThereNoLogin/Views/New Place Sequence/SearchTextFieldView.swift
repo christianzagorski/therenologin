@@ -18,7 +18,7 @@ struct NewPlaceSearchTextView: View {
     @State var typing = false
     @State var output2: String = "this is also some text"
 //    @Binding var textOutput: String
-    @State var myreturnedPlacesArray: [Place] = []
+    @State var myreturnedPlacesArray: [APIPlace] = []
     
     var body: some View {
         VStack {
@@ -38,8 +38,7 @@ struct NewPlaceSearchTextView: View {
                 placesAPICall.findPlaces(query: input, completion: { result in
                     switch result {
                         case .success(let returnedPlacesArray):
-                            print(returnedPlacesArray[0].name)
-                            print(returnedPlacesArray[0].type)
+//                            print(returnedPlacesArray[0].type)
                            myreturnedPlacesArray = returnedPlacesArray
                         case .failure(let error):
                             print(error.localizedDescription)

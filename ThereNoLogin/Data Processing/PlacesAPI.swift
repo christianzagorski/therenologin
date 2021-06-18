@@ -23,19 +23,9 @@
 import Foundation
 import GooglePlaces
 
-
-struct Place {
-        var name: String
-        var type: [String]
-        var identifier: String
-//        var country: String
-}
-
-
-
 final class GooglePlacesManager: ObservableObject {
     
-    @Published var placesReturned: [Place] = []
+    @Published var placesReturned = [APIPlace]()
     static let shared = GooglePlacesManager()
     
     let client = GMSPlacesClient.shared()
@@ -50,7 +40,7 @@ final class GooglePlacesManager: ObservableObject {
 //
 //    }
     
-    func findPlaces(query: String, completion: @escaping (Result<[Place], Error>) -> Void) {
+    func findPlaces(query: String, completion: @escaping (Result<[APIPlace], Error>) -> Void) {
         
         let filter = GMSAutocompleteFilter()
 //        filter.type = .geocode
@@ -61,7 +51,7 @@ final class GooglePlacesManager: ObservableObject {
                 return
             }
             self.placesReturned = results.compactMap({
-                Place(
+                APIPlace(
                     name: $0.attributedFullText.string,
                     type: $0.types,
                     identifier: $0.placeID

@@ -46,21 +46,22 @@ struct NewPlaceSearchView: View {
                     }
                     
                     NewPlaceSearchTextView(frameType: "oneline", suggestionString: "Search (But temp place name", input: $searchString)
-                    Spacer()
-                    Spacer()
-                    
-                    Group {
-                    
-                        NewPlaceTextView(frameType: "oneline", suggestionString: "Type Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeType)
-                        
-                        NewPlaceTextView(frameType: "oneline", suggestionString: "City Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeSuburb)
-                        
-                        NewPlaceTextView(frameType: "oneline", suggestionString: "State Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeState)
-                        
-                        NewPlaceTextView(frameType: "oneline", suggestionString: "Country Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeCountry)
-                        
-                        
-                    }
+                    DynamicSearchResultsTable()
+//                    Spacer()
+//                    Spacer()
+//
+//                    Group {
+//
+//                        NewPlaceTextView(frameType: "oneline", suggestionString: "Type Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeType)
+//
+//                        NewPlaceTextView(frameType: "oneline", suggestionString: "City Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeSuburb)
+//
+//                        NewPlaceTextView(frameType: "oneline", suggestionString: "State Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeState)
+//
+//                        NewPlaceTextView(frameType: "oneline", suggestionString: "Country Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeCountry)
+//
+//
+//                    }
                     Spacer()
                     
                     PlaceCardInActiveSearchView()
@@ -68,6 +69,7 @@ struct NewPlaceSearchView: View {
 
 
                         .onTapGesture {
+                            
                             newPlaceVM.goToConfigView = true
 //                            newPlaceVM.commitOptionalToPlace(stringToCommit: typeName, stringPropertyToCommitTo: "placeType", intToCommit: nil, intPropertyToCommitTo: nil)
 //                            newPlaceVM.commitOptionalToPlace(stringToCommit: cityName, stringPropertyToCommitTo: "placeSuburb", intToCommit: nil, intPropertyToCommitTo: nil)

@@ -13548,6 +13548,7 @@
 		94F2EF952EF818AE9A0210BACF3F4CFA /* FIRUserMetadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRUserMetadata.h; path = FirebaseAuth/Sources/Public/FirebaseAuth/FIRUserMetadata.h; sourceTree = "<group>"; };
 		94F7B47364AA084B78382A8202DFEAE2 /* pt.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = pt.lproj; path = Auth/FirebaseAuthUI/Strings/pt.lproj; sourceTree = "<group>"; };
 		94FBF49330DF74F293F05AF3F1EA04CA /* FIRGitHubAuthProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FIRGitHubAuthProvider.m; path = FirebaseAuth/Sources/AuthProvider/GitHub/FIRGitHubAuthProvider.m; sourceTree = "<group>"; };
+		94FCA66B267C448500945FF9 /* APIPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIPlace.swift; path = ../ThereNoLogin/Models/APIPlace.swift; sourceTree = "<group>"; };
 		9505C53C534A059B14FE209B914181E8 /* fa.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = fa.lproj; path = PhoneAuth/FirebasePhoneAuthUI/Strings/fa.lproj; sourceTree = "<group>"; };
 		950F96970DE0F160EE3EC847F36C8325 /* FirebaseUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FirebaseUI.debug.xcconfig; sourceTree = "<group>"; };
 		9540DBF4CA8247FF02229CEEE6B2D451 /* bn.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = bn.lproj; path = FacebookAuth/FirebaseFacebookAuthUI/Strings/bn.lproj; sourceTree = "<group>"; };
@@ -21331,6 +21332,7 @@
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
+				94FCA66B267C448500945FF9 /* APIPlace.swift */,
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				4855B3750267E9745D31B4BD6E04E673 /* Frameworks */,
 				97A6EFC89DA2BB01DA4936734B002C79 /* Pods */,
