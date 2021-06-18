@@ -16,7 +16,9 @@ class LoginAuthViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var errorMessage: String?
     
-    init() {}
+    init() {
+        loggedIn = Auth.auth().currentUser != nil ? true : false
+    }
     
     func checkLogin() {
         

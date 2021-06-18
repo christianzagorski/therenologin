@@ -131,6 +131,9 @@ struct BeenWantView: View {
                         .onTapGesture {
                             newPlaceVM.showNewPlace.toggle()
                         }
+                        .onAppear() {
+                        firebaseCall.testMyFirebasePhotoJpg()
+                    }
 
                 } // End ZStack
                 

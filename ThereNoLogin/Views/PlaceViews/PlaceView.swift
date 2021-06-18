@@ -16,10 +16,12 @@ struct PlaceView: View {
     var place: TherePlace
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     @EnvironmentObject var currentUserAuth: LoginAuthViewModel
+    @EnvironmentObject var firebaseCall: FirebaseDataProcessor
     
     var body: some View {
         VStack {
             Group {
+                Image(uiImage: firebaseCall.myImage)
                 Text("Name: \(place.placeName)")
                 if let placePropertyIfExists = place.placeType {
                     Text("Type: \(placePropertyIfExists)")
@@ -53,11 +55,7 @@ struct PlaceView: View {
                     Text("CountryCode is nil")
                 }
             } // End Group
-            .onAppear(perform: {
-                print("after 2 \(currentUserAuth.loggedIn)")
-                print("current user")
-                print(Auth.auth().currentUser ?? "Anonymous")
-            })
+            
             Group {
                 if let placePropertyIfExists = place.commentPublic {
                     Text("Public Comment: \(placePropertyIfExists)")

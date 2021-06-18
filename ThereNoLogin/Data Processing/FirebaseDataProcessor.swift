@@ -21,6 +21,7 @@ class FirebaseDataProcessor: ObservableObject {
     let db = Firestore.firestore()
     @Published var currentUsername: String = ""
     @Published var loadingComplete = true // TODO - need to fix the loading pattern
+    @Published var myImage = UIImage()
 //    var loadedPlace: TherePlace
     
 // MARK - loadUserData
@@ -76,8 +77,6 @@ class FirebaseDataProcessor: ObservableObject {
         let fullrefplacesIndex = db.collection("users").document(currentUserId!.uid).collection("places").document("placesIndex")
       
         fullrefplacesIndex.getDocument { (document, error) in
-            
-//            while document == nil {}
                         
                 if let document = document, document.exists {
                     
@@ -172,16 +171,16 @@ class FirebaseDataProcessor: ObservableObject {
     } // End testReferences method
     
     // TODO - fix for storage
-    func testMyFirebasePhotoJpg() -> UIImage {
+    func testMyFirebasePhotoJpg() {
 
         let storageRef = storage.reference()
         let imagesRef = storageRef.child("images")
         let imagefileRef = imagesRef.child("chowchilla.jpg")
         
-        var myImage = UIImage()
+        
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
         print("line before getData call")
-        imagefileRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+        imagefileRef.getData(maxSize: 1 * 1024 * 1024) { data1, error in
         print("line after getData call")
           if let error = error {
             
@@ -190,12 +189,12 @@ class FirebaseDataProcessor: ObservableObject {
           } else {
             // Data for "images/island.jpg" is returned
             print("line before storing the image to a property")
-            let image = UIImage(data: data!)
-            myImage = image!
+//            let image = UIImage(data: data!)
+            let image = UIImage(data:data1!,scale:1.0)
+            self.myImage = image!
           }
         }
         
-        return myImage
     } // end testMyFirebasePhotoJpg method
 
     // TODO - incorporate into 'loadUserData' method
@@ -220,6 +219,10 @@ class FirebaseDataProcessor: ObservableObject {
     
     // TODO - move code that checks places index and creates if needed from savePlacetocurrent user so that it can be used by loadcurrentuser and other methods if needed
     func checkPlacesIndex () {} // End checkPlacesIndex method
+    
+    // TODO - initial thoughts around data flow for storage:
+    
+        // 1. after login, upon loading beenwant, or when a new place is added,
 
 } // end FirebaseDataProcessor Class
 

@@ -11,6 +11,7 @@ import SwiftUI
 import Foundation
 import Firebase
 import Combine
+import GooglePlaces
 
 
 @main
@@ -20,6 +21,8 @@ struct ThereNoLoginApp: App {
     @StateObject var firebaseCall = FirebaseDataProcessor()
     @StateObject var currentUserAuth = LoginAuthViewModel()
     @StateObject var newPlaceVM = NewPlaceViewModel()
+    @StateObject var placesAPICall = GooglePlacesManager()
+    let key = GMSPlacesClient.provideAPIKey("AIzaSyCJIUR-VTJ2RNJtyFLiI2EfeIMgct5HH6Y") // AIzaSyCJIUR-VTJ2RNJtyFLiI2EfeIMgct5HH6Y - real key for travel gems
     
     
     init () {
@@ -34,6 +37,7 @@ struct ThereNoLoginApp: App {
                     .environmentObject(currentUserAuth)
                     .environmentObject(firebaseCall)
                     .environmentObject(newPlaceVM)
+                    .environmentObject(placesAPICall)
             
         }
     }

@@ -17,6 +17,7 @@ struct NewPlaceSearchView: View {
     @State var countryName: String = ""
     @State var stateName: String = ""
     @State var typeName: String = ""
+    @State var searchString: String = ""
     
     var body: some View {
         
@@ -44,7 +45,7 @@ struct NewPlaceSearchView: View {
                         Spacer()
                     }
                     
-                    NewPlaceTextView(frameType: "oneline", suggestionString: "Search (But temp place name", input: $newPlaceVM.aNewPlaceNoOptionals.placeName)
+                    NewPlaceSearchTextView(frameType: "oneline", suggestionString: "Search (But temp place name", input: $searchString)
                     Spacer()
                     Spacer()
                     

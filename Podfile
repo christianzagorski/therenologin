@@ -14,6 +14,7 @@ pod 'Firebase/Storage'
 pod 'Firebase/Auth'
 pod 'FirebaseUI' 
 pod 'FirebaseFirestoreSwift', '> 7.0-beta'
+pod 'GooglePlaces'
 
 
   target 'ThereNoLoginTests' do

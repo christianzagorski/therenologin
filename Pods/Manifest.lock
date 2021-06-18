@@ -364,6 +364,9 @@ PODS:
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (~> 1.2)
+  - GoogleMaps/Base (4.2.0)
+  - GooglePlaces (4.2.0):
+    - GoogleMaps/Base (= 4.2.0)
   - GoogleSignIn (5.0.2):
     - AppAuth (~> 1.2)
     - GTMAppAuth (~> 1.0)
@@ -434,6 +437,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - FirebaseFirestoreSwift (> 7.0-beta)
   - FirebaseUI
+  - GooglePlaces
 
 SPEC REPOS:
   trunk:
@@ -456,6 +460,8 @@ SPEC REPOS:
     - FirebaseUI
     - GoogleAppMeasurement
     - GoogleDataTransport
+    - GoogleMaps
+    - GooglePlaces
     - GoogleSignIn
     - GoogleUtilities
     - "gRPC-C++"
@@ -487,6 +493,8 @@ SPEC CHECKSUMS:
   FirebaseUI: 59db3d833773f985550897d54ceb811ba37fb9a5
   GoogleAppMeasurement: fd19169c3034975cb934e865e5667bfdce59df7f
   GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
+  GoogleMaps: eb03e327edfd70b06de1e6e321653f73712df7ad
+  GooglePlaces: 196a9dd88580dcb3f3df46f415057703d0d2a310
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: e1d9ed4e544fc32a93e00e721400cbc3f377200d
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
@@ -498,6 +506,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: d84ed2f8ec27dcaa398f2def6ed5b82ffa586ba7
+PODFILE CHECKSUM: 4ca077f91ce14c9140584b6279649b645dc61897
 
 COCOAPODS: 1.10.1
