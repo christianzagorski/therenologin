@@ -132,8 +132,8 @@ struct BeenWantView: View {
                             newPlaceVM.showNewPlace.toggle()
                         }
                         .onAppear() {
-                        firebaseCall.testMyFirebasePhotoJpg()
-                    }
+                        firebaseCall.testMyFirebasePhotoJpg() // Temp to load image into place view
+                        }
 
                 } // End ZStack
                 

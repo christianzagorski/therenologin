@@ -19,12 +19,10 @@ class TherePlaceViewModel: ObservableObject {
     
     // TODO - Assume all the firebase calls will come in here.
     
-    // Initializer gets the data from the local json file, and creates an array of places for the favorites tab.
+    // Pre to Firebase being loaded, the initializer got the data from the local json file, and creates an array of places for the favorites tab.
     init() {
 //        self.placesArray = JsonDataProcessor.getLocalData()
-        
         tabArrayFilter(whichTab: 1)
-        
     }
     
     func loadUserPlaces(firebaseLoadedPlaces: [TherePlace]) {

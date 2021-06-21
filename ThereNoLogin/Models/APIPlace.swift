@@ -14,5 +14,7 @@ struct APIPlace: Identifiable {
         var type: [String]
         var identifier: String
         var country: String?
+        var city: String?
+        var addresscomp: String?
     
 } // End Struct

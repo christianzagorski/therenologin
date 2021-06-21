@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LaunchView3: View {
+struct LaunchView: View {
     
     @State var createFormShowing = false
     @EnvironmentObject var allPlaces: TherePlaceViewModel
@@ -20,6 +20,7 @@ struct LaunchView3: View {
             
         Group { // Group 1
         
+        // Launch view first checks to see if a user in logged in
         if !currentUserAuth.loggedIn {
                 Group { //Group 2
                     switch logOrCreate {
@@ -45,14 +46,14 @@ struct LaunchView3: View {
             else {
                 BeenWantView()
                     .onAppear {
-                        firebaseCall.loadUserPlaces(userCompletionHandler: {loadedUserPlaces, error in
+                        firebaseCall.loadUserPlaces(userCompletionHandler: { loadedUserPlaces, error in
                             if let loadedUserPlaces = loadedUserPlaces {
                                 self.allPlaces.loadUserPlaces(firebaseLoadedPlaces: loadedUserPlaces)
                             }
                             
                         }) // end loadUserPlaces in firebaseCall
                     }
-                //LoadingView()
+                
                 
             } // End Else
         
@@ -65,8 +66,4 @@ struct LaunchView3: View {
     
 } // End Struct
 
-struct LaunchView3_Previews: PreviewProvider {
-    static var previews: some View {
-        LaunchView3()
-    }
-}
+

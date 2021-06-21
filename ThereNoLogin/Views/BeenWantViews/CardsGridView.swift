@@ -36,6 +36,7 @@ struct CardsGridView: View {
                                     
                                 } // End label for Navigation Link
                                 
+                                
                             ) // End Argument list for Navigation Link
 
                         } // End ForEach
@@ -48,6 +49,7 @@ struct CardsGridView: View {
             //.navigationBarTitle("")
             .navigationBarHidden(true)
             .background(Color.gray.opacity(0.15))
+            
             
             
         } // End Navigation View

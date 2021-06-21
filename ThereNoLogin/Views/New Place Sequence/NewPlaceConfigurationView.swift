@@ -12,6 +12,7 @@ struct NewPlaceConfigurationView: View {
     @EnvironmentObject var firebaseCall: FirebaseDataProcessor
     @EnvironmentObject var newPlaceVM: NewPlaceViewModel
     @EnvironmentObject var allPlaces: TherePlaceViewModel
+    @EnvironmentObject var placesAPICall: GooglePlacesManager
     @State var privateTab: Bool = true
     @State var commentPublic: String = ""
     @State var commentPrivate: String = ""
@@ -40,6 +41,9 @@ struct NewPlaceConfigurationView: View {
             
             Group { // Group 2
                 PlaceCardInActiveSearchView()
+                    .onTapGesture {
+                        
+                    }
 //                placeTypeToDisplay: $newPlaceVM.aNewPlaceNoOptionals.placeType, placeCountryToDisplay: $newPlaceVM.aNewPlaceNoOptionals.placeCountry, placeNameToDisplay: $newPlaceVM.aNewPlaceNoOptionals.placeName)
                 
                 Spacer()

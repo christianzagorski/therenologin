@@ -10,25 +10,32 @@ import SwiftUI
 struct DynamicSearchResultsTable: View {
 
     @EnvironmentObject var placesAPICall: GooglePlacesManager
+    @EnvironmentObject var newPlaceVM: NewPlaceViewModel
 //    let testarray: = ["1","2","3","4","5"]
 
     var body: some View {
         
-        VStack {
-            List(placesAPICall.placesReturned) { placesCall in
-                HStack {
-    
-                    Text(placesCall.name)
-//                    Text(placesCall.type)
-                } // End HStack
-//                .onTapGesture {
-////                    
-//                }
-                
-            } // End List
-
-        } // End VStack
+        NavigationView {
+            VStack {
+                List(placesAPICall.placesReturned) { placesCall in
+                    HStack {
         
+                        Text(placesCall.name)
+    //                    Text(placesCall.type)
+                    } // End HStack
+                    .onTapGesture {
+                        placesAPICall.placeID = placesCall.identifier
+                        placesAPICall.detailsCall(placeID: placesAPICall.placeID)
+                        newPlaceVM.goToConfigView = true
+                        
+                    }
+                    
+                } // End List
+
+            } // End VStack
+        
+        } // End Navigation View
+            
     } // End var body
 } // End Struct
 

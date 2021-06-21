@@ -11,14 +11,19 @@ import FirebaseAuth
 
 class LoginAuthViewModel: ObservableObject {
 
+// MARK - Properties Declaration
+
     @Published var loggedIn = true
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var errorMessage: String?
     
-    init() {
-        loggedIn = Auth.auth().currentUser != nil ? true : false
-    }
+// MARK - Initializer
+    
+    // Initializer checks to see if there is a user logged in.
+    init() { loggedIn = Auth.auth().currentUser != nil ? true : false }
+    
+// MARK - Methods
     
     func checkLogin() {
         
@@ -26,37 +31,35 @@ class LoginAuthViewModel: ObservableObject {
         
     } // End func checkLogin
     
+    // signIn method is called when logging in. It passes email and password.
     func signIn() {
         
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
-//        DispatchQueue.main.async {
             guard error == nil else {
                 self.errorMessage = error!.localizedDescription
                 return
             }
         }
+        
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
                 self.checkLogin()
-                
-                
             }
         }
+        
     } // End signIn Function
     
+    // createAccount method is called from the create account View. Note that the this view model only creates the account. A separate function is called to store other user data (name) in the firebase ViewModel
     func createAccount() {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             
             DispatchQueue.main.async {
                 if error == nil {
-//                    self.createFormShowing = false
                     Auth.auth().addStateDidChangeListener { (auth, user) in
                         if user != nil {
                             self.checkLogin()
-                            
                         }
                     }
-    
                 }
                 else {
                     self.errorMessage = error!.localizedDescription
@@ -65,4 +68,5 @@ class LoginAuthViewModel: ObservableObject {
             
         }
     } // End CreatAccount Method
-}
+
+} // End Class LoginAuthViewModel

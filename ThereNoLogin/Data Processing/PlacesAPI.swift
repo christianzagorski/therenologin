@@ -27,18 +27,17 @@ final class GooglePlacesManager: ObservableObject {
     
     @Published var placesReturned = [APIPlace]()
     static let shared = GooglePlacesManager()
-    
     let client = GMSPlacesClient.shared()
+    var placeID: String = ""
+    
+    var addressFull: String = ""
+    let token = GMSAutocompleteSessionToken.init()
     
     init() {}
     
     enum placeserror: Error {
         case failedtofind
     }
-//    public func setup() {
-//        GMSPlacesClient.provideAPIKey("AIzaSyCJIUR-VTJ2RNJtyFLiI2EfeIMgct5HH6Y") // AIzaSyCJIUR-VTJ2RNJtyFLiI2EfeIMgct5HH6Y - real key for travel gems
-//
-//    }
     
     func findPlaces(query: String, completion: @escaping (Result<[APIPlace], Error>) -> Void) {
         
@@ -57,17 +56,45 @@ final class GooglePlacesManager: ObservableObject {
                     identifier: $0.placeID
                     
                 )
+                
             })
+            
             completion(.success(self.placesReturned))
             
         }
         
+    } // End findPlaces Method
+    
+    func detailsCall(placeID: String) {
+        
+
+        // Specify the place data types to return.
+//        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
+//                                                    UInt(GMSPlaceField.placeID.rawValue))
+
+        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |  UInt(GMSPlaceField.addressComponents.rawValue) |  UInt(GMSPlaceField.formattedAddress.rawValue) |  UInt(GMSPlaceField.coordinate.rawValue) |  UInt(GMSPlaceField.businessStatus.rawValue) |  UInt(GMSPlaceField.rating.rawValue))
+
         
         
-        
+        client.fetchPlace(fromPlaceID: placeID, placeFields: fields, sessionToken: token, callback: {
+          (place: GMSPlace?, error: Error?) in
+          if let error = error {
+            print("An error occurred: \(error.localizedDescription)")
+            return
+          }
+          if let place = place {
+            print("The selected detail place is: \(String(describing: place.name))")
+            print("array of detail place \(place)")
+            self.addressFull = place.formattedAddress ?? "nil"
+            print("The selected detail place is: \(String(describing: place.rating))")
+            print("The selected detail place is: \(String(describing: place.addressComponents))")
+            print("The selected detail place is: \(String(describing: place.businessStatus))")
+            print("The selected detail place is: \(String(describing: place.formattedAddress))")
+          }
+        })
     }
     
-    }
+} // End Class
     
 
 

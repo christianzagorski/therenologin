@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Add powered by google image
 struct NewPlaceSearchTextView: View {
     
     @EnvironmentObject var placesAPICall: GooglePlacesManager
@@ -39,7 +40,11 @@ struct NewPlaceSearchTextView: View {
                     switch result {
                         case .success(let returnedPlacesArray):
 //                            print(returnedPlacesArray[0].type)
-                           myreturnedPlacesArray = returnedPlacesArray
+//e                            print(returnedPlacesArray[0].addresscomp)
+                            myreturnedPlacesArray = returnedPlacesArray
+//                            placesAPICall.detailsCall(placesArray: returnedPlacesArray, completion: { result in
+//                                
+//                            })
                         case .failure(let error):
                             print(error.localizedDescription)
                     }

@@ -4,7 +4,8 @@
 //
 //  Created by Christian Zagorski on 4/26/21.
 //
-// Handles all data queries and writes to Firestore and Firebase Storage
+
+//  This Class handles all data queries and writes to Firestore but NOT Firebase Storage
 
 import Foundation
 import SwiftUI
@@ -17,46 +18,55 @@ import FirebaseFirestoreSwift
 class FirebaseDataProcessor: ObservableObject {
     
 // MARK - Properties
+    
     let storage = Storage.storage()
     let db = Firestore.firestore()
     @Published var currentUsername: String = ""
     @Published var loadingComplete = true // TODO - need to fix the loading pattern
     @Published var myImage = UIImage()
-//    var loadedPlace: TherePlace
     
-// MARK - loadUserData
+// MARK - Methods
+    
+    // TODO - When we get some user data to load
     func loadUserData() {}
     
-// MARK - loadUserPlaces
+    // Method is called when the BeenWantView is loaded, following a succesful auth check.
     func loadUserPlaces(userCompletionHandler: @escaping ([TherePlace]?, Error?) -> Void) {
 
         let currentUserId = Auth.auth().currentUser
-        let places = db.collection("users").document(currentUserId!.uid).collection("places") // Places Collection
+        
+        // Places Collection reference
+        // Note method can only be called after a succesful Auth check, hence OK to unwrap currentUserId.
+        let places = db.collection("users").document(currentUserId!.uid).collection("places")
+        
+        // whereField method is a filter, in this case if the document doesnt have a placeName property, it is not included. This is done in this instance to remove the placesIndex document.
         let placesWithoutIndex = places.whereField("placeName", isNotEqualTo: "")
+        
         var placesArray = [TherePlace]()
         
         placesWithoutIndex.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
-            } else {
+            }
+            
+            // If there is no error (err is nil) it saves each document as a 'TherePlace' object, appending it to an array.
+            // Note that the TherePlace is codeable, meaning we can do this.
+            else {
                 for document in querySnapshot!.documents {
-//                        print("\(document.documentID) => \(document.data())")
                     
                     let result = Result { try document.data(as: TherePlace.self) }
                        switch result {
                        case .success(let placeToSave):
-                           if let placeToSave = placeToSave {
-                            var placeToSaveVar = placeToSave
-                            placeToSaveVar.imageName = "hawaiijump" // TODO fix with firebase Storage
-                            placesArray.append(placeToSaveVar)
-                            
-                           } else {
-                               // A nil value was successfully initialized from the DocumentSnapshot,
-                               // or the DocumentSnapshot was nil.
-                               print("Document does not exist")
+                           if var placeToSave = placeToSave {
+                                placeToSave.imageName = "hawaiijump" // TODO fix with firebase Storage
+                                placesArray.append(placeToSave)
                            }
+                           
+                           // A nil value was successfully initialized from the DocumentSnapshot, or snapshot was nil
+                           else { print("Document does not exist") }
+                       
                        case .failure(let error):
-                           // A `place` value could not be initialized from the DocumentSnapshot.
+                           // A 'place' value could not be initialized from the DocumentSnapshot.
                            print("Error decoding city: \(error)")
                        } // end switch
                     
@@ -67,25 +77,28 @@ class FirebaseDataProcessor: ObservableObject {
         
     } // End func loadUserPlaces
     
-    
+    // Method is called when the user clicks the add new place button from the new place view sequece.
     func savePlaceToCurrentUser(newPlace: [String: Any]) {
         
         var docId: String = "" // Document ID
         var numberOfPlaces: Int = 0 // Number of places in placesIndexRef
         let currentUserId = Auth.auth().currentUser // Current User ID
-        let places = db.collection("users").document(currentUserId!.uid).collection("places") // Places Collection
-        let fullrefplacesIndex = db.collection("users").document(currentUserId!.uid).collection("places").document("placesIndex")
+        let placesRef = db.collection("users").document(currentUserId!.uid).collection("places") // Places Collection
+        
+        // placesIndex document is a dictionary map that has the doc id for each place document stored in the same collection.
+        let placesIndexRef = db.collection("users").document(currentUserId!.uid).collection("places").document("placesIndex")
       
-        fullrefplacesIndex.getDocument { (document, error) in
+        placesIndexRef.getDocument { (document, error) in
                         
-                if let document = document, document.exists {
+                if let document = document, document.exists { // Checks to make sure document exists
                     
                     let dataDescription = document.data()
-                    numberOfPlaces = dataDescription?.count ?? 0
-                    setNewPlacetoDoc()
+                    numberOfPlaces = dataDescription?.count ?? 0 // counts the number of key / value pairs
+                    setNewPlacetoDoc() // once we have the number of places we can call the sub function to save that new place
+                
                 } else {
                     print("places index Document does not exist")
-                    fullrefplacesIndex.setData([:]) { err in
+                    placesIndexRef.setData([:]) { err in
                         numberOfPlaces = 0
                         setNewPlacetoDoc()
                     }
@@ -97,30 +110,21 @@ class FirebaseDataProcessor: ObservableObject {
         func setNewPlacetoDoc() {  // Sub method
             
             // This section saves document of the place to the collection, and gets the doc id.
-                // create empty document
-            let newDoc = places.document()
+            let newDoc = placesRef.document()  // create empty document
                 // get the new document ID
             docId = newDoc.documentID
             
-    //            // Set the newPlace to the new document
+            // Set the newPlace to the new document
             newDoc.setData(newPlace) { err in
-                if let err = err {
-                    print("Error writing newPlace document: \(err)")
-                }
-                else {
-                    print("New Place Document successfully written!")
-                }
+                if let err = err { print("Error writing newPlace document: \(err)")}
+                else { print("New Place Document successfully written!") }
             }
    
             // Add newplace documentID to the placesIndex document
-    
-                fullrefplacesIndex.updateData([String(numberOfPlaces + 1): docId]) { err in
-                    if let err = err {
-                        print("Error updating placesIndex document: \(err)")
-                    }
-                    else {
-                        print("newPlace DocumentID successfully updated to the placesIndex document")
-                    }
+            // TODO - remove placesIndex alltogether - dont need it its a server call that is not required
+                placesIndexRef.updateData([String(numberOfPlaces + 1): docId]) { err in
+                    if let err = err { print("Error updating placesIndex document: \(err)") }
+                    else { print("newPlace DocumentID successfully updated to the placesIndex document") }
                 } // End updataData submethod
         
         } // end setNewPlaceToDoc sub method
@@ -131,32 +135,22 @@ class FirebaseDataProcessor: ObservableObject {
     func getCurrentUsername() {
         
         let currentUserId = Auth.auth().currentUser
-        
         let document = db.collection("users").document(currentUserId?.uid ?? "nil")
         
         document.getDocument { (docSnapshot, error) in
-            //Check for error and handle
-            
-            if let error = error {
-                // handle error
-                print("error getting document from firebase: \(error.localizedDescription)")
-                
-            } else if let docSnapshot = docSnapshot {
-                if let userData = docSnapshot.data() {
-                    self.currentUsername = userData["name"] as! String // TODO fix force unwrap here
-                }
-                else {
-                    self.currentUsername = "nilname"
-                }
+            if let error = error { print("error getting users name from firebase: \(error.localizedDescription)")}
+            else if let docSnapshot = docSnapshot {
+                if let userData = docSnapshot.data() { self.currentUsername = userData["name"] as! String }
+                else { self.currentUsername = "nilname" }
         
-            } else {
-                // No data returned, handle appropriately
-                print("error: no data returned from document call")
-            }
+            } else { print("error: no data returned from document call") } // No data returned
+        
         } // end getDocument call
         
     } // End getCurrentUsername method
-   
+
+    
+    
     // TODO - This is for storage
     func testReferences() {
         let storageRef = storage.reference()
