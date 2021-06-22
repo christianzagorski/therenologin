@@ -40,7 +40,7 @@ struct NewPlaceConfigurationView: View {
             } // End group 1
             
             Group { // Group 2
-                PlaceCardInActiveSearchView()
+                PlaceCardInActiveSearchView(name: placesAPICall.apiPlaceToBeSaved.name!, country: placesAPICall.apiPlaceToBeSaved.country!)
 //                    .onTapGesture {
 //                        
 //                    }

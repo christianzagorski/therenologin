@@ -25,8 +25,7 @@ struct TherePlace: Identifiable, Codable  {
     var placeState: String?
     var placeCountry: String?
     var placeCountryCode: Int?
-    var latGPS: Float16?
-    var lonGPS: Float16?
+    var coordinates: [Double]?
     var dateVisitedStart: Date?
     var dateVisitedEnd: Date?
     var timeVisitedStart: Date?

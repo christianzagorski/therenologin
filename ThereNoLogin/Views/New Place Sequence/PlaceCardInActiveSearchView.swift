@@ -10,6 +10,9 @@ import SwiftUI
 struct PlaceCardInActiveSearchView: View {
     
     @EnvironmentObject var newPlaceVM: NewPlaceViewModel
+    @EnvironmentObject var placesAPICall: GooglePlacesManager
+    var name: String
+    var country: String
     
     var body: some View {
         HStack {
@@ -19,10 +22,10 @@ struct PlaceCardInActiveSearchView: View {
                 .cornerRadius(10.0)
                 .padding(.leading)
             VStack (alignment: .leading) {
-                Text(verbatim: newPlaceVM.aNewPlaceNoOptionals.placeName)
+                Text(verbatim: name)
                     .font(Font.title2.weight(.bold))
                     .padding(.bottom, 5)
-                Text("\(newPlaceVM.aNewPlaceNoOptionals.placeType) in \(newPlaceVM.aNewPlaceNoOptionals.placeCountry)")
+                Text("A Hike in \(country)")
                     .font(Font.headline.weight(.light))
                     
             }

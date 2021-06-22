@@ -43,8 +43,8 @@ struct NewPlaceSearchView: View {
                     DynamicSearchResultsTable()
                     Spacer()
                     
-                    PlaceCardInActiveSearchView()
-                        .onTapGesture { newPlaceVM.goToConfigView = true }
+//                    PlaceCardInActiveSearchView()
+//                        .onTapGesture { newPlaceVM.goToConfigView = true }
                     
                     Spacer()
                     

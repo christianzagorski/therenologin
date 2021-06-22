@@ -28,6 +28,7 @@ final class GooglePlacesManager: ObservableObject {
     @Published var placesReturned = [APIPlace]()
     static let shared = GooglePlacesManager()
     let client = GMSPlacesClient.shared()
+    var apiPlaceToBeSaved = APIPlace()
     var placeID: String = ""
     
     var addressFull: String = ""
@@ -65,9 +66,10 @@ final class GooglePlacesManager: ObservableObject {
         
     } // End findPlaces Method
     
-    func detailsCall(placeID: String) {
+    func detailsCall(placeID: String, userCompletionHandler: @escaping (APIPlace?, Error?) -> Void) {
         
-        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |  UInt(GMSPlaceField.addressComponents.rawValue) |  UInt(GMSPlaceField.formattedAddress.rawValue) |  UInt(GMSPlaceField.coordinate.rawValue) |  UInt(GMSPlaceField.businessStatus.rawValue) |  UInt(GMSPlaceField.rating.rawValue))
+        
+        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |  UInt(GMSPlaceField.addressComponents.rawValue) |  UInt(GMSPlaceField.formattedAddress.rawValue) |  UInt(GMSPlaceField.coordinate.rawValue) |  UInt(GMSPlaceField.businessStatus.rawValue) |  UInt(GMSPlaceField.rating.rawValue) | UInt(GMSPlaceField.photos.rawValue))
 
         client.fetchPlace(fromPlaceID: placeID, placeFields: fields, sessionToken: token, callback: {
           (place: GMSPlace?, error: Error?) in
@@ -78,13 +80,52 @@ final class GooglePlacesManager: ObservableObject {
           if let place = place {
             print("array of detail place \(place)")
             print("NAME is: \(String(describing: place.name))")
-            self.addressFull = place.formattedAddress ?? "nil"
             print("RATING is: \(Float16(place.rating))")
             print("ADDRESS COMPONENTS is: \(String(describing: place.addressComponents))")
             print("BUSINESS STATUS is: \(String(describing: place.businessStatus))")
             print("FORMATTED ADDRESS is: \(String(describing: place.formattedAddress))")
+            self.addressFull = place.formattedAddress ?? "nil"
+            self.apiPlaceToBeSaved.name = place.name
+            self.apiPlaceToBeSaved.identifier = place.placeID
+            separateAddressComponents(addressComponents: place.addressComponents!)
+            saveCoordinates(coordinates: place.coordinate)
+            userCompletionHandler(self.apiPlaceToBeSaved, nil)
           }
         })
+        
+        
+        func separateAddressComponents(addressComponents: [GMSAddressComponent]) {
+            
+            for addressComponent in addressComponents {
+                        for type in (addressComponent.types){
+
+                            switch(type){
+                                case "country":
+                                    self.apiPlaceToBeSaved.country = addressComponent.name
+
+                                case "administrative_area_level_1":
+                                    self.apiPlaceToBeSaved.state = addressComponent.name
+                                    
+                                case "locality":
+                                    self.apiPlaceToBeSaved.city = addressComponent.name
+
+                            default:
+                                break
+                            }
+
+                        }
+                    }
+        } // End subfunction separateAddressComponents
+        
+        func saveCoordinates(coordinates: CLLocationCoordinate2D) {
+            self.apiPlaceToBeSaved.coordinates?.append(coordinates.latitude)
+            self.apiPlaceToBeSaved.coordinates?.append(coordinates.longitude)
+//            print("lat \(lat)")
+//            print("lon \(lon)")
+            
+            
+        }
+        
     }
     
 } // End Class
