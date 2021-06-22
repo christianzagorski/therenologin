@@ -21,21 +21,3 @@ extension Binding {
     }
 }
 
-//public init?(_ base: Binding<Value?>)
-
-
-//extension Binding {
-//init(_ source: Binding<Value?>, replacingNilWith nilValue: Value) {
-//    self.init(
-//        get: { source.wrappedValue ?? nilValue },
-//        set: { newValue in
-//            if newValue == nilValue {
-//                source.wrappedValue = nil
-//            }
-//            else {
-//                source.wrappedValue = newValue
-//            }
-//    })
-//}
-//}
-

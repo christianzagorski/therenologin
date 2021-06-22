@@ -11,7 +11,6 @@ struct DynamicSearchResultsTable: View {
 
     @EnvironmentObject var placesAPICall: GooglePlacesManager
     @EnvironmentObject var newPlaceVM: NewPlaceViewModel
-//    let testarray: = ["1","2","3","4","5"]
 
     var body: some View {
         
@@ -21,7 +20,6 @@ struct DynamicSearchResultsTable: View {
                     HStack {
         
                         Text(placesCall.name)
-    //                    Text(placesCall.type)
                     } // End HStack
                     .onTapGesture {
                         placesAPICall.placeID = placesCall.identifier

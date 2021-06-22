@@ -12,8 +12,7 @@ import SwiftUI
 struct CardsGridView: View {
     
     @EnvironmentObject var allPlaces: TherePlaceViewModel
-    var layout1: [GridItem] = [GridItem(.flexible(minimum: 40), spacing: -15),GridItem(.flexible(minimum: 40), spacing: -15)]
-        //Array(repeating: .init(.flexible()), count: 2) // Alternative syntax
+    var gridLayout: [GridItem] = [GridItem(.flexible(minimum: 40), spacing: -15),GridItem(.flexible(minimum: 40), spacing: -15)]
     
     var body: some View {
         
@@ -21,7 +20,7 @@ struct CardsGridView: View {
             
             ScrollView {
                     
-                LazyVGrid(columns: layout1, spacing: 10) {
+                LazyVGrid(columns: gridLayout, spacing: 10) {
                     
                     ForEach(allPlaces.filteredArray, id: \.id) {
                             
@@ -30,12 +29,7 @@ struct CardsGridView: View {
                             NavigationLink(
                                 destination: PlaceView(place: placeCard),
                                 
-                                label: {
-                                    
-                                    CardView(card: placeCard)  // each iteration generates one card
-                                    
-                                } // End label for Navigation Link
-                                
+                                label: { CardView(card: placeCard) }
                                 
                             ) // End Argument list for Navigation Link
 
@@ -46,21 +40,11 @@ struct CardsGridView: View {
                 .padding(.bottom, 20)
                 
             } // End ScrollView
-            //.navigationBarTitle("")
             .navigationBarHidden(true)
             .background(Color.gray.opacity(0.15))
-            
-            
             
         } // End Navigation View
 
     } // End body
-    
  
 } // End struct
-
-//struct WantCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        WantCardView()
-//    }
-//}

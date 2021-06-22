@@ -11,71 +11,40 @@ struct NewPlaceSearchView: View {
     
     
     @EnvironmentObject var newPlaceVM: NewPlaceViewModel
-//    @State private var goToConfigView = false
-//    @Binding var showNewPlace: Bool
-    @State var cityName: String = ""
-    @State var countryName: String = ""
-    @State var stateName: String = ""
-    @State var typeName: String = ""
+    @EnvironmentObject var placesAPICall: GooglePlacesManager
     @State var searchString: String = ""
+    @State var myreturnedPlacesArray: [APIPlace] = []
     
     var body: some View {
         
         Group {
-            if newPlaceVM.goToConfigView {
-                
-                NewPlaceConfigurationView()
-                
-            } // End if
+            if newPlaceVM.goToConfigView { NewPlaceConfigurationView() }
             
             else {
                 VStack {
                     HStack {
-                        
-                        Button(action: {
-                            newPlaceVM.showNewPlace = false
-
-                        }, label: {
-                            Image(systemName: "chevron.left")
-                                .padding(.leading)
-                            })
-                        
+                        Image(systemName: "chevron.left")
+                            .onTapGesture { newPlaceVM.showNewPlace = false }
+                            .padding(.leading)
                         Spacer()
                         Text("Add new place")
                         Spacer()
                     }
                     
-                    NewPlaceSearchTextView(frameType: "oneline", suggestionString: "Search (But temp place name", input: $searchString)
+                    NewPlaceTextView(frameType: "oneline", suggestionString: "Search for a place...", input: $searchString)
+                        .onChange(of: searchString) { newValue in
+                            placesAPICall.findPlaces(query: searchString, completion: { result in
+                                switch result {
+                                    case .success(let returnedPlacesArray): myreturnedPlacesArray = returnedPlacesArray
+                                    case .failure(let error): print(error.localizedDescription)
+                                }
+                            }) // End completion handler for findPlaces method
+                        }
                     DynamicSearchResultsTable()
-//                    Spacer()
-//                    Spacer()
-//
-//                    Group {
-//
-//                        NewPlaceTextView(frameType: "oneline", suggestionString: "Type Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeType)
-//
-//                        NewPlaceTextView(frameType: "oneline", suggestionString: "City Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeSuburb)
-//
-//                        NewPlaceTextView(frameType: "oneline", suggestionString: "State Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeState)
-//
-//                        NewPlaceTextView(frameType: "oneline", suggestionString: "Country Temp Input", input: $newPlaceVM.aNewPlaceNoOptionals.placeCountry)
-//
-//
-//                    }
                     Spacer()
                     
                     PlaceCardInActiveSearchView()
-//                    placeTypeToDisplay: $newPlaceVM.aNewPlaceNoOptionals.placeType, placeCountryToDisplay: $newPlaceVM.aNewPlaceNoOptionals.placeCountry, placeNameToDisplay: $newPlaceVM.aNewPlaceNoOptionals.placeName)
-
-
-                        .onTapGesture {
-                            
-                            newPlaceVM.goToConfigView = true
-//                            newPlaceVM.commitOptionalToPlace(stringToCommit: typeName, stringPropertyToCommitTo: "placeType", intToCommit: nil, intPropertyToCommitTo: nil)
-//                            newPlaceVM.commitOptionalToPlace(stringToCommit: cityName, stringPropertyToCommitTo: "placeSuburb", intToCommit: nil, intPropertyToCommitTo: nil)
-//                            newPlaceVM.commitOptionalToPlace(stringToCommit: stateName, stringPropertyToCommitTo: "placeState", intToCommit: nil, intPropertyToCommitTo: nil)
-//                            newPlaceVM.commitOptionalToPlace(stringToCommit: countryName, stringPropertyToCommitTo: "placeCountry", intToCommit: nil, intPropertyToCommitTo: nil)
-                        }
+                        .onTapGesture { newPlaceVM.goToConfigView = true }
                     
                     Spacer()
                     
@@ -89,8 +58,4 @@ struct NewPlaceSearchView: View {
 
 } // End struct
 
-//struct NewPlaceSearchView1_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NewPlaceSearchView(false)
-//    }
-//}
+

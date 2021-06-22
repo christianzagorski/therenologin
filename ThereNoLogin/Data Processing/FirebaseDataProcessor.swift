@@ -104,29 +104,28 @@ class FirebaseDataProcessor: ObservableObject {
                     }
                     
                 }
-            
         } // End full placesIndex creation submodule
         
-        func setNewPlacetoDoc() {  // Sub method
-            
-            // This section saves document of the place to the collection, and gets the doc id.
-            let newDoc = placesRef.document()  // create empty document
-                // get the new document ID
-            docId = newDoc.documentID
-            
-            // Set the newPlace to the new document
-            newDoc.setData(newPlace) { err in
-                if let err = err { print("Error writing newPlace document: \(err)")}
-                else { print("New Place Document successfully written!") }
-            }
-   
-            // Add newplace documentID to the placesIndex document
-            // TODO - remove placesIndex alltogether - dont need it its a server call that is not required
-                placesIndexRef.updateData([String(numberOfPlaces + 1): docId]) { err in
-                    if let err = err { print("Error updating placesIndex document: \(err)") }
-                    else { print("newPlace DocumentID successfully updated to the placesIndex document") }
-                } // End updataData submethod
+    func setNewPlacetoDoc() {  // Sub method
         
+        // This section saves document of the place to the collection, and gets the doc id.
+        let newDoc = placesRef.document()  // create empty document
+            // get the new document ID
+        docId = newDoc.documentID
+        
+        // Set the newPlace to the new document
+        newDoc.setData(newPlace) { err in
+            if let err = err { print("Error writing newPlace document: \(err)")}
+            else { print("New Place Document successfully written!") }
+        }
+
+        // Add newplace documentID to the placesIndex document
+        // TODO - remove placesIndex alltogether - dont need it its a server call that is not required
+            placesIndexRef.updateData([String(numberOfPlaces + 1): docId]) { err in
+                if let err = err { print("Error updating placesIndex document: \(err)") }
+                else { print("newPlace DocumentID successfully updated to the placesIndex document") }
+            } // End updataData submethod
+    
         } // end setNewPlaceToDoc sub method
         
     } // End savePlaceToCurrentUser Method
@@ -149,8 +148,6 @@ class FirebaseDataProcessor: ObservableObject {
         
     } // End getCurrentUsername method
 
-    
-    
     // TODO - This is for storage
     func testReferences() {
         let storageRef = storage.reference()
@@ -173,17 +170,12 @@ class FirebaseDataProcessor: ObservableObject {
         
         
         // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-        print("line before getData call")
         imagefileRef.getData(maxSize: 1 * 1024 * 1024) { data1, error in
-        print("line after getData call")
           if let error = error {
-            
             print("an error occured \(error)")
             // Uh-oh, an error occurred!
           } else {
             // Data for "images/island.jpg" is returned
-            print("line before storing the image to a property")
-//            let image = UIImage(data: data!)
             let image = UIImage(data:data1!,scale:1.0)
             self.myImage = image!
           }

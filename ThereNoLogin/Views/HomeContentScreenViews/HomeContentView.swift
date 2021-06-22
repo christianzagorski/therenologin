@@ -8,30 +8,20 @@
 import SwiftUI
 import FirebaseAuth
 
-struct BeenWantView: View {
+struct HomeContentView: View {
     
-    
-//    @State var showNewPlace = false
     @EnvironmentObject var allPlaces: TherePlaceViewModel
-    @EnvironmentObject var currentUserAuth: LoginAuthViewModel
     @EnvironmentObject var firebaseCall: FirebaseDataProcessor
     @EnvironmentObject var newPlaceVM: NewPlaceViewModel
     @State var selectedTab = 1
     
-    init() {
-            UITabBar.appearance().barTintColor = UIColor.white
-        }
+    init() { UITabBar.appearance().barTintColor = UIColor.white }
     
     var body: some View {
 
         Group { // Using group view to instantiate the NewPlaceSequence when the button is pressed (state value updates)
-            if newPlaceVM.showNewPlace {
-                //NewPlaceSequence()
-                NewPlaceSearchView()
-                    
-                
-            } // End if
-            
+            if newPlaceVM.showNewPlace { NewPlaceSearchView() } // End if
+
             else {
             
                 ZStack {
@@ -40,30 +30,22 @@ struct BeenWantView: View {
                         
                         TopMenuBar() // User Info, map view button & some other info
                         
-                        // The tabview will be the main navigation window. First shows a title, then some sort menus, then the main card grid.
+                        // The tabview will be the main navigation window.
+                        // First shows a title, then some sort menus, then the main card grid.
                         TabView(selection: $selectedTab) {
                             
-                            VStack (alignment: .leading, spacing: 0){  // First tab - favorites
-                                Button {
-                                    
-                                    try! Auth.auth().signOut()
-                                    currentUserAuth.loggedIn = false
-                                    
-                                } label: {
-                                    
-                                    Text("Your Favorites")
-                                }
-//                                    .fontWeight(.bold)
-//                                    .font(.largeTitle)
-//                                    .padding(.leading)
-                                
+                            VStack (alignment: .leading) {  // First tab - favorites
+                               
+                                Text("Your Favorites")
+                                    .fontWeight(.bold)
+                                    .font(.largeTitle)
+                                    .padding(.leading)
+                            
                                 SortMenusView() // Shows two menus for sorting vertically stacked
                                 CardsGridView() // the main view with the places cards.
                             
                             } // End VStack
-                                .tabItem {
-                                    Image(systemName: "heart"); Text("Favorites")
-                                }
+                                .tabItem { Image(systemName: "heart"); Text("Favorites") }
                                 .tag(1) // TODO define an enum in a constants struct and change this for clarity
                                 .padding(.top, 20)
                         
@@ -77,9 +59,7 @@ struct BeenWantView: View {
                                 CardsGridView()
 
                             } // End VStack
-                                .tabItem {
-                                    Image(systemName: "bookmark"); Text("Want to go")
-                                }
+                                .tabItem { Image(systemName: "bookmark"); Text("Want to go") }
                                 .tag(2)
                                 .padding(.top, 20)
 
@@ -93,9 +73,7 @@ struct BeenWantView: View {
                                 CardsGridView()
 
                             } // End VStack
-                                .tabItem {
-                                    Image(systemName: "square.grid.2x2"); Text("Collections")
-                                }
+                                .tabItem { Image(systemName: "square.grid.2x2"); Text("Collections") }
                                 .tag(3)
                                 .padding(.top, 20)
 
@@ -108,12 +86,9 @@ struct BeenWantView: View {
                                 CardsGridView()
 
                             } // End VStack
-                                .tabItem {
-                                    Image(systemName: "magnifyingglass"); Text("Search")
-                                }
+                                .tabItem { Image(systemName: "magnifyingglass"); Text("Search") }
                                 .tag(4)
                                 .padding(.top, 20)
-
 
                         } // End TabView
                         // When tab is pressed, the viewmodel creates a new tabArray specific to the tab being pressed, and defaults to no filters applied.
@@ -128,20 +103,14 @@ struct BeenWantView: View {
                         .foregroundColor(Color.purple)
                         .offset(x: 0, y: 360)
                         .ignoresSafeArea()
-                        .onTapGesture {
-                            newPlaceVM.showNewPlace.toggle()
-                        }
-                        .onAppear() {
-                        firebaseCall.testMyFirebasePhotoJpg() // Temp to load image into place view
-                        }
+                        .onTapGesture { newPlaceVM.showNewPlace.toggle() }
+                        .onAppear() { firebaseCall.testMyFirebasePhotoJpg() }// Temp to load image into place view}
 
                 } // End ZStack
-                
                 
             } // End else
            
         } // End Group
-        
         
     } // End body
     

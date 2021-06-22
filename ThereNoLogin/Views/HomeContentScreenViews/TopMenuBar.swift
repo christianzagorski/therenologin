@@ -6,18 +6,18 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 //  At this stage just a placeholder for user credentials settings and a map view.
 // TODO - May delete for the MVP
 
 struct TopMenuBar: View {
     
-    
+    @EnvironmentObject var currentUserAuth: LoginAuthViewModel
     @EnvironmentObject var firebaseCall: FirebaseDataProcessor
     
     var body: some View {
         HStack {
-            //Image("calea") // Add Image here for login credential photo
             Label {
                 Text(firebaseCall.currentUsername)
                     .font(.body)
@@ -31,9 +31,10 @@ struct TopMenuBar: View {
                         .overlay(Text("CZ"))
                 }
                 .padding(.leading)
-//                .onTapGesture {
-//                    firebaseCall.loadUserPlaces()
-//                }
+                .onTapGesture {
+                    try! Auth.auth().signOut()
+                    currentUserAuth.loggedIn = false
+                }
             
             Spacer()
             Image(systemName: "square.grid.2x2")

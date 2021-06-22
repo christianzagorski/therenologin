@@ -41,9 +41,9 @@ struct NewPlaceConfigurationView: View {
             
             Group { // Group 2
                 PlaceCardInActiveSearchView()
-                    .onTapGesture {
-                        
-                    }
+//                    .onTapGesture {
+//                        
+//                    }
 //                placeTypeToDisplay: $newPlaceVM.aNewPlaceNoOptionals.placeType, placeCountryToDisplay: $newPlaceVM.aNewPlaceNoOptionals.placeCountry, placeNameToDisplay: $newPlaceVM.aNewPlaceNoOptionals.placeName)
                 
                 Spacer()

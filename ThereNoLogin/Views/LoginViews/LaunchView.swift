@@ -20,7 +20,6 @@ struct LaunchView: View {
             
         Group { // Group 1
         
-        // Launch view first checks to see if a user in logged in
         if !currentUserAuth.loggedIn {
                 Group { //Group 2
                     switch logOrCreate {
@@ -44,7 +43,7 @@ struct LaunchView: View {
             } // End If
             
             else {
-                BeenWantView()
+                HomeContentView()
                     .onAppear {
                         firebaseCall.loadUserPlaces(userCompletionHandler: { loadedUserPlaces, error in
                             if let loadedUserPlaces = loadedUserPlaces {
@@ -53,7 +52,7 @@ struct LaunchView: View {
                             
                         }) // end loadUserPlaces in firebaseCall
                     }
-                
+                //LoadingView()
                 
             } // End Else
         
@@ -65,5 +64,3 @@ struct LaunchView: View {
     } // End Body
     
 } // End Struct
-
-

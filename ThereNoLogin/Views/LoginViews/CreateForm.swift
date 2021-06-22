@@ -15,9 +15,10 @@ struct CreateForm: View {
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     @EnvironmentObject var currentUserAuth: LoginAuthViewModel
     @EnvironmentObject var firebaseCall: FirebaseDataProcessor
+    @State var name = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
     @Binding var loginShowing: Int
-    @State var name = "empty"
-    
     @State private var errorMessage: String?
     
     var body: some View {
@@ -27,9 +28,9 @@ struct CreateForm: View {
             Form {
                 
                 Section {
-                    TextField("Email", text: $currentUserAuth.email)
+                    TextField("Email", text: $email)
                     TextField("Name", text: $name)
-                    SecureField("Password", text: $currentUserAuth.password)
+                    SecureField("Password", text: $password)
                 } // End Section
                 
                 if errorMessage != nil {
@@ -41,7 +42,7 @@ struct CreateForm: View {
                 Button(action: {
                     
                     // Create account
-                    currentUserAuth.createAccount()
+                    currentUserAuth.createAccount(email: email, password: password)
                     firebaseCall.saveFirstName(name: name)
                     loginShowing = 0
                     // TODO - need to clear the values in the textfields after committing or cancelling
@@ -65,7 +66,7 @@ struct CreateForm: View {
                     }
                 })
             } // End Form
-//            .navigationBarTitle("Create an Account")
+
             
         }
         

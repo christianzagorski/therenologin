@@ -62,9 +62,3 @@ struct CardView: View {
 
 } // End Struct
 
-//struct CardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CardView()
-//    .environmentObject(TherePlaceViewModel())
-//    }
-//}

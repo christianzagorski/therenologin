@@ -14,6 +14,8 @@ struct LoginForm: View {
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     @EnvironmentObject var currentUserAuth: LoginAuthViewModel
     @EnvironmentObject var firebaseCall: FirebaseDataProcessor
+    @State private var email: String = ""
+    @State private var password: String = ""
     @Binding var loginShowing: Int
     
     var body: some View {
@@ -24,8 +26,8 @@ struct LoginForm: View {
                 Form {
                     
                     Section {
-                        TextField("Email", text: $currentUserAuth.email)
-                        SecureField("Password", text: $currentUserAuth.password)
+                        TextField("Email", text: $email)
+                        SecureField("Password", text: $password)
                         if currentUserAuth.errorMessage != nil {
                             Text(currentUserAuth.errorMessage!)
                         }
@@ -33,7 +35,7 @@ struct LoginForm: View {
                     
                     Button(action: {
                         print("Login button pressed")
-                        currentUserAuth.signIn()
+                        currentUserAuth.signIn(email: email, password: password)
                         
                         Auth.auth().addStateDidChangeListener { (auth, user) in
                             if user != nil {

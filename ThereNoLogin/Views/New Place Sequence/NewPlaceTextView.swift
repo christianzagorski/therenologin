@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct NewPlaceTextView: View {
-    var frameType: String = "oneline"
-    var suggestionString: String
+    
+    var frameType: String // passed in as a parameter
+    var suggestionString: String // passed in as a parameter
     @State var output: String = ""
     @Binding var input: String
-//    @State var input: String = ""
     @State var typing = false
-    @State var output2: String = "this is also some text"
-//    @Binding var textOutput: String
-    
+
     var body: some View {
         VStack {
                 
@@ -24,8 +22,6 @@ struct NewPlaceTextView: View {
                 self.typing = $0
             }, onCommit: {
                 self.output = self.input
-                
-                
             })
 
             .padding()
@@ -46,18 +42,10 @@ struct NewPlaceTextView: View {
                 //Text("You are typing: \(input)")
             }
 
-            // TODO need to work out best approach for multiline because of swiftui contraints
-            //            TextEditor(text: $output2)
-//                        .foregroundColor(.secondary)
         }
 
     } // End body property
     
-//    TextField(suggestion, text: $typingVar, onEditingChanged: { (changed) in
-//                    print("Place Name onEditingChanged - \(changed)")
-//                }) {
-//                    print("Place Name onCommit")
-//                }
 
     func textFieldSize(frameType: String) -> CGFloat {
         let textHeight: Float
@@ -74,8 +62,3 @@ struct NewPlaceTextView: View {
     
 } // End struct NewPlaceSearchView
 
-//struct NewPlaceTextView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NewPlaceSearchView()
-//    }
-//}

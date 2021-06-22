@@ -67,15 +67,8 @@ final class GooglePlacesManager: ObservableObject {
     
     func detailsCall(placeID: String) {
         
-
-        // Specify the place data types to return.
-//        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
-//                                                    UInt(GMSPlaceField.placeID.rawValue))
-
         let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |  UInt(GMSPlaceField.addressComponents.rawValue) |  UInt(GMSPlaceField.formattedAddress.rawValue) |  UInt(GMSPlaceField.coordinate.rawValue) |  UInt(GMSPlaceField.businessStatus.rawValue) |  UInt(GMSPlaceField.rating.rawValue))
 
-        
-        
         client.fetchPlace(fromPlaceID: placeID, placeFields: fields, sessionToken: token, callback: {
           (place: GMSPlace?, error: Error?) in
           if let error = error {
@@ -83,19 +76,15 @@ final class GooglePlacesManager: ObservableObject {
             return
           }
           if let place = place {
-            print("The selected detail place is: \(String(describing: place.name))")
             print("array of detail place \(place)")
+            print("NAME is: \(String(describing: place.name))")
             self.addressFull = place.formattedAddress ?? "nil"
-            print("The selected detail place is: \(String(describing: place.rating))")
-            print("The selected detail place is: \(String(describing: place.addressComponents))")
-            print("The selected detail place is: \(String(describing: place.businessStatus))")
-            print("The selected detail place is: \(String(describing: place.formattedAddress))")
+            print("RATING is: \(Float16(place.rating))")
+            print("ADDRESS COMPONENTS is: \(String(describing: place.addressComponents))")
+            print("BUSINESS STATUS is: \(String(describing: place.businessStatus))")
+            print("FORMATTED ADDRESS is: \(String(describing: place.formattedAddress))")
           }
         })
     }
     
 } // End Class
-    
-
-
-
