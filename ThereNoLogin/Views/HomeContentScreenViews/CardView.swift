@@ -12,6 +12,8 @@ import SwiftUI
 struct CardView: View {
 
     @EnvironmentObject var allPlaces: TherePlaceViewModel
+    @EnvironmentObject var placesAPICall: GooglePlacesManager
+    
     var card: TherePlace
     
     var body: some View {
@@ -23,7 +25,7 @@ struct CardView: View {
             
                 VStack (alignment: .leading) {
                     
-                    Image(card.imageName!) // TODO force unwrapped fix
+                    Image(uiImage: placesAPICall.placePhoto) // TODO force unwrapped fix
                         .resizable()
                         .frame(width: geo.size.width, height: geo.size.height * 0.45)
                         .scaledToFill()
@@ -38,7 +40,7 @@ struct CardView: View {
                         .font(.system(size: 18))
                         
                     
-                    Text("\(card.placeType!) in \(card.placeSuburb!), \(card.placeCountry!)")// TODO Force unwrapped for now
+                    Text("\(card.placeType ?? "nil") in \(card.placeSuburb ?? "nil"), \(card.placeCountry ?? "nil")")// TODO Force unwrapped for now
                         .foregroundColor(Color.gray)
                         .padding(.bottom)
                         .padding(.leading, 15)

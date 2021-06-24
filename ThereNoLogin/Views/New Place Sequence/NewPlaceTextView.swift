@@ -52,7 +52,7 @@ struct NewPlaceTextView: View {
         
         switch frameType {
         case "oneline": textHeight = 40.0
-        case "multi": textHeight = 120.0
+        case "multi": textHeight = 80.0
         default: textHeight = 40.0
         } // End Switch/Case
         				

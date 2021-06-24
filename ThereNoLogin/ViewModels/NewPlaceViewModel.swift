@@ -36,7 +36,8 @@ class NewPlaceViewModel: ObservableObject {
         
         aNewPlace.privateSpot = aNewPlaceNoOptionals.privateSpot
         
-        if aNewPlaceNoOptionals.placeType == "" { self.aNewPlace.placeType = nil }
+        if aNewPlace.placeType != nil { }
+        else if aNewPlaceNoOptionals.placeType == "" { self.aNewPlace.placeType = nil}
         else { aNewPlace.placeType = aNewPlaceNoOptionals.placeType }
         
         if aNewPlaceNoOptionals.placeSuburb == "" { self.aNewPlace.placeSuburb = nil }
@@ -57,8 +58,10 @@ class NewPlaceViewModel: ObservableObject {
         if aNewPlaceNoOptionals.commentPrivate == "" { self.aNewPlace.commentPrivate = nil }
         else { aNewPlace.commentPrivate = aNewPlaceNoOptionals.commentPrivate }
         
-        if aNewPlaceNoOptionals.imageName == "" { self.aNewPlace.imageName = nil }
+        if aNewPlace.imageName != nil { }
+        else if aNewPlaceNoOptionals.imageName == "" { self.aNewPlace.imageName = nil}
         else { aNewPlace.imageName = aNewPlaceNoOptionals.imageName }
+        
         
     } // End Func
     

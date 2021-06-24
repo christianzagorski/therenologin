@@ -17,11 +17,12 @@ struct PlaceView: View {
     @EnvironmentObject var allPlaces: TherePlaceViewModel
     @EnvironmentObject var currentUserAuth: LoginAuthViewModel
     @EnvironmentObject var firebaseCall: FirebaseDataProcessor
+    @EnvironmentObject var placesAPICall: GooglePlacesManager
     
     var body: some View {
         VStack {
             Group {
-                Image(uiImage: firebaseCall.myImage)
+                Image(uiImage: placesAPICall.placePhoto)
                 Text("Name: \(place.placeName)")
                 if let placePropertyIfExists = place.placeType {
                     Text("Type: \(placePropertyIfExists)")

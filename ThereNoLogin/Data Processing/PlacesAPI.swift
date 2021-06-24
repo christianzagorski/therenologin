@@ -28,11 +28,12 @@ final class GooglePlacesManager: ObservableObject {
     @Published var placesReturned = [APIPlace]()
     static let shared = GooglePlacesManager()
     let client = GMSPlacesClient.shared()
-    var apiPlaceToBeSaved = APIPlace()
+    @Published var apiPlaceToBeSaved = APIPlace()
     var placeID: String = ""
     
     var addressFull: String = ""
     let token = GMSAutocompleteSessionToken.init()
+    @Published var placePhoto = UIImage()
     
     init() {}
     
@@ -68,7 +69,6 @@ final class GooglePlacesManager: ObservableObject {
     
     func detailsCall(placeID: String, userCompletionHandler: @escaping (APIPlace?, Error?) -> Void) {
         
-        
         let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |  UInt(GMSPlaceField.addressComponents.rawValue) |  UInt(GMSPlaceField.formattedAddress.rawValue) |  UInt(GMSPlaceField.coordinate.rawValue) |  UInt(GMSPlaceField.businessStatus.rawValue) |  UInt(GMSPlaceField.rating.rawValue) | UInt(GMSPlaceField.photos.rawValue))
 
         client.fetchPlace(fromPlaceID: placeID, placeFields: fields, sessionToken: token, callback: {
@@ -78,12 +78,9 @@ final class GooglePlacesManager: ObservableObject {
             return
           }
           if let place = place {
-            print("array of detail place \(place)")
-            print("NAME is: \(String(describing: place.name))")
-            print("RATING is: \(Float16(place.rating))")
-            print("ADDRESS COMPONENTS is: \(String(describing: place.addressComponents))")
-            print("BUSINESS STATUS is: \(String(describing: place.businessStatus))")
-            print("FORMATTED ADDRESS is: \(String(describing: place.formattedAddress))")
+            // Get the metadata for the first photo in the place photo metadata list.
+            let photoMetadata: GMSPlacePhotoMetadata = place.photos![0]
+            savePhotoToMemory(photoLoad: photoMetadata)
             self.addressFull = place.formattedAddress ?? "nil"
             self.apiPlaceToBeSaved.name = place.name
             self.apiPlaceToBeSaved.identifier = place.placeID
@@ -118,14 +115,48 @@ final class GooglePlacesManager: ObservableObject {
         } // End subfunction separateAddressComponents
         
         func saveCoordinates(coordinates: CLLocationCoordinate2D) {
-            self.apiPlaceToBeSaved.coordinates?.append(coordinates.latitude)
-            self.apiPlaceToBeSaved.coordinates?.append(coordinates.longitude)
-//            print("lat \(lat)")
-//            print("lon \(lon)")
+            print("in savecoordinates sub method: \(coordinates.latitude)")
+            let latco: Double = coordinates.latitude
+            print("laco \(latco)")
+            apiPlaceToBeSaved.coordinates = []
+            apiPlaceToBeSaved.coordinates?.append(coordinates.latitude)
+            apiPlaceToBeSaved.coordinates?.append(coordinates.longitude)
             
+        } // End subfunction separateAddressComponents
+        
+        func savePhotoToMemory(photoLoad: GMSPlacePhotoMetadata) {
+
+                // Call loadPlacePhoto to display the bitmap and attribution.
+                self.client.loadPlacePhoto(photoLoad, callback: { (photo, error) -> Void in
+                  if let error = error {
+                    // TODO: Handle the error.
+                    print("Error loading photo metadata: \(error.localizedDescription)")
+                    return
+                  } else {
+                    // Display the first image and its attributions.
+                    print("Saving photo to placePhoto property")
+                    self.placePhoto = photo!
+//                    self.lblText?.attributedText = photoLoad.attributions;
+                  }
+                })
             
         }
         
     }
+    
+    func saveAPICallPropsToNewPlace(newPlace: TherePlace) -> TherePlace {
+        
+        var exportNewPlace = newPlace
+        exportNewPlace.placeName = apiPlaceToBeSaved.name!
+        exportNewPlace.placeAddress = apiPlaceToBeSaved.formattedAddress
+        exportNewPlace.placeSuburb = apiPlaceToBeSaved.city
+        exportNewPlace.placeState = apiPlaceToBeSaved.state
+        exportNewPlace.placeCountry = apiPlaceToBeSaved.country
+        exportNewPlace.coordinates = apiPlaceToBeSaved.coordinates
+   
+        
+        return exportNewPlace
+        
+    } // End saveAPICallPropsToNewPlace Method
     
 } // End Class

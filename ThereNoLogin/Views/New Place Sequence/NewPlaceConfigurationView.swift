@@ -16,7 +16,7 @@ struct NewPlaceConfigurationView: View {
     @State var privateTab: Bool = true
     @State var commentPublic: String = ""
     @State var commentPrivate: String = ""
-//    @Binding var goToConfigView: Bool
+    @State var placeTypeNonOptional: String = ""
     
     var body: some View {
         
@@ -41,12 +41,23 @@ struct NewPlaceConfigurationView: View {
             
             Group { // Group 2
                 PlaceCardInActiveSearchView(name: placesAPICall.apiPlaceToBeSaved.name!, country: placesAPICall.apiPlaceToBeSaved.country!)
-//                    .onTapGesture {
-//                        
-//                    }
-//                placeTypeToDisplay: $newPlaceVM.aNewPlaceNoOptionals.placeType, placeCountryToDisplay: $newPlaceVM.aNewPlaceNoOptionals.placeCountry, placeNameToDisplay: $newPlaceVM.aNewPlaceNoOptionals.placeName)
+
                 
-                Spacer()
+                VStack {
+                    Text("Some suggestions for the type of place to save:")
+                    HStack {
+                        ForEach(placesAPICall.apiPlaceToBeSaved.type!, id: \.self) { type in
+                            Text(type)
+                                .onTapGesture {
+                                    newPlaceVM.aNewPlace.placeType = String(type)
+                                    print(newPlaceVM.aNewPlace.placeType)
+                                }
+                        } // End ForEach
+                        
+                    } // End HStack
+                    NewPlaceTextView(frameType: "oneline", suggestionString: "Or... Type your own", input: $placeTypeNonOptional)
+                }
+                
                 HStack {
                     Spacer()
                     PlaceTypeToggle()
@@ -59,7 +70,7 @@ struct NewPlaceConfigurationView: View {
                     Text("Add to collection")
                 }
                 .padding(.leading)
-                Spacer()
+                
                 HStack {
                     Image(systemName: "plus.circle.fill")
                         .font(.system(size: 20.0))
@@ -67,7 +78,7 @@ struct NewPlaceConfigurationView: View {
                     Text("Recommended by")
                 }
                 .padding(.leading)
-                Spacer()
+                
             } // End Group 2
             
             Group { // Group 3
@@ -75,12 +86,12 @@ struct NewPlaceConfigurationView: View {
                 NewPlaceTextView(frameType: "multi", suggestionString: "Best Mararitas on the planet", input: $newPlaceVM.aNewPlaceNoOptionals.commentPublic)
                 Text("Private notes").padding(.leading)
                 NewPlaceTextView(frameType: "multi", suggestionString: "Notes for your eyes only.", input: $newPlaceVM.aNewPlaceNoOptionals.commentPrivate)
-                Spacer()
+                
                 HStack {
                     Toggle("Keep Private?", isOn: $newPlaceVM.aNewPlaceNoOptionals.privateSpot)
-                        .padding()
+//                        .padding()
                 } // End HStack for private toggle
-                Spacer()
+                
                 ZStack {
                     Rectangle()
                         .foregroundColor(Color.purple)
@@ -90,17 +101,43 @@ struct NewPlaceConfigurationView: View {
                     Text("Add new place")
                         .foregroundColor(Color.white)
                 }
-                .padding()
+//                .padding()
                 .onTapGesture {
                     
+                    //  Adds the photo from the APIdetailsCall to firebase storage, and saves the file name to the TherePlace object
+                    PhotoService.savePhoto(image: placesAPICall.placePhoto, userCompletionHandler: {filename, error in
+                        if let filename = filename {
+                            self.newPlaceVM.aNewPlace.imageName = filename
+                        }
+                        
+                    })
+                    
+                    // Converts aNewPlaceNoOptionals to an instance of TherePlace (which has optionals) - needed to do this because of the optional binding issue
                     newPlaceVM.returnNoOptionals()
+                    
+                    // 
+                    if newPlaceVM.aNewPlace.placeType == nil {
+                        newPlaceVM.aNewPlace.placeType = placeTypeNonOptional
+                    }
+                    
+                    // TODO - call a function (not yet created, not sure where it will be defined) that maps the APIPlace Object to the aNewPlace Instance (the one with optionals) of the NewPlaceViewModel (newPlaceVM)
+                    
+                    // Perhaps it passes in the aNewPlace instance to the APIVM? and returns it?
+                    newPlaceVM.aNewPlace = placesAPICall.saveAPICallPropsToNewPlace(newPlace: newPlaceVM.aNewPlace)
+                    
+                    // Saves aNewPlace (of type TherePlace) to the current users firebase profile, but first converts it to a dictionary format.
                     firebaseCall.savePlaceToCurrentUser(newPlace: newPlaceVM.testDictionaryExtension()) // TODO Add completion handler here
-                    newPlaceVM.goToConfigView = false
-                    newPlaceVM.showNewPlace = false
+                    
+                    // Converts the current users firebase places from a Dictionary to a TherePlace object and then loads it into memory. Then a completion handler loads that object into the TherePlaceViewModel as the TherePlae object that is filtered and used in the HomeContentView.
                     firebaseCall.loadUserPlaces(userCompletionHandler: { loadedUserPlaces, error in
                         if let loadedUserPlaces = loadedUserPlaces {
                             self.allPlaces.loadUserPlaces(firebaseLoadedPlaces: loadedUserPlaces)
                         }
+                        
+                    // Toggles ConfigView and NewPlaceSearchView to false, taking the user back to HomeContentView
+                    newPlaceVM.goToConfigView = false
+                    newPlaceVM.showNewPlace = false
+                    
                         
                     }) // end loadUserPlaces in firebaseCall
                     // TODO clear values from aNewPlace

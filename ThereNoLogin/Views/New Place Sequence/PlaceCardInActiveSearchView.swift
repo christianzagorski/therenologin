@@ -16,7 +16,7 @@ struct PlaceCardInActiveSearchView: View {
     
     var body: some View {
         HStack {
-            Image("sealers")
+            Image(uiImage: placesAPICall.placePhoto)
                 .resizable()
                 .frame(width: 70, height: 70)
                 .cornerRadius(10.0)
