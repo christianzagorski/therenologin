@@ -13,9 +13,11 @@ import FirebaseAuth
 class TherePlaceViewModel: ObservableObject {
     
     var placesArray = [TherePlace]() // placesArray is all places the user has in their account.
+    @Published var imagesDict = [String : UIImage]()
     var fullTabArray = [TherePlace]() // fullTabArray is places filtered by tab in TabView.
     @Published var filteredArray = [TherePlace]() // filteredArray is the array published to the views.
     let placeTypes = PlaceTypes()
+    @Published var imageTest = UIImage()
     
     // TODO - Assume all the firebase calls will come in here.
     
@@ -26,9 +28,27 @@ class TherePlaceViewModel: ObservableObject {
     }
     
     func loadUserPlaces(firebaseLoadedPlaces: [TherePlace]) {
-        self.placesArray = firebaseLoadedPlaces
-        tabArrayFilter(whichTab: 1)
+        let photoLoadSequence = PhotoService()
+        
+        for eachplace in firebaseLoadedPlaces {
+            print("Eachplace.imagename \(eachplace.imageName!)")
+          
+            photoLoadSequence.loadPhoto(filename: eachplace.imageName!, userCompletionHandler: {placeImage, error in
+                self.imagesDict[eachplace.imageName!] = placeImage
+                print("hello")
+                print(self.imagesDict)
+                self.placesArray = firebaseLoadedPlaces
+                self.tabArrayFilter(whichTab: 1)
+                self.imageTest = photoLoadSequence.myimageToPass
+                
+            })
+        }
+        
+        
+        
     }
+    
+    
     
     // Function tabArrayFilter filters based on the tab that has been pressed
     func tabArrayFilter(whichTab: Int) {

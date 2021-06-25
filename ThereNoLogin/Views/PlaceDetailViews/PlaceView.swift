@@ -18,11 +18,14 @@ struct PlaceView: View {
     @EnvironmentObject var currentUserAuth: LoginAuthViewModel
     @EnvironmentObject var firebaseCall: FirebaseDataProcessor
     @EnvironmentObject var placesAPICall: GooglePlacesManager
+    @EnvironmentObject var photoService: PhotoService
     
     var body: some View {
         VStack {
             Group {
-                Image(uiImage: placesAPICall.placePhoto)
+//                Image(uiImage: placesAPICall.placePhoto) // - works but not from firebase storage
+//                Image(uiImage: firebaseCall.myImage) // - works
+                Image(uiImage: allPlaces.imageTest) // doesnt work
                 Text("Name: \(place.placeName)")
                 if let placePropertyIfExists = place.placeType {
                     Text("Type: \(placePropertyIfExists)")

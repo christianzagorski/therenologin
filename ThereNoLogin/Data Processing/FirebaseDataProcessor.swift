@@ -58,7 +58,8 @@ class FirebaseDataProcessor: ObservableObject {
                        switch result {
                        case .success(let placeToSave):
                            if var placeToSave = placeToSave {
-                                placeToSave.imageName = "hawaiijump" // TODO fix with firebase Storage
+                            print("PlaceToSave here \(placeToSave.imageName)")
+//                                placeToSave.imageName = "hawaiijump" // TODO fix with firebase Storage
                                 placesArray.append(placeToSave)
                            }
                            

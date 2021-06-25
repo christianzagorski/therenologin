@@ -11,7 +11,11 @@ import FirebaseFirestore
 import FirebaseAuth
 
 
-class PhotoService {
+class PhotoService: ObservableObject {
+    
+    let storage = Storage.storage()
+    @Published var myimageToPass = UIImage()
+    @Published var imageToPass = UIImage()
     
     static func savePhoto(image: UIImage, userCompletionHandler: @escaping (String?, Error?) -> Void) {
         // Get the data represenation of the UIImage
@@ -60,5 +64,33 @@ class PhotoService {
         
         // Upon successful upload, create database entry
     }
+    
+    
+    func loadPhoto(filename: String, userCompletionHandler: @escaping (UIImage?, Error?) -> Void) {
+
+        let storageRef = storage.reference()
+        let imagesRef = storageRef.child("images")
+        let imagefileRef = imagesRef.child(filename)
+        
+        
+        
+        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+        
+        print("imagefileRef: \(imagefileRef)")
+        
+        
+        imagefileRef.getData(maxSize: 1 * 1024 * 1024) { data1, error in
+          if let error = error {
+            print("an error occured \(error)")
+            // Uh-oh, an error occurred!
+          } else {
+            // Data for "images/island.jpg" is returned
+            let image = UIImage(data:data1!,scale:1.0)
+            self.myimageToPass = image!
+          }
+        }
+        userCompletionHandler(imageToPass, nil)
+        
+    } // end testMyFirebasePhotoJpg method
     
 }

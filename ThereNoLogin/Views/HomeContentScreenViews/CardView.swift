@@ -25,7 +25,8 @@ struct CardView: View {
             
                 VStack (alignment: .leading) {
                     
-                    Image(uiImage: placesAPICall.placePhoto) // TODO force unwrapped fix
+                    Image(uiImage: allPlaces.imageTest)
+//                    Image(uiImage: allPlaces.imagesDict[card.imageName!]!) // TODO force unwrapped fix
                         .resizable()
                         .frame(width: geo.size.width, height: geo.size.height * 0.45)
                         .scaledToFill()
@@ -59,6 +60,10 @@ struct CardView: View {
         .padding(.leading)
         .padding(.trailing)
         .padding(.top, 5)
+        .onAppear() {
+            print("card imagename")
+            print(card.imageName!)
+        }
     
     } // End body
 

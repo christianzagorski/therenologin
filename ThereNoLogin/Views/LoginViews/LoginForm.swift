@@ -40,7 +40,7 @@ struct LoginForm: View {
                         Auth.auth().addStateDidChangeListener { (auth, user) in
                             if user != nil {
                                 firebaseCall.getCurrentUsername()
-                                firebaseCall.loadUserPlaces(userCompletionHandler: {loadedUserPlaces, error in
+                                firebaseCall.loadUserPlaces(userCompletionHandler: { loadedUserPlaces, error in
                                     if let loadedUserPlaces = loadedUserPlaces {
                                         self.allPlaces.loadUserPlaces(firebaseLoadedPlaces: loadedUserPlaces)
                                         loginShowing = 0

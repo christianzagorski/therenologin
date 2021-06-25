@@ -108,38 +108,37 @@ struct NewPlaceConfigurationView: View {
                     PhotoService.savePhoto(image: placesAPICall.placePhoto, userCompletionHandler: {filename, error in
                         if let filename = filename {
                             self.newPlaceVM.aNewPlace.imageName = filename
+                            // Converts aNewPlaceNoOptionals to an instance of TherePlace (which has optionals) - needed to do this because of the optional binding issue
+                            newPlaceVM.returnNoOptionals()
+                            //
+                            if newPlaceVM.aNewPlace.placeType == nil { newPlaceVM.aNewPlace.placeType = placeTypeNonOptional }
+                            
+                            // TODO - call a function (not yet created, not sure where it will be defined) that maps the APIPlace Object to the aNewPlace Instance (the one with optionals) of the NewPlaceViewModel (newPlaceVM)
+                            
+                            // Perhaps it passes in the aNewPlace instance to the APIVM? and returns it?
+                            newPlaceVM.aNewPlace = placesAPICall.saveAPICallPropsToNewPlace(newPlace: newPlaceVM.aNewPlace)
+                            
+                            // Saves aNewPlace (of type TherePlace) to the current users firebase profile, but first converts it to a dictionary format.
+                            firebaseCall.savePlaceToCurrentUser(newPlace: newPlaceVM.testDictionaryExtension()) // TODO Add completion handler here
+                            
+                            // Converts the current users firebase places from a Dictionary to a TherePlace object and then loads it into memory. Then a completion handler loads that object into the TherePlaceViewModel as the TherePlae object that is filtered and used in the HomeContentView.
+                            firebaseCall.loadUserPlaces(userCompletionHandler: { loadedUserPlaces, error in
+                                if let loadedUserPlaces = loadedUserPlaces {
+                                    self.allPlaces.loadUserPlaces(firebaseLoadedPlaces: loadedUserPlaces)
+                                }
+                                
+                            // Toggles ConfigView and NewPlaceSearchView to false, taking the user back to HomeContentView
+                            newPlaceVM.goToConfigView = false
+                            newPlaceVM.showNewPlace = false
+                            
+                                
+                            }) // end loadUserPlaces in firebaseCall
+                            
+                            
                         }
                         
                     })
-                    
-                    // Converts aNewPlaceNoOptionals to an instance of TherePlace (which has optionals) - needed to do this because of the optional binding issue
-                    newPlaceVM.returnNoOptionals()
-                    
-                    // 
-                    if newPlaceVM.aNewPlace.placeType == nil {
-                        newPlaceVM.aNewPlace.placeType = placeTypeNonOptional
-                    }
-                    
-                    // TODO - call a function (not yet created, not sure where it will be defined) that maps the APIPlace Object to the aNewPlace Instance (the one with optionals) of the NewPlaceViewModel (newPlaceVM)
-                    
-                    // Perhaps it passes in the aNewPlace instance to the APIVM? and returns it?
-                    newPlaceVM.aNewPlace = placesAPICall.saveAPICallPropsToNewPlace(newPlace: newPlaceVM.aNewPlace)
-                    
-                    // Saves aNewPlace (of type TherePlace) to the current users firebase profile, but first converts it to a dictionary format.
-                    firebaseCall.savePlaceToCurrentUser(newPlace: newPlaceVM.testDictionaryExtension()) // TODO Add completion handler here
-                    
-                    // Converts the current users firebase places from a Dictionary to a TherePlace object and then loads it into memory. Then a completion handler loads that object into the TherePlaceViewModel as the TherePlae object that is filtered and used in the HomeContentView.
-                    firebaseCall.loadUserPlaces(userCompletionHandler: { loadedUserPlaces, error in
-                        if let loadedUserPlaces = loadedUserPlaces {
-                            self.allPlaces.loadUserPlaces(firebaseLoadedPlaces: loadedUserPlaces)
-                        }
-                        
-                    // Toggles ConfigView and NewPlaceSearchView to false, taking the user back to HomeContentView
-                    newPlaceVM.goToConfigView = false
-                    newPlaceVM.showNewPlace = false
-                    
-                        
-                    }) // end loadUserPlaces in firebaseCall
+                   
                     // TODO clear values from aNewPlace
                 } // end onTapGesture
                 

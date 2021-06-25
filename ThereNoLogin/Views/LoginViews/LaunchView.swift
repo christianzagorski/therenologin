@@ -48,6 +48,7 @@ struct LaunchView: View {
                         firebaseCall.loadUserPlaces(userCompletionHandler: { loadedUserPlaces, error in
                             if let loadedUserPlaces = loadedUserPlaces {
                                 self.allPlaces.loadUserPlaces(firebaseLoadedPlaces: loadedUserPlaces)
+                                print("allPlaces Property \(allPlaces.placesArray[0].imageName)")
                             }
                             
                         }) // end loadUserPlaces in firebaseCall

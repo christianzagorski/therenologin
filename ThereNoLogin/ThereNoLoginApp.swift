@@ -23,6 +23,7 @@ struct ThereNoLoginApp: App {
     @StateObject var allPlaces = TherePlaceViewModel()
     @StateObject var newPlaceVM = NewPlaceViewModel()
     @StateObject var placesAPICall = GooglePlacesManager()
+    @StateObject var photoService = PhotoService()
     
     let key = GMSPlacesClient.provideAPIKey("AIzaSyCJIUR-VTJ2RNJtyFLiI2EfeIMgct5HH6Y") // AIzaSyCJIUR-VTJ2RNJtyFLiI2EfeIMgct5HH6Y - real key for travel gems
     
@@ -37,6 +38,7 @@ struct ThereNoLoginApp: App {
                     .environmentObject(firebaseCall)
                     .environmentObject(newPlaceVM)
                     .environmentObject(placesAPICall)
+                    .environmentObject(photoService)
             
         } // End WindowGroup
     } // End body property
